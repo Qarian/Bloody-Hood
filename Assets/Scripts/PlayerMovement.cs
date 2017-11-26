@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public Transform playerPositions;
+    public float swapSpeed = 5f;
 
     Transform[] points;
     int currentPoint;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (Input.GetKeyDown("w")) Move(-1);
         if (Input.GetKeyDown("s")) Move(1);
+        transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, swapSpeed * Time.deltaTime);
     }
 
     bool Move(int number)
@@ -33,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
             currentPoint = pointCount - 1;
             return false;
         }
-        transform.position = points[currentPoint].position;
+        //transform.position = points[currentPoint].position;
         return true;
     }
 

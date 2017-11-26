@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     public float attackSpeed = 0.2f;
+    public float cooldown=0.1f;
 
     GameObject blade;
     bool canAttack = true;
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour {
         blade.SetActive(true);
         canAttack = false;
         yield return new WaitForSeconds(attackSpeed);
-        canAttack = true;
         blade.SetActive(false);
+        yield return new WaitForSeconds(cooldown);
+        canAttack = true;
     }
 }

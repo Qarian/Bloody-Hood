@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4721914716159298}
   - component: {fileID: 212664319552395814}
-  - component: {fileID: 114447374279936712}
   - component: {fileID: 61541049051573222}
+  - component: {fileID: 114447374279936712}
   - component: {fileID: 114681311262652500}
   m_Layer: 0
   m_Name: Hero
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPositions: {fileID: 0}
+  swapSpeed: 20
 --- !u!114 &114681311262652500
 MonoBehaviour:
   m_ObjectHideFlags: 1
