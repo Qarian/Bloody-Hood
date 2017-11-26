@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour {
 
     public float attackSpeed = 0.2f;
@@ -18,12 +19,17 @@ public class Player : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown("space"))
         {
-            if (canAttack)
-            {
-                StartCoroutine(Attack());
-            }
+            Tap();
         }
 	}
+
+    public void Tap()
+    {
+        if (canAttack)
+        {
+            StartCoroutine(Attack());
+        }
+    }
 
     IEnumerator Attack()
     {

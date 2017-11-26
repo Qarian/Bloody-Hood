@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPositions: {fileID: 0}
   swapSpeed: 20
+  swapDistance: 100
 --- !u!114 &114681311262652500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 0.15
+  cooldown: 0.1
 --- !u!212 &212490250912363304
 SpriteRenderer:
   m_ObjectHideFlags: 1
