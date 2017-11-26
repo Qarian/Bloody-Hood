@@ -1,0 +1,4 @@
+ruch: 'w' i 's' / ruszanie myszk¹
+atak: 'space' / klikniecie myszk¹
+wyjscie: 'esc'
+restart poziomu: 'r'
