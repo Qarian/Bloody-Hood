@@ -1,9 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class Blade : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().Hit();
+        }
     }
+
 }

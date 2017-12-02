@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(PlayerMovement),typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour {
 
     public float attackSpeed = 0.2f;
     public float cooldown=0.1f;
+    public float hp=100;
     [SerializeField]
-    int hp=100;
-    int maxhp;
+    float maxhp;
 
     GameObject blade;
     bool canAttack = true;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
     {
         if(collision.tag == "Enemy")
         {
-            ChangeHp(-20);
+            ChangeHp(collision.GetComponent<Enemy>().damage);
             Destroy(collision.gameObject);
         }
     }
