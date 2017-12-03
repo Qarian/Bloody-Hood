@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a23ff33583afa4db60fc6773b7d804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 0.08
-  cooldown: 0
+  attackSpeed: 0.1
+  cooldown: 0.1
   hp: 5
 --- !u!212 &212061637526164236
 SpriteRenderer:

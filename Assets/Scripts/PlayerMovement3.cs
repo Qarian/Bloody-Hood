@@ -32,7 +32,7 @@ public class PlayerMovement3 : MonoBehaviour {
     {
         if (canMove)
         {
-            StartCoroutine(MoveTime(Mathf.Abs(number - currentPoint) > 1 ? 2 : 1));
+            StartCoroutine(MoveTime(Mathf.Abs(number - currentPoint)));
             currentPoint = number;
         }
         if (currentPoint < 0)
