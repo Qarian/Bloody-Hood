@@ -32,8 +32,8 @@ public class PlayerMovement3 : MonoBehaviour {
     {
         if (canMove)
         {
+            StartCoroutine(MoveTime(Mathf.Abs(number - currentPoint) > 1 ? 2 : 1));
             currentPoint = number;
-            StartCoroutine(MoveTime());
         }
         if (currentPoint < 0)
         {
@@ -56,10 +56,10 @@ public class PlayerMovement3 : MonoBehaviour {
         currentPoint = pointCount / 2;
     }
 
-    IEnumerator MoveTime()
+    IEnumerator MoveTime(int num)
     {
         canMove = false;
-        yield return new WaitForSeconds(swapTime);
+        yield return new WaitForSeconds(swapTime*num);
         canMove = true;
         player.Tap();
     }

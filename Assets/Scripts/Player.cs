@@ -1,15 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D),typeof(SpriteRenderer))]
 public class Player : MonoBehaviour {
 
     public float attackSpeed = 0.2f;
     public float cooldown=0.1f;
-    public float hp=100;
+    public float hp=5;
     [SerializeField]
     float maxhp;
 
+    SpriteRenderer sprite;
     GameObject blade;
     bool canAttack = true;
     
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour {
         blade = transform.GetChild(0).gameObject;
         blade.SetActive(false);
         maxhp = hp;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update () {
@@ -52,6 +54,9 @@ public class Player : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        Color percent = sprite.color;
+        percent.a = hp/maxhp;
+        sprite.color = percent;
     }
 
     IEnumerator Attack()

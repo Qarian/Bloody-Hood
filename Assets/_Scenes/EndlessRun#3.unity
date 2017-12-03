@@ -417,7 +417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &963041892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: "Sterowanie przez naci\u015Bni\u0119cie na odpowiedni\u0105 lini\u0119\n\nStrza\u0142
+  m_Text: "Sterowanie przez naci\u015Bni\u0119cie na odpowiedni\u0105 lini\u0119\n\nAtak
     po ka\u017Cdym naci\u015Bni\u0119ciu na ekran gry\n\nWyj\u015Bcie za pomoc\u0105
     przycisku Esc"
 --- !u!222 &1236190223
