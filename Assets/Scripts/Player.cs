@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
         if (collision.tag == "Enemy")
         {
             ChangeHp(-collision.GetComponent<Enemy>().damage);
-            Destroy(collision.gameObject);
+            collision.GetComponent<Enemy>().Hit();
         }
     }
 

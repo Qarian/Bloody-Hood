@@ -1,31 +1,30 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner2 : MonoBehaviour {
 
     public Transform enemyPositions;
     public GameObject enemyPrefab;
-    public float speed = 10f;
     [Tooltip("number of enemies per second")]
     public float frequency = 1f;
 
     Transform[] points;
     int pointCount;
 
-    void Start ()
+    void Start()
     {
         GetPoints();
         StartCoroutine(Spawn());
-	}
-	
+    }
+
     IEnumerator Spawn()
     {
         while (true)
         {
             int rand = Random.Range(0, pointCount);
             GameObject go = Instantiate(enemyPrefab, points[rand].position, Quaternion.identity);
-            go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
-            yield return new WaitForSeconds(1f/frequency);
+            go.GetComponent<Enemy>().is2metod = true;
+            yield return new WaitForSeconds(1f / frequency);
         }
     }
 

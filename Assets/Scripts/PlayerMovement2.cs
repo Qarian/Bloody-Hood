@@ -1,25 +1,23 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement2 : MonoBehaviour {
 
-
     public Transform playerPositions;
-    [Tooltip("in seconds")]
-    public float swapTime = 0.25f;
-    [Tooltip("in pixels")]
-    public int swapDistance = 100;
+    public RectTransform clockSprite;
+    [Tooltip("Margines błędu jaki gracz może popełnić w procentach (w stosunku do całego czasu)")]
+    [Range(0f, 100f)]
+    public float errorLimit = 100;
+    [Tooltip("Czas potrzebny na cały bit (może ulegać zmianie podczas gry)")]
+    public float bitTime = 0.8f;
 
-    float distance = 4f;
+
     Player player;
     Transform[] points;
     int currentPoint;
     int pointCount;
 
-    bool canSwipe = true;
-    bool isDrag = false;
-    Vector2 startPoint;
-    Vector2 Swapdelta;
+    bool done = false;
+    float time = 0f;
 
 
     void Start()
@@ -27,69 +25,31 @@ public class PlayerMovement2 : MonoBehaviour {
         GetPoints();
         transform.position = points[currentPoint].position;
         player = gameObject.GetComponent<Player>();
-        distance = (points[currentPoint].position - points[currentPoint - 1].position).magnitude;
     }
 
     void Update()
     {
-        #region StandAlone
-        if (Input.GetMouseButtonDown(0) && canSwipe)
+        if (Input.GetKeyDown("a") && !done) Move(-1);
+        else if (Input.GetKeyDown("d") && !done) Move(1);
+        else if (Input.GetKeyDown(KeyCode.Space) && !done)
         {
-            isDrag = true;
-            startPoint = Input.mousePosition;
+            player.Tap();
+            if (done) Penalty();
+            done = true;
         }
-        else if (Input.GetMouseButtonUp(0))
+        clockSprite.Rotate(0f, 0f, 360 * Time.deltaTime / bitTime);
+        time += Time.deltaTime;
+        if (time >= bitTime)
         {
-            if (isDrag) player.Tap();
-            isDrag = false;
+            done = false;
+            time -= bitTime;
         }
-        #endregion
-        #region Mobile
-        if (Input.touches.Length > 0)
-        {
-            if (Input.touches[0].phase == TouchPhase.Began && canSwipe)
-            {
-                isDrag = true;
-                startPoint = Input.touches[0].position;
-            }
-            else if (Input.touches[0].phase == TouchPhase.Canceled || Input.touches[0].phase == TouchPhase.Ended)
-            {
-                if (isDrag) player.Tap();
-                isDrag = false;
-            }
-        }
-        #endregion
-
-        if (isDrag)
-        {
-            if (Input.touches.Length > 0)
-            {
-                Swapdelta = Input.touches[0].position - startPoint;
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                Swapdelta = (Vector2)Input.mousePosition - startPoint;
-            }
-
-            if (Swapdelta.x > swapDistance)
-            {
-                Move(1);
-                StartCoroutine(MoveTime());
-            }
-            else if (Swapdelta.x < -swapDistance)
-            {
-                Move(-1);
-                StartCoroutine(MoveTime());
-            }
-        }
-
-        if (Input.GetKeyDown("a")) Move(-1);
-        if (Input.GetKeyDown("d")) Move(1);
-        transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance / swapTime) * Time.deltaTime);
     }
 
     bool Move(int number)
     {
+        if (done) Penalty();
+        done = true;
         currentPoint += number;
         if (currentPoint < 0)
         {
@@ -101,8 +61,13 @@ public class PlayerMovement2 : MonoBehaviour {
             currentPoint = pointCount - 1;
             return false;
         }
-        //transform.position = points[currentPoint].position;
+        transform.position = points[currentPoint].position;
         return true;
+    }
+
+    void Penalty()
+    {
+        Debug.Log("Zrobiles 2 akcje naraz - tak nie mozna");
     }
 
     void GetPoints()
@@ -114,13 +79,5 @@ public class PlayerMovement2 : MonoBehaviour {
             points[i] = playerPositions.GetChild(i);
         }
         currentPoint = pointCount / 2;
-    }
-
-    IEnumerator MoveTime()
-    {
-        isDrag = false;
-        canSwipe = false;
-        yield return new WaitForSeconds(swapTime);
-        canSwipe = true;
     }
 }

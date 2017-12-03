@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 4665648445129130}
   - component: {fileID: 212536574502130974}
   - component: {fileID: 61447616749260900}
-  - component: {fileID: 114252345762900352}
   - component: {fileID: 114915581310973488}
+  - component: {fileID: 114595297063142116}
   m_Layer: 0
   m_Name: Hero2
   m_TagString: Player
@@ -98,7 +98,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.1}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!61 &61711025659272380
 BoxCollider2D:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf92788f2af6a3149b817f99b49f5199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114252345762900352
+--- !u!114 &114595297063142116
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -144,12 +144,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939700827926730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2252e2934de3910459b9335f18445ad5, type: 3}
+  m_Script: {fileID: 11500000, guid: c2f33dd94977e7949b19d8968bd56b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPositions: {fileID: 0}
-  swapTime: 0.15
-  swapDistance: 60
+  clockSprite: {fileID: 0}
+  errorLimit: 100
+  bitTime: 1
 --- !u!114 &114915581310973488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,10 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a23ff33583afa4db60fc6773b7d804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 0.15
-  cooldown: 0.1
+  attackSpeed: 0.1
+  cooldown: 0
   hp: 5
-  maxhp: 0
 --- !u!212 &212536574502130974
 SpriteRenderer:
   m_ObjectHideFlags: 1
