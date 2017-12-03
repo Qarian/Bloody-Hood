@@ -7,7 +7,6 @@ public class Player : MonoBehaviour {
     public float attackSpeed = 0.2f;
     public float cooldown=0.1f;
     public float hp=5;
-    [SerializeField]
     float maxhp;
 
     SpriteRenderer sprite;
@@ -39,9 +38,9 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
-            ChangeHp(collision.GetComponent<Enemy>().damage);
+            ChangeHp(-collision.GetComponent<Enemy>().damage);
             Destroy(collision.gameObject);
         }
     }
@@ -57,6 +56,7 @@ public class Player : MonoBehaviour {
         Color percent = sprite.color;
         percent.a = hp/maxhp;
         sprite.color = percent;
+
     }
 
     IEnumerator Attack()

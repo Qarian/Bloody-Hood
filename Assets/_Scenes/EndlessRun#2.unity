@@ -700,6 +700,16 @@ Prefab:
       propertyPath: playerPositions
       value: 
       objectReference: {fileID: 1608170095}
+    - target: {fileID: 212536574502130974, guid: 8de663c76a731ab4eb0c66a62f7bb1c2,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114915581310973488, guid: 8de663c76a731ab4eb0c66a62f7bb1c2,
+        type: 2}
+      propertyPath: maxhp
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114252345762900352, guid: 8de663c76a731ab4eb0c66a62f7bb1c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8de663c76a731ab4eb0c66a62f7bb1c2, type: 2}
