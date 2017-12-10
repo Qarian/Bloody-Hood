@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D),typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer), typeof(AudioSource))]
 public class Player : MonoBehaviour {
 
     public float attackSpeed = 0.2f;
@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     public float hp=5;
     float maxhp;
 
+    AudioSource audiosource;
     SpriteRenderer sprite;
     GameObject blade;
     bool canAttack = true;
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour {
         blade.SetActive(false);
         maxhp = hp;
         sprite = GetComponent<SpriteRenderer>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Update () {
@@ -63,6 +65,7 @@ public class Player : MonoBehaviour {
     {
         blade.SetActive(true);
         canAttack = false;
+        audiosource.Play();
         yield return new WaitForSeconds(attackSpeed);
         blade.SetActive(false);
         yield return new WaitForSeconds(cooldown);
