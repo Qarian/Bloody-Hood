@@ -12,7 +12,8 @@ public class Player : MonoBehaviour {
     AudioSource audiosource;
     SpriteRenderer sprite;
     GameObject blade;
-    bool canAttack = true;
+    [HideInInspector]
+    public bool canAttack = true;
     
     void Start()
     {
@@ -23,19 +24,10 @@ public class Player : MonoBehaviour {
         audiosource = GetComponent<AudioSource>();
     }
 
-    void Update () {
-        if (Input.GetKeyDown("space"))
-        {
-            Tap();
-        }
-	}
-
     public void Tap()
     {
         if (canAttack)
-        {
             StartCoroutine(Attack());
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +53,7 @@ public class Player : MonoBehaviour {
 
     }
 
-    IEnumerator Attack()
+    public IEnumerator Attack()
     {
         blade.SetActive(true);
         canAttack = false;

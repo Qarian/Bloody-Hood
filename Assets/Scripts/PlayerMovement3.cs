@@ -25,6 +25,7 @@ public class PlayerMovement3 : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKeyDown("space")) player.Tap();
         transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance / swapTime) * Time.deltaTime);
     }
 

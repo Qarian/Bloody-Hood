@@ -29,6 +29,7 @@ public class PlayerMovement2 : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKeyDown("space")) player.Tap();
         if (Input.GetKeyDown("a") && !done) Move(-1);
         else if (Input.GetKeyDown("d") && !done) Move(1);
         else if (Input.GetKeyDown(KeyCode.Space) && !done)

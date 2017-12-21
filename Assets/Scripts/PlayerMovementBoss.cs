@@ -1,41 +1,44 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Player))]
-public class PlayerMovement1: MonoBehaviour {
+public class PlayerMovementBoss : MonoBehaviour {
 
-    public Transform playerPositions;
-    [Tooltip("in seconds")]
-    public float swapTime = 0.25f;
-    [Tooltip("in pixels")]
-    public int swapDistance = 100;
-
-    [HideInInspector]
-    public float distance = 4f;
-    Player player;
-    Transform[] points;
-    [HideInInspector]
-    public int currentPoint;
-    int pointCount;
+    public float AttackBossWaitTime = 0.05f;
+    public float attackMoveSpeed = 0.3f;
+    public float distanceToBoss = 12;
+    bool isAttack = false;
 
     bool canSwipe = true;
     bool isDrag = false;
     Vector2 startPoint;
     Vector2 Swapdelta;
 
+    float distance = 4f;
+    Player player;
+    Transform[] points;
+    Transform[] attackPoints;
+    int currentPoint;
+    int pointCount;
 
-	void Start ()
+    Transform playerPositions;
+    float swapTime;
+    int swapDistance;
+
+    PlayerMovement1 move;
+    Vector2 attackPosition;
+
+    public void Begin(PlayerMovement1 move)
     {
+        playerPositions = move.playerPositions;
+        swapTime = move.swapTime;
+        swapDistance = move.swapDistance;
         GetPoints();
         transform.position = points[currentPoint].position;
         player = gameObject.GetComponent<Player>();
-        distance = (points[currentPoint].position - points[currentPoint - 1].position).magnitude;
-        GetComponent<PlayerMovementBoss>().Begin(this);
-        //enabled = false;
+        currentPoint = move.currentPoint;
     }
 
-    void Update()
-    {
+    void Update () {
         #region StandAlone
         if (Input.GetMouseButtonDown(0) && canSwipe)
         {
@@ -44,21 +47,21 @@ public class PlayerMovement1: MonoBehaviour {
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (isDrag) player.Tap();
+            if (isDrag) StartCoroutine(Tap());
             isDrag = false;
         }
         #endregion
         #region Mobile
-        if(Input.touches.Length > 0)
+        if (Input.touches.Length > 0)
         {
-            if(Input.touches[0].phase == TouchPhase.Began && canSwipe)
+            if (Input.touches[0].phase == TouchPhase.Began && canSwipe)
             {
                 isDrag = true;
                 startPoint = Input.touches[0].position;
             }
             else if (Input.touches[0].phase == TouchPhase.Canceled || Input.touches[0].phase == TouchPhase.Ended)
             {
-                if (isDrag) player.Tap();
+                if (isDrag) Tap();
                 isDrag = false;
             }
         }
@@ -86,11 +89,13 @@ public class PlayerMovement1: MonoBehaviour {
                 StartCoroutine(MoveTime());
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) player.Tap();
+        if (Input.GetKeyDown("space") && !isAttack) StartCoroutine(Tap());
         if (Input.GetKeyDown("a")) Move(-1);
         if (Input.GetKeyDown("d")) Move(1);
-        transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance/swapTime) * Time.deltaTime);
+        if(isAttack)
+            transform.position = Vector2.MoveTowards(transform.position, attackPosition, (distanceToBoss / attackMoveSpeed) * Time.deltaTime);
+        else
+            transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance / swapTime) * Time.deltaTime);
     }
 
     bool Move(int number)
@@ -101,7 +106,7 @@ public class PlayerMovement1: MonoBehaviour {
             currentPoint = 0;
             return false;
         }
-        else if(currentPoint >= pointCount)
+        else if (currentPoint >= pointCount)
         {
             currentPoint = pointCount - 1;
             return false;
@@ -126,5 +131,20 @@ public class PlayerMovement1: MonoBehaviour {
         canSwipe = false;
         yield return new WaitForSeconds(swapTime);
         canSwipe = true;
+    }
+
+    IEnumerator Tap()
+    {
+        canSwipe = false;
+        isAttack = true;
+        attackPosition = new Vector2(transform.position.x, transform.position.x + distanceToBoss);
+        yield return new WaitForSeconds(attackMoveSpeed);
+        attackPosition = transform.position;
+        StartCoroutine(player.Attack());
+        yield return new WaitForSeconds(AttackBossWaitTime);
+        attackPosition = new Vector2(transform.position.x, transform.position.x - distanceToBoss);
+        yield return new WaitForSeconds(attackMoveSpeed);
+        canSwipe = true;
+        isAttack = false;
     }
 }

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Menu.unity
     guid: 2334e03eb1cb4114299641f5ffda5c8d
   - enabled: 1
-    path: Assets/_Scenes/EndlessRun#1.unity
+    path: Assets/_Scenes/Scene.unity
     guid: ae2436d03189b66409ab14d776afd4bc
   - enabled: 1
     path: Assets/_Scenes/EndlessRun#2.unity

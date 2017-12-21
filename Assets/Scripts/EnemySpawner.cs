@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour {
     public float speed = 10f;
     [Tooltip("number of enemies per second")]
     public float frequency = 1f;
+    [Tooltip("How many waves before boss")]
+    public int waveCount = 5;
 
     Transform[] points;
     int pointCount;
@@ -20,13 +22,17 @@ public class EnemySpawner : MonoBehaviour {
 	
     IEnumerator Spawn()
     {
-        while (true)
+        int currentWaveCount = 0;
+        while (currentWaveCount < waveCount)
         {
             int rand = Random.Range(0, pointCount);
             GameObject go = Instantiate(enemyPrefab, points[rand].position, Quaternion.identity);
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
             yield return new WaitForSeconds(1f/frequency);
+            currentWaveCount++;
         }
+        yield return new WaitForSeconds(2f);
+        GameMenager.BossBattle();
     }
 
     void GetPoints()
