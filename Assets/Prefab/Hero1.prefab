@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4506988373419692
 Transform:
   m_ObjectHideFlags: 1
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1275781444884372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 2, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 4817980002608802}
   m_RootOrder: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.18}
+  m_Size: {x: 0.2, y: 0.16}
   m_EdgeRadius: 0
 --- !u!61 &61784619641371772
 BoxCollider2D:
@@ -221,6 +221,8 @@ MonoBehaviour:
   attackSpeed: 0.15
   cooldown: 0.1
   hp: 5
+  exp: 0
+  expToBoss: 5
   canAttack: 1
 --- !u!114 &114326844661170936
 MonoBehaviour:
@@ -233,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf92788f2af6a3149b817f99b49f5199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 50
+  dmg: 20
 --- !u!114 &114340563463665666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,7 +258,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215716782000104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52775f32ecca833419792c433da7cfd7, type: 3}
   m_Name: 

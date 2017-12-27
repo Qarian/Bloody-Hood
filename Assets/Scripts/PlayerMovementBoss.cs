@@ -33,7 +33,6 @@ public class PlayerMovementBoss : MonoBehaviour {
         swapTime = move.swapTime;
         swapDistance = move.swapDistance;
         GetPoints();
-        transform.position = points[currentPoint].position;
         player = gameObject.GetComponent<Player>();
         currentPoint = move.currentPoint;
     }
@@ -122,7 +121,6 @@ public class PlayerMovementBoss : MonoBehaviour {
         {
             points[i] = playerPositions.GetChild(i);
         }
-        currentPoint = pointCount / 2;
     }
 
     IEnumerator MoveTime()

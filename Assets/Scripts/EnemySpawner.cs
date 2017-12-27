@@ -20,19 +20,29 @@ public class EnemySpawner : MonoBehaviour {
         StartCoroutine(Spawn());
 	}
 	
-    IEnumerator Spawn()
+    public IEnumerator Spawn()
     {
         int currentWaveCount = 0;
         while (currentWaveCount < waveCount)
         {
             int rand = Random.Range(0, pointCount);
-            GameObject go = Instantiate(enemyPrefab, points[rand].position, Quaternion.identity);
-            go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
-            yield return new WaitForSeconds(1f/frequency);
+            SpawnAtPosition(rand);
+            yield return new WaitForSeconds(1f / frequency);
             currentWaveCount++;
         }
-        yield return new WaitForSeconds(2f);
-        GameMenager.BossBattle();
+        FindObjectOfType<GameMenager>().BossBattle();
+    }
+
+    public void StopSpawn()
+    {
+        Debug.Log("Coroutine stopped");
+        StopAllCoroutines();
+    }
+
+    void SpawnAtPosition(int x, Vector2 offset=new Vector2())
+    {
+        GameObject go = Instantiate(enemyPrefab, points[x].position, Quaternion.identity);
+        go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
     }
 
     void GetPoints()

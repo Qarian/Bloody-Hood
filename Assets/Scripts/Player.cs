@@ -8,6 +8,9 @@ public class Player : MonoBehaviour {
     public float cooldown=0.1f;
     public float hp=5;
     float maxhp;
+    [HideInInspector]
+    public int exp=0;
+    public int expToBoss = 5;
 
     AudioSource audiosource;
     SpriteRenderer sprite;
@@ -32,11 +35,27 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.tag);
         if (collision.tag == "Enemy")
         {
-            ChangeHp(-collision.GetComponent<Enemy>().damage);
-            collision.GetComponent<Enemy>().Hit();
+            if (collision.GetComponent<Enemy>() != null)
+            {
+                ChangeHp(-collision.GetComponent<Enemy>().damage);
+                collision.GetComponent<Enemy>().Hit();
+            }
+            else
+            {
+                ChangeHp(-1);
+                Destroy(collision.gameObject);
+            }
         }
+    }
+
+    public void AddExp(int amount)
+    {
+        exp += amount;
+        if (exp >= expToBoss)
+            FindObjectOfType<GameMenager>().BossBattle();
     }
 
     public void ChangeHp(int number)
