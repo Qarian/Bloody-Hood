@@ -30,8 +30,6 @@ public class PlayerMovement1: MonoBehaviour {
         transform.position = points[currentPoint].position;
         player = gameObject.GetComponent<Player>();
         distance = (points[currentPoint].position - points[currentPoint - 1].position).magnitude;
-        GetComponent<PlayerMovementBoss>().Begin(this);
-        //enabled = false;
     }
 
     void Update()
@@ -126,5 +124,12 @@ public class PlayerMovement1: MonoBehaviour {
         canSwipe = false;
         yield return new WaitForSeconds(swapTime);
         canSwipe = true;
+    }
+
+    public void ChangeMovement()
+    {
+        GetComponent<PlayerMovementBoss>().enabled = true;
+        GetComponent<PlayerMovementBoss>().Begin(this);
+        this.enabled = false;
     }
 }

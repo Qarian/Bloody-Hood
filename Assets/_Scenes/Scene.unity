@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dcb7c1ce5430c42bc7659aba613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossmode: 0
 --- !u!1 &1408295014
 GameObject:
   m_ObjectHideFlags: 0

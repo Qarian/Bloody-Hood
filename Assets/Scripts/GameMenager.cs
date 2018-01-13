@@ -7,7 +7,7 @@ public class GameMenager : MonoBehaviour {
     static GameObject player;
     static GameObject spawner;
     static GameObject boss;
-    public static bool bossmode;
+    public bool bossmode;
 
     void Awake()
     {
@@ -33,8 +33,7 @@ public class GameMenager : MonoBehaviour {
     IEnumerator BossBattleBeggining(float time)
     {
         bossmode = true;
-        player.GetComponent<PlayerMovementBoss>().enabled = true;
-        player.GetComponent<PlayerMovement1>().enabled = false;
+        player.GetComponent<PlayerMovement1>().ChangeMovement();
         spawner.GetComponent<EnemySpawner>().StopSpawn();
         yield return new WaitForSeconds(time);
         boss.SetActive(true);
