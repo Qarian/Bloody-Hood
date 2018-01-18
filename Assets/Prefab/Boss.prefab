@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   bulletSpeed: 10
-  bullet: {fileID: 0}
+  bullet: {fileID: 1377197040371454, guid: 112766e9c283f774dbb2bdfeb2dee341, type: 2}
 --- !u!114 &114718379590986366
 MonoBehaviour:
   m_ObjectHideFlags: 1

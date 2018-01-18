@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212401446534054216}
   - component: {fileID: 61682630311690820}
   - component: {fileID: 50361400108646820}
+  - component: {fileID: 114947804778669182}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Enemy
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377197040371454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 11.189173, y: -0.52492446, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.75, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,15 +79,29 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2.5, y: 4.14}
     newSize: {x: 1.1, y: 1.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.15, y: 1.15}
+  m_Size: {x: 2.5, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &114947804778669182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377197040371454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a9e3df5e3603d439b5737266aa7d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 5
+  damage: 1
+  speed: 0
 --- !u!212 &212401446534054216
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e3c0483854c482f4e81edc694e9bc798, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6100b7f6c6d23a40a25b455ff04ce46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -35,19 +35,19 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
-        if (collision.tag == "Enemy")
+        if (collision.GetComponent<Enemy>() != null)
         {
-            if (collision.GetComponent<Enemy>() != null)
-            {
-                ChangeHp(-collision.GetComponent<Enemy>().damage);
-                collision.GetComponent<Enemy>().Hit();
-            }
-            else
-            {
-                ChangeHp(-1);
-                Destroy(collision.gameObject);
-            }
+            ChangeHp(-collision.GetComponent<Enemy>().damage);
+            collision.GetComponent<Enemy>().Hit();
+        }
+        else if(collision.GetComponent<Boss>() != null)
+        {
+            return;
+        }
+        else
+        {
+            ChangeHp(-1);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
     {
         exp += amount;
         if (exp >= expToBoss)
-            FindObjectOfType<GameMenager>().BossBattle();
+            GameMenager.singleton.BossBattleReady();
     }
 
     public void ChangeHp(int number)

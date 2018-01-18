@@ -130,6 +130,6 @@ public class PlayerMovement1: MonoBehaviour {
     {
         GetComponent<PlayerMovementBoss>().enabled = true;
         GetComponent<PlayerMovementBoss>().Begin(this);
-        this.enabled = false;
+        enabled = false;
     }
 }

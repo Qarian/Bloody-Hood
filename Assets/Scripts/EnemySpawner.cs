@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour {
             yield return new WaitForSeconds(1f / frequency);
             currentWaveCount++;
         }
-        FindObjectOfType<GameMenager>().BossBattle();
+        GameMenager.singleton.BossBattleReady();
     }
 
     public void StopSpawn()
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour {
     void SpawnAtPosition(int x, Vector2 offset=new Vector2())
     {
         GameObject go = Instantiate(enemyPrefab, points[x].position, Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
+        go.GetComponent<Enemy>().speed = -speed;
     }
 
     void GetPoints()

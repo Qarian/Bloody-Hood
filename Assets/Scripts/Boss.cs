@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour {
     public void Attack(int col)
     {
         GameObject go = Instantiate(bullet, bulletPoints[col].position, Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -bulletSpeed);
+        go.GetComponent<Enemy>().speed = -bulletSpeed;
     }
 
     public void Hit(int dmg)

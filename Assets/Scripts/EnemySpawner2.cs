@@ -21,9 +21,9 @@ public class EnemySpawner2 : MonoBehaviour {
     {
         while (true)
         {
-            int rand = Random.Range(0, pointCount);
-            GameObject go = Instantiate(enemyPrefab, points[rand].position, Quaternion.identity);
-            go.GetComponent<Enemy>().is2metod = true;
+            //int rand = Random.Range(0, pointCount);
+            //GameObject go = Instantiate(enemyPrefab, points[rand].position, Quaternion.identity);
+            //go.GetComponent<Enemy>().is2metod = true;
             yield return new WaitForSeconds(1f / frequency);
         }
     }

@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/EndlessRun#3.unity
     guid: 302ae67a9019c6b439b2f2cfe34e5f92
+  - enabled: 1
+    path: Assets/_Scenes/Tlo.unity
+    guid: bdb7d093e0252524b87314e2d2fc807d
