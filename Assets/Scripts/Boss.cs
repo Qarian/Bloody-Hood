@@ -8,11 +8,17 @@ public class Boss : MonoBehaviour {
     [SerializeField]
     GameObject bullet;
     Transform[] bulletPoints;
+
+    [HideInInspector]
+    public BossHp bossHp;
     
 
     void Start()
     {
         GetBulletsPoints();
+
+        bossHp.gameObject.SetActive(true);
+        bossHp.Begin(hp);
     }
 
     public void Attack(int col)
@@ -25,8 +31,12 @@ public class Boss : MonoBehaviour {
     {
         Debug.Log("Zadano " + dmg + " obrazen");
         hp -= dmg;
+        bossHp.NewHp(hp);
         if (hp <= 0)
+        {
             Destroy(gameObject);
+            Destroy(bossHp.gameObject);
+        }
     }
 
     void GetBulletsPoints()

@@ -81,6 +81,7 @@ public class PlayerMovementBoss : MonoBehaviour {
             {
                 Move(1);
                 StartCoroutine(MoveTime());
+                
             }
             else if (Swapdelta.x < -swapDistance)
             {
@@ -89,9 +90,23 @@ public class PlayerMovementBoss : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown("space") && !isAttack) StartCoroutine(Tap());
-        if (Input.GetKeyDown("a")) Move(-1);
-        if (Input.GetKeyDown("d")) Move(1);
-        if(isAttack)
+        if (Input.GetKeyDown("a"))
+        {
+            if (canSwipe)
+            {
+                Move(-1);
+                StartCoroutine(MoveTime());
+            }
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            if (canSwipe)
+            {
+                Move(1);
+                StartCoroutine(MoveTime());
+            }
+        }
+        if (isAttack)
             transform.position = Vector2.MoveTowards(transform.position, attackPosition, (distanceToBoss / attackMoveSpeed) * Time.deltaTime);
         else
             transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance / swapTime) * Time.deltaTime);

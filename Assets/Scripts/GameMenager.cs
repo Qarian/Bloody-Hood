@@ -12,11 +12,16 @@ public class GameMenager : MonoBehaviour {
 
     void Awake()
     {
+        singleton = this;
         player = FindObjectOfType<Player>().gameObject;
         spawner = FindObjectOfType<EnemySpawner>().gameObject;
+
         boss = GameObject.FindGameObjectWithTag("Boss");
         boss.SetActive(false);
-        singleton = this;
+
+        BossHp bossHp = FindObjectOfType<BossHp>();
+        boss.GetComponent<Boss>().bossHp = bossHp;
+        bossHp.gameObject.SetActive(false);
     }
 
 	void Update ()
