@@ -8,6 +8,11 @@ public class Enemy : MonoBehaviour {
     public float speed;
     public int hitToDestroy = 1;
 
+    [SerializeField]
+    int addExp = 1;
+
+    bool alive = true;
+
 	void Start ()
     {
         Destroy(gameObject, destroyTime);
@@ -15,7 +20,8 @@ public class Enemy : MonoBehaviour {
 
     void Update()
     {
-        transform.Translate(0, speed * Time.deltaTime, 0);
+        if(alive)
+            transform.Translate(0, speed * Time.deltaTime, 0);
     }
 
     public void Hit()
@@ -23,7 +29,10 @@ public class Enemy : MonoBehaviour {
         hitToDestroy--;
         if (hitToDestroy <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            alive = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(addExp);
+            Destroy(gameObject,0.55f);
         }
     }
 }

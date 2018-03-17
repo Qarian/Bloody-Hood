@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class Comic : MonoBehaviour {
 
-    [SerializeField]
-    GameObject comicPage;
-
     public Sprite[] comicStart;
     public Sprite[] comicBoss;
     public Sprite[] comicEnd;
@@ -69,8 +66,7 @@ public class Comic : MonoBehaviour {
 
             ComicPaper cp = paper[i].AddComponent<ComicPaper>();
             Button but = paper[i].AddComponent<Button>();
-            but.transition = Selectable.Transition.None;
-            but.onClick.AddListener(cp.Clicked);
+            but.onClick.AddListener(() => { cp.Clicked(); Debug.Log("klik"); });
             paper[i].SetActive(false);
         }
         #endregion
@@ -85,22 +81,23 @@ public class Comic : MonoBehaviour {
     public void ShowComic(int num)
     {
         num--;
-        page = 1;
-        pages = comics[num].Length;
-        paper[1].SetActive(true);
-        paper[1].GetComponent<Image>().sprite = comics[num][0];
+        page = 0;
+        pages = comics[num].Length-1;
+        paper[0].SetActive(true);
+        paper[0].GetComponent<Image>().sprite = comics[num][0];
         moment = num;
     }
 
     public void NextPage()
     {
+        paper[page % 2].SetActive(false);
         page++;
         if (page > pages)
         {
-            paper[pages-1].SetActive(false);
             gm.BossBattle();
             return;
         }
-        paper[page % 2].GetComponent<Image>().sprite = comics[moment][page-1];
+        paper[page % 2].SetActive(true);
+        paper[page % 2].GetComponent<Image>().sprite = comics[moment][page];
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI; //dla debuga
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer), typeof(AudioSource))]
 public class Player : MonoBehaviour {
@@ -10,13 +11,16 @@ public class Player : MonoBehaviour {
     float maxhp;
     [HideInInspector]
     public int exp=0;
-    public int expToBoss = 5;
+    public int expToLevel = 3;
 
     AudioSource audiosource;
     SpriteRenderer sprite;
     GameObject blade;
     [HideInInspector]
     public bool canAttack = true;
+
+    public Text damage;
+    public Text experience;
     
     void Start()
     {
@@ -25,6 +29,7 @@ public class Player : MonoBehaviour {
         maxhp = hp;
         sprite = GetComponent<SpriteRenderer>();
         audiosource = GetComponent<AudioSource>();
+        damage.text = blade.GetComponent<Blade>().dmg.ToString();
     }
 
     public void Tap()
@@ -55,22 +60,34 @@ public class Player : MonoBehaviour {
     public void AddExp(int amount)
     {
         exp += amount;
-        if (exp >= expToBoss)
+        if (exp >= expToLevel)
+        {
+            exp -= expToLevel;
+            blade.GetComponent<Blade>().dmg += 2;
+            damage.text = blade.GetComponent<Blade>().dmg.ToString();
+        }
+        experience.text = exp.ToString();
+        /*
+        if (exp >= expToLevel)
             GameMenager.singleton.BossBattleReady();
+        */
     }
 
     public void ChangeHp(int number)
     {
         hp += number;
-        if (hp > maxhp) hp = maxhp;
+
+        if (hp > maxhp)
+            hp = maxhp;
+
         else if (hp <= 0)
         {
             Destroy(gameObject);
         }
+
         Color percent = sprite.color;
         percent.a = hp/maxhp;
         sprite.color = percent;
-
     }
 
     public IEnumerator Attack()

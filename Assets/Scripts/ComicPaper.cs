@@ -10,4 +10,10 @@ public class ComicPaper : MonoBehaviour {
         //animacje
         Debug.Log("Click");
     }
+
+    void Update()
+    {
+        if (Input.anyKeyDown)
+            Clicked();
+    }
 }

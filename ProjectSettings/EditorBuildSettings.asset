@@ -9,14 +9,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/Menu.unity
     guid: 2334e03eb1cb4114299641f5ffda5c8d
   - enabled: 1
-    path: Assets/_Scenes/Scene.unity
-    guid: ae2436d03189b66409ab14d776afd4bc
-  - enabled: 1
-    path: Assets/_Scenes/EndlessRun#2.unity
-    guid: a4b3fc4bccafd314cbdab3f54569f7b2
-  - enabled: 1
-    path: Assets/_Scenes/EndlessRun#3.unity
-    guid: 302ae67a9019c6b439b2f2cfe34e5f92
-  - enabled: 1
     path: Assets/_Scenes/Tlo.unity
     guid: bdb7d093e0252524b87314e2d2fc807d
