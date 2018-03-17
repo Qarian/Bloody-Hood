@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
     public int damage = 1;
     [HideInInspector]
     public float speed;
+    public int hitToDestroy = 1;
 
 	void Start ()
     {
@@ -19,6 +20,10 @@ public class Enemy : MonoBehaviour {
 
     public void Hit()
     {
-        Destroy(gameObject);
+        hitToDestroy--;
+        if (hitToDestroy <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

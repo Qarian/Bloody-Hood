@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class BackgroundMenager : MonoBehaviour
 {
     public NewLevelScript level;
+    [Tooltip("Background move with that speed")]
     public float speed = 10;
+    [Tooltip("Speed of background before a boss")]
     public float speed2 = 20;
 
     GameMenager gameMenager;
@@ -16,7 +18,7 @@ public class BackgroundMenager : MonoBehaviour
     float length;
     int lastElement = 1;
 
-    bool bossMode=false;
+    bool bossMode = false;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class BackgroundMenager : MonoBehaviour
         if (background[lastElement].GetComponent<RectTransform>().localPosition.y < 0.1 && bossMode){
             speed = 0;
             background[lastElement].GetComponent<RectTransform>().localPosition = new Vector3(0, 0);
-            gameMenager.BossBattle();
+            gameMenager.BossPhase();
             enabled = false;
         }
     }
@@ -69,6 +71,7 @@ public class BackgroundMenager : MonoBehaviour
         {
             GameObject tmp = new GameObject();
             background[i] = tmp;
+            background[i].name = "Background";
             RectTransform rt = background[i].AddComponent<RectTransform>();
             background[i].AddComponent<CanvasRenderer>();
             background[i].AddComponent<Image>();

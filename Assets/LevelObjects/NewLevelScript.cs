@@ -8,4 +8,8 @@ public class NewLevelScript : ScriptableObject {
     public Sprite normalBackground;
     public Sprite bossBackground;
 
+    public Sprite[] comicStart;
+    public Sprite[] comicBoss;
+    public Sprite[] comicEnd;
+
 }

@@ -39,6 +39,7 @@ public class Player : MonoBehaviour {
         {
             ChangeHp(-collision.GetComponent<Enemy>().damage);
             collision.GetComponent<Enemy>().Hit();
+            Destroy(collision.gameObject);
         }
         else if(collision.GetComponent<Boss>() != null)
         {
