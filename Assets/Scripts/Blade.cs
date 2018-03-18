@@ -13,12 +13,10 @@ public class Blade : MonoBehaviour {
             {
                 collision.gameObject.GetComponent<Enemy>().Hit();
             }
-                
         }
         if (collision.tag == "Boss")
         {
             collision.gameObject.GetComponent<Boss>().Hit(dmg);
         }
     }
-
 }

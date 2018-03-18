@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     int addExp = 1;
-
     bool alive = true;
 
 	void Start ()
@@ -32,7 +31,7 @@ public class Enemy : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             alive = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(addExp);
-            Destroy(gameObject,0.55f);
+            Destroy(gameObject, 0.55f);
         }
     }
 }

@@ -70,12 +70,7 @@ public class Comic : MonoBehaviour {
             paper[i].SetActive(false);
         }
         #endregion
-        gm = FindObjectOfType<GameMenager>();
-    }
-
-    void Update()
-    {
-        Debug.Log(gm);
+        gm = GameMenager.singleton;
     }
 
     public void ShowComic(int num)

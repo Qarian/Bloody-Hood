@@ -3,10 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class GameMenager : MonoBehaviour {
 
-    static GameObject player;
-    static GameObject spawner;
-    static GameObject boss;
-    static GameObject comic;
+    GameObject player;
+    GameObject spawner;
+    GameObject boss;
+    GameObject comic;
+    [SerializeField]
+    GameObject endScreen;
+    [SerializeField]
+    GameObject canvas;
+    BossHp bossHp;
     [HideInInspector]
     public bool bossmode;
 
@@ -21,6 +26,7 @@ public class GameMenager : MonoBehaviour {
 
     void Start()
     {
+        Time.timeScale = 1;
         player = FindObjectOfType<Player>().gameObject;
         spawner = FindObjectOfType<EnemySpawner>().gameObject;
         comic = Comic.singleton.gameObject;
@@ -28,7 +34,7 @@ public class GameMenager : MonoBehaviour {
         boss = GameObject.FindGameObjectWithTag("Boss");
         boss.SetActive(false);
 
-        BossHp bossHp = FindObjectOfType<BossHp>();
+        bossHp = FindObjectOfType<BossHp>();
         boss.GetComponent<Boss>().bossHp = bossHp;
         bossHp.gameObject.SetActive(false);
     }
@@ -39,6 +45,7 @@ public class GameMenager : MonoBehaviour {
         if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
+    #region Boss
     public void BossBattleReady()
     {
         bossmode = true;
@@ -58,5 +65,14 @@ public class GameMenager : MonoBehaviour {
         boss.SetActive(true);
         player.GetComponent<PlayerMovement1>().ChangeMovement();
         return 0;
+    }
+    #endregion
+
+    public void EndGame(bool win)
+    {
+        Debug.Log("Boss pokonany");
+        GameObject go = Instantiate(endScreen, canvas.transform);
+        go.GetComponent<EndScreenScript>().Begin(win);
+        Time.timeScale = 0;
     }
 }

@@ -11,7 +11,6 @@ public class Boss : MonoBehaviour {
 
     [HideInInspector]
     public BossHp bossHp;
-    
 
     void Start()
     {
@@ -29,13 +28,13 @@ public class Boss : MonoBehaviour {
 
     public void Hit(int dmg)
     {
-        Debug.Log("Zadano " + dmg + " obrazen");
         hp -= dmg;
         bossHp.NewHp(hp);
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            GameMenager.singleton.EndGame(true);
             Destroy(bossHp.gameObject);
+            Destroy(gameObject);
         }
     }
 

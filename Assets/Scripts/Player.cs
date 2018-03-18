@@ -43,7 +43,6 @@ public class Player : MonoBehaviour {
         if (collision.GetComponent<Enemy>() != null)
         {
             ChangeHp(-collision.GetComponent<Enemy>().damage);
-            collision.GetComponent<Enemy>().Hit();
             Destroy(collision.gameObject);
         }
         else if(collision.GetComponent<Boss>() != null)
@@ -82,6 +81,7 @@ public class Player : MonoBehaviour {
 
         else if (hp <= 0)
         {
+            GameMenager.singleton.EndGame(false);
             Destroy(gameObject);
         }
 
