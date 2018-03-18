@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMenager : MonoBehaviour {
 
+    public LevelScript level;
+
     GameObject player;
     GameObject spawner;
     GameObject boss;
@@ -37,6 +39,8 @@ public class GameMenager : MonoBehaviour {
         bossHp = FindObjectOfType<BossHp>();
         boss.GetComponent<Boss>().bossHp = bossHp;
         bossHp.gameObject.SetActive(false);
+
+
     }
 
     void Update ()

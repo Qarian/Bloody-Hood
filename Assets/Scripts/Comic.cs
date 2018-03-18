@@ -3,9 +3,11 @@ using UnityEngine.UI;
 
 public class Comic : MonoBehaviour {
 
-    public Sprite[] comicStart;
-    public Sprite[] comicBoss;
-    public Sprite[] comicEnd;
+    //public Sprite[] comicStart;
+    //public Sprite[] comicBoss;
+    //public Sprite[] comicEnd;
+
+    LevelScript level;
 
     GameMenager gm;
 
@@ -26,22 +28,24 @@ public class Comic : MonoBehaviour {
 
     void Start()
     {
+        gm = GameMenager.singleton;
         #region Generate 'comics'
+        level = gm.level;
         comics = new Sprite[3][];
-        comics[0] = new Sprite[comicStart.Length];
-        for (int i = 0; i < comicStart.Length; i++)
+        comics[0] = new Sprite[level.comicStart.Length];
+        for (int i = 0; i < level.comicStart.Length; i++)
         {
-            comics[0][i] = comicStart[i];
+            comics[0][i] = level.comicStart[i];
         }
-        comics[1] = new Sprite[comicBoss.Length];
-        for (int i = 0; i < comicBoss.Length; i++)
+        comics[1] = new Sprite[level.comicBoss.Length];
+        for (int i = 0; i < level.comicBoss.Length; i++)
         {
-            comics[1][i] = comicBoss[i];
+            comics[1][i] = level.comicBoss[i];
         }
-        comics[2] = new Sprite[comicEnd.Length];
-        for (int i = 0; i < comicEnd.Length; i++)
+        comics[2] = new Sprite[level.comicEnd.Length];
+        for (int i = 0; i < level.comicEnd.Length; i++)
         {
-            comics[3][i] = comicEnd[i];
+            comics[3][i] = level.comicEnd[i];
         }
 
         paper = new GameObject[2];
@@ -70,7 +74,6 @@ public class Comic : MonoBehaviour {
             paper[i].SetActive(false);
         }
         #endregion
-        gm = GameMenager.singleton;
     }
 
     public void ShowComic(int num)
