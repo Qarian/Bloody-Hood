@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/Menu.unity
     guid: 2334e03eb1cb4114299641f5ffda5c8d
   - enabled: 1
-    path: Assets/_Scenes/Tlo.unity
+    path: Assets/_Scenes/Game.unity
     guid: bdb7d093e0252524b87314e2d2fc807d

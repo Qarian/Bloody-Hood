@@ -15,8 +15,8 @@ MonoBehaviour:
   normalBackground: {fileID: 21300000, guid: 7deb905af56c90c49a177fca7dc38d1b, type: 3}
   bossBackground: {fileID: 21300000, guid: 6ff0344b36e36204eabca9b8fecf6524, type: 3}
   comicStart:
-  - {fileID: 21300000, guid: 84e426fbbac3715428c7313fe6fb6e34, type: 3}
+  - {fileID: 21300000, guid: aadf7fe07b38d884e8439e5cd4ca92ef, type: 3}
   comicBoss:
-  - {fileID: 21300000, guid: 84e426fbbac3715428c7313fe6fb6e34, type: 3}
-  - {fileID: 21300000, guid: 84e426fbbac3715428c7313fe6fb6e34, type: 3}
+  - {fileID: 21300000, guid: aadf7fe07b38d884e8439e5cd4ca92ef, type: 3}
+  - {fileID: 21300002, guid: aadf7fe07b38d884e8439e5cd4ca92ef, type: 3}
   comicEnd: []
