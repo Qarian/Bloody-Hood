@@ -299,11 +299,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114340563463665666, guid: ecfa3bfc7d87c0142acdb4af1473588c,
-        type: 2}
-      propertyPath: playerPositions
-      value: 
-      objectReference: {fileID: 1242148736}
     - target: {fileID: 114191595584568044, guid: ecfa3bfc7d87c0142acdb4af1473588c,
         type: 2}
       propertyPath: damage
@@ -314,6 +309,11 @@ Prefab:
       propertyPath: experience
       value: 
       objectReference: {fileID: 1195513553}
+    - target: {fileID: 114340563463665666, guid: ecfa3bfc7d87c0142acdb4af1473588c,
+        type: 2}
+      propertyPath: playerPositions
+      value: 
+      objectReference: {fileID: 1242148736}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecfa3bfc7d87c0142acdb4af1473588c, type: 2}
   m_IsPrefabParent: 0
@@ -707,7 +707,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -731,7 +731,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &1061606850
 Transform:
   m_ObjectHideFlags: 0
@@ -1342,6 +1342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307989685}
   - component: {fileID: 1307989684}
+  - component: {fileID: 1307989686}
   m_Layer: 0
   m_Name: Muzyka
   m_TagString: Untagged
@@ -1358,11 +1359,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ba358f585fe77264cbc67da9357541db, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ffc72f4197307c144b11ef23572759de, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1442,6 +1443,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307989686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307989683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc12c41b2efe5834b853f20974e74e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound2: {fileID: 8300000, guid: f6c0975a30264324b86cdb56d7ffacae, type: 3}
 --- !u!1 &1352393596
 GameObject:
   m_ObjectHideFlags: 0

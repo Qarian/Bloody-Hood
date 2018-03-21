@@ -98,9 +98,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 52c3ef1626951494e84aa9a4ea1da5ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 03c5841dd50eb804da61fa4fa6c16c53, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   boom: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
   backgroundSpeed: 0
-  deathTime: 0.32
+  deathTime: 0.27
   destroyTime: 10
   damage: 1
   speed: 0
