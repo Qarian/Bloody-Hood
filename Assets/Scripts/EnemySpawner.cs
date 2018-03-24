@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour {
             yield return new WaitForSeconds(1f / frequency);
             currentWaveCount++;
         }
+        yield return new WaitForSeconds(1f);
         GameMenager.singleton.BossBattleReady();
     }
 

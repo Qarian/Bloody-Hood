@@ -91,6 +91,7 @@ public class PlayerMovement1: MonoBehaviour {
             }
         }
 
+        #region Buttons
         if (Input.GetKeyDown(KeyCode.Space)) player.Tap();
         if (Input.GetKeyDown("a"))
         {
@@ -108,6 +109,8 @@ public class PlayerMovement1: MonoBehaviour {
                 StartCoroutine(MoveTime());
             }
         }
+        #endregion
+
         transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, (distance/swapTime) * Time.deltaTime);
     }
 

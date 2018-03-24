@@ -20,10 +20,12 @@ public class EndScreenScript : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
 
-    public void Restart()
+    public void Restart(string name)
     {
         Time.timeScale = 1;
-        string name = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(name);
+        if(name == string.Empty)
+            SceneManager.LoadScene("Game");
+        else
+            SceneManager.LoadScene(name);
     }
 }

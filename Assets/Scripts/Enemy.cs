@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
     public float destroyTime=5f;
     public int damage = 1;
     [HideInInspector]
-    public float speed;
+    public float speed = -10;
     public int hitToDestroy = 1;
 
     [SerializeField]

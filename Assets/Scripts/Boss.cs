@@ -40,7 +40,12 @@ public class Boss : MonoBehaviour {
 
     void GetBulletsPoints()
     {
-        Transform positions = FindObjectOfType<PlayerMovement1>().playerPositions;
+        Transform positions;
+        if(FindObjectOfType<PlayerMovement1>()!= null)
+            positions = FindObjectOfType<PlayerMovement1>().playerPositions;
+        else
+            positions = FindObjectOfType<PlayerMovementTutorial>().playerPositions;
+
         int pointCount = positions.childCount;
         float[] bulletPosx = new float[pointCount];
         for (int i = 0; i < pointCount; i++)

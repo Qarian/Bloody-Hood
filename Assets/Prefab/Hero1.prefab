@@ -58,8 +58,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1275781444884372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
+  m_LocalPosition: {x: 0, y: 2.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4817980002608802}
   m_RootOrder: 0
@@ -71,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215716782000104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
-  m_LocalScale: {x: 0.33, y: 0.33, z: 4}
+  m_LocalPosition: {x: 0, y: -6.5, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506988373419692}
   m_Father: {fileID: 0}
@@ -90,18 +90,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.35, y: 4.74}
+    oldSize: {x: 0.85333335, y: 2.56}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 5}
+  m_Size: {x: 1, y: 2.2}
   m_EdgeRadius: 0
 --- !u!61 &61784619641371772
 BoxCollider2D:
@@ -115,18 +115,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.99, y: 9.989999}
+    oldSize: {x: 1.3349999, y: 2.715}
     newSize: {x: 1.1, y: 1.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 10}
+  m_Size: {x: 1.5, y: 2.4}
   m_EdgeRadius: 0
 --- !u!82 &82589003122724590
 AudioSource:
@@ -137,7 +137,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0dc4ed241b7350e43b09b02e82043b49, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c3736282bbd3b6946aaf4e426ad7e9a7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.15
   m_Pitch: 1.8
@@ -215,7 +215,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215716782000104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3cd96af3bb61b1c418c8f4c40d4a40b8, type: 2}
   m_CullingMode: 0
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2ac1cd44df97474f948b6064f7daa07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 197ebb3a634b37c4bbf38143bca71b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -364,7 +364,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: 591950deb169bc0438ef72bbe0b86359, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c35fac2aac5831a4589d7414e3e063b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

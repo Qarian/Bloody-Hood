@@ -27,7 +27,19 @@ public class PlayerMovementBoss : MonoBehaviour {
     PlayerMovement1 move;
     Vector2 attackPosition;
 
+    //normal
     public void Begin(PlayerMovement1 move)
+    {
+        playerPositions = move.playerPositions;
+        swapTime = move.swapTime;
+        swapDistance = move.swapDistance;
+        GetPoints();
+        player = gameObject.GetComponent<Player>();
+        currentPoint = move.currentPoint;
+    }
+
+    //tutorial
+    public void Begin(PlayerMovementTutorial move)
     {
         playerPositions = move.playerPositions;
         swapTime = move.swapTime;

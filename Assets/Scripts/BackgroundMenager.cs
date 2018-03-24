@@ -38,7 +38,7 @@ public class BackgroundMenager : MonoBehaviour
         if (background[lastElement].GetComponent<RectTransform>().localPosition.y < 0.1 && bossMode){
             speed = 0;
             background[lastElement].GetComponent<RectTransform>().localPosition = new Vector3(0, 0);
-            gameMenager.BossPhase();
+            gameMenager.BossBattle();
             enabled = false;
         }
     }

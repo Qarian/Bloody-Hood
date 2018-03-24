@@ -19,8 +19,8 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public bool canAttack = true;
 
-    public Text damage;
-    public Text experience;
+    public Slider damage;
+    public Slider experience;
     
     void Start()
     {
@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
         maxhp = hp;
         sprite = GetComponent<SpriteRenderer>();
         audiosource = GetComponent<AudioSource>();
-        damage.text = blade.GetComponent<Blade>().dmg.ToString();
     }
 
     public void Tap()
@@ -63,9 +62,9 @@ public class Player : MonoBehaviour {
         {
             exp -= expToLevel;
             blade.GetComponent<Blade>().dmg += 2;
-            damage.text = blade.GetComponent<Blade>().dmg.ToString();
+            damage.value = blade.GetComponent<Blade>().dmg;
         }
-        experience.text = exp.ToString();
+        experience.value = exp;
         /*
         if (exp >= expToLevel)
             GameMenager.singleton.BossBattleReady();

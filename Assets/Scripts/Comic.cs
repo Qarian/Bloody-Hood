@@ -17,6 +17,9 @@ public class Comic : MonoBehaviour {
     int pages; //total
     int moment;
 
+
+    GameObject[] gos;
+
     #region Singleton
     public static Comic singleton;
 
@@ -78,6 +81,11 @@ public class Comic : MonoBehaviour {
 
     public void ShowComic(int num)
     {
+        gos = GameObject.FindGameObjectsWithTag("Bar");
+        foreach (var go in gos)
+        {
+            go.SetActive(false);
+        }
         num--;
         page = 0;
         pages = comics[num].Length-1;
@@ -92,7 +100,11 @@ public class Comic : MonoBehaviour {
         page++;
         if (page > pages)
         {
-            gm.BossBattle();
+            foreach (var go in gos)
+            {
+                go.SetActive(true);
+            }
+            gm.BossPhase();
             return;
         }
         paper[page % 2].SetActive(true);

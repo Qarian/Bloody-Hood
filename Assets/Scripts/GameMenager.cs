@@ -39,8 +39,6 @@ public class GameMenager : MonoBehaviour {
         bossHp = FindObjectOfType<BossHp>();
         boss.GetComponent<Boss>().bossHp = bossHp;
         bossHp.gameObject.SetActive(false);
-
-
     }
 
     void Update ()
@@ -54,20 +52,27 @@ public class GameMenager : MonoBehaviour {
     {
         bossmode = true;
         spawner.GetComponent<EnemySpawner>().StopSpawn();
+        comic.GetComponent<Comic>().ShowComic(2);
     }
 
     public void BossPhase()
     {
         //muzyczka
         //Time.timeScale = 0;
-        comic.GetComponent<Comic>().ShowComic(2);
-        player.GetComponent<PlayerMovement1>().enabled = false;
+        FindObjectOfType<BackgroundMenager>().speed = 20;
+        if (player.GetComponent<PlayerMovement1>() != null)
+            player.GetComponent<PlayerMovement1>().enabled = false;
+        else if (player.GetComponent<PlayerMovementTutorial>() != null)
+            player.GetComponent<PlayerMovementTutorial>().enabled = false;
     }
 
     public int BossBattle()
     {
         boss.SetActive(true);
-        player.GetComponent<PlayerMovement1>().ChangeMovement();
+        if (player.GetComponent<PlayerMovement1>() != null)
+            player.GetComponent<PlayerMovement1>().ChangeMovement();
+        else if (player.GetComponent<PlayerMovementTutorial>() != null)
+            player.GetComponent<PlayerMovementTutorial>().ChangeMovement();
         return 0;
     }
     #endregion
