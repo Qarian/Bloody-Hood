@@ -9,7 +9,7 @@ public class BackgroundMenager : MonoBehaviour
     [Tooltip("Speed of background before a boss")]
     public float speed2 = 20;
 
-    GameMenager gameMenager;
+    GameManager gameMenager;
 
     GameObject[] background;
     Vector2 screen;
@@ -22,7 +22,7 @@ public class BackgroundMenager : MonoBehaviour
 
     void Start()
     {
-        gameMenager = GameMenager.singleton;
+        gameMenager = GameManager.singleton;
         level = gameMenager.level;
         InitializingBackground();
     }

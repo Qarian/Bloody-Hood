@@ -8,7 +8,6 @@ public class ComicPaper : MonoBehaviour {
         c.NextPage();
         //d�wi�k zmiany strony
         //animacje
-        Debug.Log("Click");
     }
 
     void Update()

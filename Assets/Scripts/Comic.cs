@@ -9,7 +9,7 @@ public class Comic : MonoBehaviour {
 
     LevelScript level;
 
-    GameMenager gm;
+    GameManager gm;
 
     Sprite[][] comics;
     GameObject[] paper;
@@ -31,7 +31,7 @@ public class Comic : MonoBehaviour {
 
     void Start()
     {
-        gm = GameMenager.singleton;
+        gm = GameManager.singleton;
         #region Generate 'comics'
         level = gm.level;
         comics = new Sprite[3][];

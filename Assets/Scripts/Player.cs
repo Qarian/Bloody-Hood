@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
 
         else if (hp <= 0)
         {
-            GameMenager.singleton.EndGame(false);
+            GameManager.singleton.EndGame(false);
             Destroy(gameObject);
         }
 

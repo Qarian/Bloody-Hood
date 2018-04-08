@@ -20,3 +20,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aadf7fe07b38d884e8439e5cd4ca92ef, type: 3}
   - {fileID: 21300002, guid: aadf7fe07b38d884e8439e5cd4ca92ef, type: 3}
   comicEnd: []
+  endless: 0
+  waveCount: 0
+  spawnChoice: 0
+  enemies:
+  - {fileID: 1990015090481342, guid: 058801b607c23e24e82a2821920761a6, type: 2}

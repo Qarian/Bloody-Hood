@@ -382,7 +382,8 @@ Prefab:
       propertyPath: experience
       value: 
       objectReference: {fileID: 309817427}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95342127979494548, guid: ecfa3bfc7d87c0142acdb4af1473588c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ecfa3bfc7d87c0142acdb4af1473588c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &309817425
@@ -1376,7 +1377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10}
+  m_AnchoredPosition: {x: 0, y: 10.000061}
   m_SizeDelta: {x: 0, y: 52.9}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1209370369
@@ -1466,11 +1467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPositions: {fileID: 209723603}
-  enemyPrefab: {fileID: 1990015090481342, guid: 058801b607c23e24e82a2821920761a6,
-    type: 2}
-  speed: 10
-  frequency: 1
-  waveCount: 15
 --- !u!4 &1209738353
 Transform:
   m_ObjectHideFlags: 0

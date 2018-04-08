@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour {
     public void Attack(int col)
     {
         GameObject go = Instantiate(bullet, bulletPoints[col].position, Quaternion.identity);
-        go.GetComponent<Enemy>().speed = -bulletSpeed;
+        go.GetComponent<EnemyMovement>().speed = bulletSpeed;
     }
 
     public void Hit(int dmg)
@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour {
         bossHp.NewHp(hp);
         if (hp <= 0)
         {
-            GameMenager.singleton.EndGame(true);
+            GameManager.singleton.EndGame(true);
             Destroy(bossHp.gameObject);
             Destroy(gameObject);
         }

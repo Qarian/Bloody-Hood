@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour {
 
+    public GameObject animationsHolder;
+    GameObject[] animations;
+
+    [Space]
     public float time1 = 2f;
     public string text1;
     [Space]
@@ -38,22 +42,37 @@ public class TutorialManager : MonoBehaviour {
         tutorialScreen.SetActive(false);
         bm = FindObjectOfType<BackgroundMenager>();
         pmt = FindObjectOfType<PlayerMovementTutorial>();
-        StartCoroutine(Tut1());
+        StartCoroutine(WCommand(time1));
 
         button = tutorialScreen.transform.GetChild(1).gameObject;
         button.SetActive(false);
+
+        int count = animationsHolder.transform.childCount;
+        animations = new GameObject[count];
+        for (int i = 0; i < count; i++)
+        {
+            animations[i] = animationsHolder.transform.GetChild(i).gameObject;
+            animations[i].SetActive(false);
+        }
     }
 
     public void Run(int num)
     {
+        //Debug.Log("Num: " + num + ", Part: " + part);
         if (num == 1 && part == 1)
         {
-            StartCoroutine(Tut2());
+            Resume();
+            StartCoroutine(WCommand(time2));
+            part = 2;
             pmt.Move(-1);
         }
         if (num == 2 && part == 2)
         {
-            StartCoroutine(Tut3());
+            Resume();
+            pmt.pause = false;
+            GenerateEnemyWave();
+            StartCoroutine(WCommand(time3));
+            part = 3;
             pmt.Move(1);
         }
         if (num == 3 && part == 3)
@@ -61,55 +80,34 @@ public class TutorialManager : MonoBehaviour {
             Resume();
             pmt.player.Tap();
             pmt.pause = false;
-            Debug.Log("part 1");
             StartCoroutine(EndTutorial());
+            part = 4;
         }
     }
 
-    // Rusz w lewo
-    IEnumerator Tut1()
+
+    IEnumerator WCommand(float time)
     {
-        yield return new WaitForSeconds(time1);
-        Command(text1);
+        yield return new WaitForSeconds(time);
+        Command();
     }
 
-    // Rusz w prawo
-    IEnumerator Tut2()
+    void Command()
     {
-        Resume();
-        part = 2;
-        yield return new WaitForSeconds(time2);
-        Command(text2);
-        
-    }
-
-    // Atakuj
-    IEnumerator Tut3()
-    {
-        Resume();
-        pmt.pause = false;
-        part = 3;
-        GenerateEnemyWave();
-        yield return new WaitForSeconds(time3);
-        Command(text3);
-    }
-
-
-
-    void Command(string text)
-    {
-        if(enemies != null)
+        if (enemies != null)
         {
-            foreach(var e in enemies)
+            foreach (var e in enemies)
             {
-                e.speed = 0;
+                e.movement.speed = 0;
             }
         }
         pmt.pause = true;
-        tutorialScreen.SetActive(true);
         speed = bm.speed;
         bm.speed = 0;
-        tutorialScreen.transform.GetChild(0).GetComponent<Text>().text = text;
+        tutorialScreen.SetActive(true);
+        tutorialScreen.transform.GetChild(0).GetComponent<Text>().text = "";
+        if (part-1 < animations.Length)
+            animations[part-1].SetActive(true);
     }
 
     void Resume()
@@ -118,11 +116,13 @@ public class TutorialManager : MonoBehaviour {
         {
             foreach (var e in enemies)
             {
-                e.speed = -10;
+                e.movement.speed = -10;
             }
         }
         tutorialScreen.SetActive(false);
         bm.speed = speed;
+        if (part-1 < animations.Length)
+            animations[part - 1].SetActive(false);
     }
 
     IEnumerator EndTutorial()
@@ -131,9 +131,6 @@ public class TutorialManager : MonoBehaviour {
         tutorialScreen.SetActive(true);
         tutorialScreen.transform.GetChild(0).GetComponent<Text>().text = textFinal;
         button.SetActive(true);
-
-        //Destroy(tutorialScreen);
-        //es.enabled = true;
         Destroy(this);
     }
 
@@ -143,9 +140,7 @@ public class TutorialManager : MonoBehaviour {
         enemies = new Enemy[3];
         for (int i = 0; i < 3; i++)
         {
-            GameObject go = Instantiate(enemyPrefab, new Vector2(points.GetChild(i).position.x, points.GetChild(i).position.y + distance), Quaternion.identity, null);
-            enemies[i] = go.GetComponent<Enemy>();
-            enemies[i].speed = -10;
+            enemies[i] = Instantiate(enemyPrefab, new Vector2(points.GetChild(i).position.x, points.GetChild(i).position.y + distance), Quaternion.identity).GetComponent<Enemy>();
         }
     }
 
