@@ -116,7 +116,7 @@ public class TutorialManager : MonoBehaviour {
         {
             foreach (var e in enemies)
             {
-                e.movement.speed = -10;
+                e.movement.speed = 10;
             }
         }
         tutorialScreen.SetActive(false);

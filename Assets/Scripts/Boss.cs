@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour {
 
-    public int hp = 100;
+    public float hp = 100;
 
     public float bulletSpeed = 10f;
     [SerializeField]
@@ -23,10 +23,10 @@ public class Boss : MonoBehaviour {
     public void Attack(int col)
     {
         GameObject go = Instantiate(bullet, bulletPoints[col].position, Quaternion.identity);
-        go.GetComponent<EnemyMovement>().speed = bulletSpeed;
+        go.GetComponent<Projectile>().SetVelocity(new Vector2(0,-1), bulletSpeed);
     }
 
-    public void Hit(int dmg)
+    public void Hit(float dmg)
     {
         hp -= dmg;
         bossHp.NewHp(hp);

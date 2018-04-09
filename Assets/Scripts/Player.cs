@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; //dla debuga
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer), typeof(AudioSource))]
 public class Player : MonoBehaviour {
@@ -39,19 +39,20 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Enemy>() != null)
+        switch (collision.tag)
         {
-            ChangeHp(-collision.GetComponent<Enemy>().damage);
-            Destroy(collision.gameObject);
-        }
-        else if(collision.GetComponent<Boss>() != null)
-        {
-            return;
-        }
-        else
-        {
-            ChangeHp(-1);
-            Destroy(collision.gameObject);
+            case "Enemy":
+                ChangeHp(-collision.GetComponent<Enemy>().damage);
+                Destroy(collision.gameObject);
+                break;
+            case "Boss":
+                break;
+            case  "Projectile":
+                ChangeHp(-collision.GetComponent<Projectile>().Damage());
+                break;
+            default:
+                Debug.Log("Collided with object of type: " + collision.tag);
+                break;
         }
     }
 
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour {
         */
     }
 
-    public void ChangeHp(int number)
+    public void ChangeHp(float number)
     {
         hp += number;
 

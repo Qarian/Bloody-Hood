@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fdfce073c44309b418910988ee1914d7, type: 3}
   comicEnd: []
   endless: 0
-  waveCount: 15
+  waveCount: 1
   spawnChoice: 1
   enemies:
   - {fileID: 1990015090481342, guid: 058801b607c23e24e82a2821920761a6, type: 2}

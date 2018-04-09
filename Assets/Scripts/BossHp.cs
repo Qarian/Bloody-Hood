@@ -5,16 +5,16 @@ public class BossHp : MonoBehaviour {
 
     Slider slider;
 
-    int maxHp;
+    float maxHp;
 
-	public void Begin(int hp) {
+	public void Begin(float hp) {
         slider = GetComponent<Slider>();
         maxHp = hp;
         slider.maxValue = maxHp;
         slider.value = maxHp;
 	}
 
-    public void NewHp(int hp)
+    public void NewHp(float hp)
     {
         slider.value = hp;
     }

@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
     [Space]
     public float destroyTime=5f;
     public int damage = 1;
-    public int hitToDestroy = 1;
+    public float hitToDestroy = 1;
 
     [SerializeField]
     int addExp = 1;
@@ -40,9 +40,9 @@ public class Enemy : MonoBehaviour {
         }
 	}
 
-    public void Hit()
+    public void Hit(float dmg)
     {
-        hitToDestroy--;
+        hitToDestroy -= dmg;
         if (hitToDestroy <= 0)
             Death();
     }
