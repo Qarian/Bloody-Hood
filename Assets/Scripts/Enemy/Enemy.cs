@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+    public string title = "Enemy";
+    public AudioClip deathSound;
+    public EnemyMovement move;
+
     [HideInInspector]
     public EnemyMovement movement;
-    AudioSource audioSource;
+    AudioSource audios;
 
     public bool changeSprite = false;
     public Sprite[] sprites;
@@ -31,7 +35,7 @@ public class Enemy : MonoBehaviour {
 	void Start ()
     {
         Destroy(gameObject, destroyTime);
-        audioSource = GetComponent<AudioSource>();
+        MakeAudioSource();
         movement = GetComponent<EnemyMovement>();
         if (changeSprite)
         {
@@ -51,14 +55,14 @@ public class Enemy : MonoBehaviour {
     {
         if (!moving)
         {
-            if (!audioSource.isPlaying)
+            if (!audios.isPlaying)
                 Death2();
         }
     }
 
     void Death()
     {
-        GetComponent<AudioSource>().Play();
+        audios.Play();
         moving = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(addExp);
         GetComponent<BoxCollider2D>().enabled = false;
@@ -70,4 +74,39 @@ public class Enemy : MonoBehaviour {
         GetComponent<EnemyMovement>().SnapToBackground();
         GetComponent<SpriteRenderer>().sprite = blood;
     }
+
+    void MakeAudioSource()
+    {
+        audios = gameObject.AddComponent<AudioSource>();
+        audios.playOnAwake = false;
+        audios.loop = false;
+        audios.clip = deathSound;
+    }
+
+    public static GameObject Create(Vector2 position, Enemy component)
+    {
+        GameObject go = new GameObject(component.title);
+        go.tag = "Enemy";
+        go.layer = 8;
+        go.transform.position = position;
+        go.AddComponent<SpriteRenderer>();
+        go.AddComponent<BoxCollider2D>().size = new Vector2(1.15f, 2.3f);
+        go.AddComponent<Rigidbody2D>().gravityScale = 0;
+        go.AddComponent<Enemy>();
+        CopyComponent(go.GetComponent<Enemy>(), component);
+
+
+        return go;
+    }
+
+    static void CopyComponent(Component copy, Component original)
+    {
+        System.Type type = original.GetType();
+        System.Reflection.FieldInfo[] fields = type.GetFields();
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(original));
+        }
+    }
+
 }

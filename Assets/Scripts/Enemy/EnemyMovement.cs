@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [SerializeField]
-public class EnemyMovement : MonoBehaviour {
+public abstract class EnemyMovement : MonoBehaviour {
 
     public float speed = 10;
 

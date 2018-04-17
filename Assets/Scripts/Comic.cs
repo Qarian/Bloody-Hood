@@ -3,10 +3,6 @@ using UnityEngine.UI;
 
 public class Comic : MonoBehaviour {
 
-    //public Sprite[] comicStart;
-    //public Sprite[] comicBoss;
-    //public Sprite[] comicEnd;
-
     LevelScript level;
 
     GameManager gm;

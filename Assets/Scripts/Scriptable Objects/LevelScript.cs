@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level ", menuName = "New Level")]
+[CreateAssetMenu(fileName = "Level ", menuName = "New/Level")]
 public class LevelScript : ScriptableObject {
 
     public GameObject boss;

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public LevelScript level;
+    public Enemy enemy;
 
     GameObject player;
     GameObject spawner;
