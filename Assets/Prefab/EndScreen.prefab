@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 114326875928955958}
+  winSound: {fileID: 8300000, guid: b2a1a20ccfe0fae4d9795a19b31c1854, type: 3}
+  lossSound: {fileID: 8300000, guid: a196be63027e4204bb93b61083fe2298, type: 3}
 --- !u!114 &114298142927615438
 MonoBehaviour:
   m_ObjectHideFlags: 1

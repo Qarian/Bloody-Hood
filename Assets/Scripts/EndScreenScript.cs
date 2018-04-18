@@ -5,13 +5,21 @@ using UnityEngine.UI;
 public class EndScreenScript : MonoBehaviour {
 
     public Text text;
+    public AudioClip winSound;
+    public AudioClip lossSound;
 
     public void Begin(bool win)
     {
         if (win)
+        {
             text.text = "Wygrałeś";
+            MusicScript.singleton.ChangeMusic(winSound);
+        }
         else
+        {
             text.text = "Przegrałeś";
+            MusicScript.singleton.ChangeMusic(lossSound);
+        }
     }
 
     public void GoToMenu()

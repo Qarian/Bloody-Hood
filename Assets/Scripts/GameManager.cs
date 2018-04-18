@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame(bool win)
     {
-        Debug.Log("Boss pokonany");
         GameObject go = Instantiate(endScreen, canvas.transform);
         go.GetComponent<EndScreenScript>().Begin(win);
         Time.timeScale = 0;

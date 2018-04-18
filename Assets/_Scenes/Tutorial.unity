@@ -1482,6 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc12c41b2efe5834b853f20974e74e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  change: 1
   sound2: {fileID: 8300000, guid: b51a28625bb343248890a62da51043b2, type: 3}
 --- !u!82 &958013622
 AudioSource:
@@ -2732,7 +2733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dcb7c1ce5430c42bc7659aba613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: f1a249e9fc507fb44b2b3210759ffab9, type: 2}
+  level: {fileID: 11400000, guid: 3c543128befd30f4b874347ecb864d73, type: 2}
+  enemy: {fileID: 114958589333506578, guid: dbaa980c6bf1bf7449f312aa8f9c2149, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
   canvas: {fileID: 1355154097}
   bossmode: 0
