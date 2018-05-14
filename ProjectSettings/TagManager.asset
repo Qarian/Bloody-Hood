@@ -8,6 +8,7 @@ TagManager:
   - Boss
   - Bar
   - Projectile
+  - BossPositions
   layers:
   - Default
   - TransparentFX

@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class BackgroundMenager : MonoBehaviour
 {
     LevelScript level;
-    [Tooltip("Background move with that speed")]
+    [HideInInspector]
     public float speed = 10;
-    [Tooltip("Speed of background before a boss")]
+    [HideInInspector]
     public float speed2 = 20;
 
     GameManager gameMenager;

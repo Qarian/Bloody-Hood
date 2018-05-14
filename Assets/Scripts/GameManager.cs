@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public LevelScript level;
-    public Enemy enemy;
 
     GameObject player;
     GameObject spawner;
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour {
     BossHp bossHp;
     [HideInInspector]
     public bool bossmode;
+    public Transform bossPositions;
 
     # region Singleton
     public static GameManager singleton;
@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour {
         spawner = FindObjectOfType<EnemySpawner>().gameObject;
         comic = Comic.singleton.gameObject;
 
-        boss = GameObject.FindGameObjectWithTag("Boss");
-        boss.SetActive(false);
+        //boss = GameObject.FindGameObjectWithTag("Boss");
+        //boss.SetActive(false);
+        boss = level.boss;
 
         bossHp = FindObjectOfType<BossHp>();
         boss.GetComponent<Boss>().bossHp = bossHp;
@@ -69,7 +70,8 @@ public class GameManager : MonoBehaviour {
 
     public int BossBattle()
     {
-        boss.SetActive(true);
+        //boss.SetActive(true);
+        Instantiate(boss, boss.GetComponent<BossMovement>().startPoint.position, Quaternion.identity, null);
         if (player.GetComponent<PlayerMovement1>() != null)
             player.GetComponent<PlayerMovement1>().ChangeMovement();
         else if (player.GetComponent<PlayerMovementTutorial>() != null)

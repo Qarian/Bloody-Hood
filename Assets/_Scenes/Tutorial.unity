@@ -2734,7 +2734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 3c543128befd30f4b874347ecb864d73, type: 2}
-  enemy: {fileID: 114958589333506578, guid: dbaa980c6bf1bf7449f312aa8f9c2149, type: 2}
+  enemy: {fileID: 114308943985653610, guid: 4cef1e7ca42d9d649b2bb51501268ecc, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
   canvas: {fileID: 1355154097}
   bossmode: 0
@@ -2758,7 +2758,7 @@ MonoBehaviour:
   text3: "Naci\u015Bnij ekran"
   textFinal: "Po pokonaniu przeciwnika Twoje punkty do\u015Bwiadczenia rosn\u0105\nWbijaj\u0105c
     poziom, Twoja kosa zaczyna zadawa\u0107 wi\u0119ksze obra\u017Cenia!"
-  enemyPrefab: {fileID: 1073118802586670, guid: dbaa980c6bf1bf7449f312aa8f9c2149,
+  enemyPrefab: {fileID: 1505998656486486, guid: 4cef1e7ca42d9d649b2bb51501268ecc,
     type: 2}
   distance: 30
 --- !u!1 &1904541580

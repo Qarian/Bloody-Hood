@@ -6,6 +6,8 @@ public class BossMovement : MonoBehaviour {
     public Transform bossPositions;
     public float speed = 1f;
 
+
+    public Transform startPoint;
     Transform[] points;
     int pointCount;
     int currentPoint;
@@ -14,7 +16,9 @@ public class BossMovement : MonoBehaviour {
     Boss boss;
 
 	void Start () {
+        bossPositions = transform.GetChild(0);
         GetPoints();
+        startPoint = points[1];
         transform.position = points[currentPoint].position;
         boss = GetComponent<Boss>();
 	}
@@ -42,5 +46,6 @@ public class BossMovement : MonoBehaviour {
             points[i] = bossPositions.GetChild(i);
         }
         currentPoint = pointCount / 2;
+        bossPositions.parent = null;
     }
 }

@@ -113,6 +113,7 @@ public class UnityWindow : EditorWindow {
         EditorUtility.FocusProjectWindow();
         CreateNew(go, localPath);
         DestroyImmediate(go);
+        Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(localPath);
     }
 
     static void CreateEnemyPrefab()
@@ -126,7 +127,7 @@ public class UnityWindow : EditorWindow {
         go.AddComponent<SpriteRenderer>();
         go.AddComponent<BoxCollider2D>().size = new Vector2(1.15f, 2.3f);
         go.AddComponent<Rigidbody2D>().gravityScale = 0f;
-        go.AddComponent<Enemy>();
+        go.AddComponent<Enemy>().title = enemyName;
 
 
         #region CzyNadpisac zakomentowane
@@ -143,9 +144,9 @@ public class UnityWindow : EditorWindow {
         }
         */
         #endregion
-        EditorUtility.FocusProjectWindow();
         CreateNew(go, localPath);
         DestroyImmediate(go);
+        EditorUtility.FocusProjectWindow();
     }
 
     /* Sprawdza czy jest cos zaznaczone i dopiero wtedy uruchamia MenuItem
@@ -161,7 +162,7 @@ public class UnityWindow : EditorWindow {
         Object prefab = PrefabUtility.CreatePrefab(localPath, obj);
         PrefabUtility.ReplacePrefab(obj, prefab, ReplacePrefabOptions.ConnectToPrefab);
     }
-
+    
     public static void CreateAsset<T>() where T : ScriptableObject
     {
         T asset = CreateInstance<T>();

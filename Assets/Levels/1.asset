@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8e5bfe98bbf6c4f9aa3125a666ef10, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  boss: {fileID: 1666445164635828, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
+  boss: {fileID: 1748618385716832, guid: de5300a9fac617447a6afdea5148f383, type: 2}
   normalBackground: {fileID: 21300000, guid: 458ee4296113634489ee3b678aecbafb, type: 3}
   bossBackground: {fileID: 21300000, guid: e532eec7dcaa2df4c878178856ce4019, type: 3}
+  speed: 10
+  speed2: 0
   comicStart:
   - {fileID: 21300000, guid: 36b96106fa9b8bf45b7e3e265ef14475, type: 3}
   comicBoss:
@@ -21,7 +23,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fdfce073c44309b418910988ee1914d7, type: 3}
   comicEnd: []
   endless: 0
-  waveCount: 15
+  waveCount: 2
   spawnChoice: 0
   enemies:
-  - {fileID: 1990015090481342, guid: 058801b607c23e24e82a2821920761a6, type: 2}
+  - {fileID: 1010854994116856, guid: 8916127aaa0852448a346cd6b4314303, type: 2}

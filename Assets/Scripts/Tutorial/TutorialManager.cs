@@ -25,14 +25,12 @@ public class TutorialManager : MonoBehaviour {
     PlayerMovementTutorial pmt;
     [Space]
     [Space]
-    public GameObject enemyPrefab;
+    GameObject enemyPrefab;
     [SerializeField]
     float distance = 20;
     Enemy[] enemies;
 
     GameObject button;
-
-    //public EnemySpawner es;
 
     int part = 1;
     float speed;
@@ -54,6 +52,9 @@ public class TutorialManager : MonoBehaviour {
             animations[i] = animationsHolder.transform.GetChild(i).gameObject;
             animations[i].SetActive(false);
         }
+
+        enemyPrefab = GameManager.singleton.level.enemies[0];
+
     }
 
     public void Run(int num)
