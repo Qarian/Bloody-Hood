@@ -11,16 +11,15 @@ public class EnemySpawner : MonoBehaviour {
     Transform[] points;
     int pointCount;
 
-    float timeToSpawn = 0f;
-    float timePostSpawn = 1f;
-
     //From Level object
-    GameObject[] enemy;
+    GameObject[] enemies;
     bool endless;
     int waveCount = 10;
     SpawnChoice spawnChoice;
+    LevelEnemies levelEnemies;
 
-    Action[] spawn;// = new Action[2];
+    Func<float>[] spawn;
+    int currentWaveCount;
 
     # region Singleton
     public static EnemySpawner singleton;
@@ -39,18 +38,21 @@ public class EnemySpawner : MonoBehaviour {
             StartCoroutine(Spawn());
         #region Read Level
         LevelScript level = GameManager.singleton.level;
-        enemy = level.enemies;
+        enemies = level.enemies;
         endless = level.endless;
         waveCount = level.waveCount;
         spawnChoice = level.spawnChoice;
+        levelEnemies = level.levelEnemies;
         #endregion
     }
 	
     void SetupIEnumarators()
     {
-        spawn = new Action[Enum.GetValues(typeof(SpawnChoice)).Length];
+        spawn = new Func<float>[Enum.GetValues(typeof(SpawnChoice)).Length];
         spawn[0] = SpawnNormal;
         spawn[1] = SpawnRandom;
+        //spawn[2] = ;
+        spawn[3] = SpawnFromFile;
     }
 
     IEnumerator Spawn()
@@ -58,41 +60,47 @@ public class EnemySpawner : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         if (!endless)
         {
-            int currentWaveCount = 0;
+            currentWaveCount = 0;
             while (currentWaveCount < waveCount)
             {
-                yield return new WaitForSeconds(timeToSpawn);
-                spawn[(int)spawnChoice]();
                 currentWaveCount++;
-                yield return new WaitForSeconds(timePostSpawn);
+                yield return new WaitForSeconds(spawn[(int)spawnChoice]());
             }
         }
         else
         {
             while (true)
             {
-                yield return new WaitForSeconds(timeToSpawn);
-                spawn[(int)spawnChoice]();
-                yield return new WaitForSeconds(timePostSpawn);
+                yield return new WaitForSeconds(spawn[(int)spawnChoice]());
             }
         }
         yield return new WaitForSeconds(2f);
         GameManager.singleton.BossBattleReady();
     }
-
-    void SpawnNormal()
+    #region Spawns
+    float SpawnNormal()
     {
         int rand = UnityEngine.Random.Range(0, pointCount);
-        SpawnAtPosition(rand, enemy[0]);
+        SpawnAtPosition(rand, enemies[0]);
+        return enemies[0].GetComponent<Enemy>().timeAfterSpawn;
     }
 
-    void SpawnRandom()
+    float SpawnRandom()
     {
         int randPos = UnityEngine.Random.Range(0, pointCount);
-        int randE = UnityEngine.Random.Range(0, enemy.Length);
-        SpawnAtPosition(randPos, enemy[randE]);
+        int randE = UnityEngine.Random.Range(0, enemies.Length);
+        SpawnAtPosition(randPos, enemies[randE]);
+        return enemies[randE].GetComponent<Enemy>().timeAfterSpawn;
     }
 
+    float SpawnFromFile()
+    {
+        int pos = levelEnemies.waves[currentWaveCount].row;
+        int enemy = levelEnemies.waves[currentWaveCount].enemyId;
+        SpawnAtPosition(pos, enemies[enemy]);
+        return levelEnemies.waves[currentWaveCount].time;
+    }
+    #endregion
 
     public void StopSpawn()
     {
@@ -119,6 +127,7 @@ public class EnemySpawner : MonoBehaviour {
 public enum SpawnChoice
 {
     OnlyOne = 0,
-    Random = 1,
-    Priority = 2,
+    Random,
+    Priority,
+    LoadFromFile
 }

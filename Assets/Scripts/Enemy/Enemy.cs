@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     public EnemyMovement movement;
     AudioSource audios;
 
+    [Space]
     public bool changeSprite = false;
     public Sprite[] sprites;
 
@@ -20,8 +21,8 @@ public class Enemy : MonoBehaviour {
     Sprite blood;
 
     [Space]
-    public float timetoSpawn;
-    public float timeAfterSpawn;
+    public float timeToSpawn;
+    public float timeAfterSpawn = 1f;
 
     [Space]
     public float destroyTime=5f;

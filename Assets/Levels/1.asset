@@ -23,7 +23,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fdfce073c44309b418910988ee1914d7, type: 3}
   comicEnd: []
   endless: 0
-  waveCount: 2
-  spawnChoice: 0
+  spawnChoice: 1
+  waveCount: 15
+  levelEnemies: {fileID: 0}
   enemies:
   - {fileID: 1010854994116856, guid: 8916127aaa0852448a346cd6b4314303, type: 2}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level ", menuName = "New/Level")]
+[CreateAssetMenu(fileName = "Level", menuName = "New/Level")]
 public class LevelScript : ScriptableObject {
 
     public GameObject boss;
@@ -24,12 +24,14 @@ public class LevelScript : ScriptableObject {
     public Sprite[] comicEnd;
 
     [Space]
-    [Tooltip("Czy gra ma by� bez konca")]
+    [Tooltip("Czy gra ma byc bez konca")]
     public bool endless;
+    [Tooltip("Sposob w jaki beda wybierani przeciwnicy")]
+    public SpawnChoice spawnChoice;
     [Tooltip("Liczba przeciwnikow w tym poziomie")]
     public int waveCount;
-    [Tooltip("Sposob w jaki b�d� wybierani przeciwnicy")]
-    public SpawnChoice spawnChoice;
+    [Tooltip("Lista przeciwnikow na poziom (tylko do wcczytywania z pliku)")]
+    public LevelEnemies levelEnemies;
     [Tooltip("Lista przeciwnikow na poziom")]
     public GameObject[] enemies;
 }

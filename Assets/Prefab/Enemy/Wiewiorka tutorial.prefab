@@ -117,11 +117,10 @@ MonoBehaviour:
   move: {fileID: 0}
   movement: {fileID: 0}
   changeSprite: 0
-  sprites:
-  - {fileID: 21300000, guid: 14de9f9b316b6c845bbe6d54d06742f7, type: 3}
+  sprites: []
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
-  timetoSpawn: 0
+  timeToSpawn: 0
   timeAfterSpawn: 1
   destroyTime: 15
   damage: 1
