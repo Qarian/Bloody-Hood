@@ -24,6 +24,11 @@ public class LevelScript : ScriptableObject {
     public Sprite[] comicEnd;
 
     [Space]
+    public AudioClip music;
+    public bool changeMusic;
+    public AudioClip music2;
+
+    [Space]
     [Tooltip("Czy gra ma byc bez konca")]
     public bool endless;
     [Tooltip("Sposob w jaki beda wybierani przeciwnicy")]

@@ -4,7 +4,6 @@ using UnityEngine;
 public class LevelEnemies : ScriptableObject
 {
     public Wave[] waves;
-	
 }
 
 [System.Serializable]

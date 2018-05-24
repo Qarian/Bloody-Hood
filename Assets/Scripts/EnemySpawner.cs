@@ -77,7 +77,8 @@ public class EnemySpawner : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         GameManager.singleton.BossBattleReady();
     }
-    #region Spawns
+    
+    #region Spawn choice
     float SpawnNormal()
     {
         int rand = UnityEngine.Random.Range(0, pointCount);
@@ -99,6 +100,27 @@ public class EnemySpawner : MonoBehaviour {
         int enemy = levelEnemies.waves[currentWaveCount].enemyId;
         SpawnAtPosition(pos, enemies[enemy]);
         return levelEnemies.waves[currentWaveCount].time;
+    }
+    #endregion
+
+    #region Spawn Waves
+    public void SpawnWaves(GameObject go, int waves, float interval = -1)
+    {
+        if(interval < 0)
+        {
+            StartCoroutine(SpawnWave(go, go.GetComponent<Enemy>().timeAfterSpawn, waves));
+            return;
+        }
+        StartCoroutine(SpawnWave(go, interval, waves));
+    }
+
+    IEnumerator SpawnWave(GameObject go, float interval, int waves)
+    {
+        for (int i = 0; i < waves; i++)
+        {
+            SpawnAtPosition(UnityEngine.Random.Range(0, 3), go);
+            yield return new WaitForSeconds(interval);
+        }
     }
     #endregion
 

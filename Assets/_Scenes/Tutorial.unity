@@ -265,53 +265,6 @@ Transform:
   m_Father: {fileID: 453683597}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &322432552
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 6.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469511186649494, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718379590986366, guid: 401b4204e1cf1b34bb5f872b1df0b881,
-        type: 2}
-      propertyPath: bossPositions
-      value: 
-      objectReference: {fileID: 590333001}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 401b4204e1cf1b34bb5f872b1df0b881, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &375732558
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 0.15
   cooldown: 0.1
-  hp: 20
+  hp: 6
   exp: 0
   expToLevel: 3
   canAttack: 1
@@ -553,7 +506,7 @@ Transform:
   m_Children:
   - {fileID: 1850541432}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &453683596
 GameObject:
@@ -990,7 +943,7 @@ Transform:
   - {fileID: 453683597}
   - {fileID: 590333001}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651298419
 GameObject:
@@ -1575,7 +1528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &997812162
 GameObject:
@@ -2734,10 +2687,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 3c543128befd30f4b874347ecb864d73, type: 2}
-  enemy: {fileID: 114308943985653610, guid: 4cef1e7ca42d9d649b2bb51501268ecc, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
   canvas: {fileID: 1355154097}
   bossmode: 0
+  bossPositions: {fileID: 0}
 --- !u!114 &1901263231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,15 +2704,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationsHolder: {fileID: 1384384493}
   time1: 1.2
-  text1: "Przesu\u0144 palcem w lewo"
   time2: 0.8
-  text2: "Przesu\u0144 palcem w prawo"
-  time3: 2.6
-  text3: "Naci\u015Bnij ekran"
+  time3: 6
+  timeForEnemyWave: 2.6
+  time4: 6.6
   textFinal: "Po pokonaniu przeciwnika Twoje punkty do\u015Bwiadczenia rosn\u0105\nWbijaj\u0105c
     poziom, Twoja kosa zaczyna zadawa\u0107 wi\u0119ksze obra\u017Cenia!"
-  enemyPrefab: {fileID: 1505998656486486, guid: 4cef1e7ca42d9d649b2bb51501268ecc,
-    type: 2}
+  rock: {fileID: 1083457437210226, guid: c7c00310067ee4a47b6cd5b9e8c904e5, type: 2}
+  wavesRock: 5
+  enemy: {fileID: 1505998656486486, guid: 4cef1e7ca42d9d649b2bb51501268ecc, type: 2}
+  wavesEnemy: 5
   distance: 30
 --- !u!1 &1904541580
 GameObject:

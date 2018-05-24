@@ -4,7 +4,6 @@ public class Enemy : MonoBehaviour {
 
     public string title = "Enemy";
     public AudioClip deathSound;
-    public EnemyMovement move;
 
     [HideInInspector]
     public EnemyMovement movement;

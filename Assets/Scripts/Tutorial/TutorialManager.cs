@@ -9,20 +9,30 @@ public class TutorialManager : MonoBehaviour {
 
     [Space]
     public float time1 = 2f;
-    public string text1;
     [Space]
     public float time2 = 1f;
-    public string text2;
     [Space]
     public float time3 = 5f;
-    public string text3;
+    public float timeForEnemyWave = 2.6f;
+    [Space]
+    public float time4= 5f;
+
     [Space]
     [TextArea]
     public string textFinal;
 
+    [Space]
+    public GameObject rock;
+    public int wavesRock = 5;
+
+    [Space]
+    public GameObject enemy;
+    public int wavesEnemy = 5;
+
     GameObject tutorialScreen;
     BackgroundMenager bm;
     PlayerMovementTutorial pmt;
+    EnemySpawner spawner;
     [Space]
     [Space]
     GameObject enemyPrefab;
@@ -40,6 +50,7 @@ public class TutorialManager : MonoBehaviour {
         tutorialScreen.SetActive(false);
         bm = FindObjectOfType<BackgroundMenager>();
         pmt = FindObjectOfType<PlayerMovementTutorial>();
+        spawner = FindObjectOfType<EnemySpawner>();
         StartCoroutine(WCommand(time1));
 
         button = tutorialScreen.transform.GetChild(1).gameObject;
@@ -59,7 +70,6 @@ public class TutorialManager : MonoBehaviour {
 
     public void Run(int num)
     {
-        //Debug.Log("Num: " + num + ", Part: " + part);
         if (num == 1 && part == 1)
         {
             Resume();
@@ -71,8 +81,9 @@ public class TutorialManager : MonoBehaviour {
         {
             Resume();
             pmt.pause = false;
-            GenerateEnemyWave();
-            StartCoroutine(WCommand(time3));
+            spawner.SpawnWaves(rock, wavesRock);
+            StartCoroutine(WCommand(time3 + timeForEnemyWave));
+            StartCoroutine(WaitAction(time3, GenerateEnemyWave));
             part = 3;
             pmt.Move(1);
         }
@@ -81,11 +92,17 @@ public class TutorialManager : MonoBehaviour {
             Resume();
             pmt.player.Tap();
             pmt.pause = false;
-            StartCoroutine(EndTutorial());
+            spawner.SpawnWaves(enemy, wavesEnemy);
+            StartCoroutine(WaitAction(time4, EndTutorial));
             part = 4;
         }
     }
 
+    IEnumerator WaitAction(float time, System.Action action)
+    {
+        yield return new WaitForSeconds(time);
+        action();
+    }
 
     IEnumerator WCommand(float time)
     {
@@ -126,9 +143,8 @@ public class TutorialManager : MonoBehaviour {
             animations[part - 1].SetActive(false);
     }
 
-    IEnumerator EndTutorial()
+    void EndTutorial()
     {
-        yield return new WaitForSeconds(1f);
         tutorialScreen.SetActive(true);
         tutorialScreen.transform.GetChild(0).GetComponent<Text>().text = textFinal;
         button.SetActive(true);

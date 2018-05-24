@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour {
     GameObject spawner;
     GameObject boss;
     GameObject comic;
+    AudioSource music;
+    BackgroundMenager background;
     [SerializeField]
     GameObject endScreen;
     [SerializeField]
     GameObject canvas;
     BossHp bossHp;
-    [HideInInspector]
-    public bool bossmode;
     public Transform bossPositions;
 
     # region Singleton
@@ -33,14 +33,14 @@ public class GameManager : MonoBehaviour {
         player = FindObjectOfType<Player>().gameObject;
         spawner = FindObjectOfType<EnemySpawner>().gameObject;
         comic = Comic.singleton.gameObject;
+        background = BackgroundMenager.singleton;
 
-        //boss = GameObject.FindGameObjectWithTag("Boss");
-        //boss.SetActive(false);
         boss = level.boss;
-
         bossHp = FindObjectOfType<BossHp>();
         boss.GetComponent<Boss>().bossHp = bossHp;
         bossHp.gameObject.SetActive(false);
+
+        StartMusic();
     }
 
     void Update ()
@@ -49,28 +49,44 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
+    void StartMusic()
+    {
+        GameObject go = new GameObject("Muzyka");
+        music = go.AddComponent<AudioSource>();
+        music.clip = level.music;
+        music.Play();
+
+        if (level.changeMusic)
+        {
+            music.loop = false;
+            go.AddComponent<MusicScript>().sound2 = level.music2;
+        }
+        else
+        {
+            music.loop = true;
+        }
+    }
+
     #region Boss
     public void BossBattleReady()
     {
-        bossmode = true;
         spawner.GetComponent<EnemySpawner>().StopSpawn();
         comic.GetComponent<Comic>().ShowComic(2);
+        background.BossBackgroundReady();
     }
 
     public void BossPhase()
     {
         //muzyczka
-        //Time.timeScale = 0;
-        FindObjectOfType<BackgroundMenager>().speed = 20;
         if (player.GetComponent<PlayerMovement1>() != null)
             player.GetComponent<PlayerMovement1>().enabled = false;
         else if (player.GetComponent<PlayerMovementTutorial>() != null)
             player.GetComponent<PlayerMovementTutorial>().enabled = false;
+        background.BossBackgroundMove();
     }
 
     public int BossBattle()
     {
-        //boss.SetActive(true);
         Instantiate(boss, boss.GetComponent<BossMovement>().startPoint.position, Quaternion.identity, null);
         if (player.GetComponent<PlayerMovement1>() != null)
             player.GetComponent<PlayerMovement1>().ChangeMovement();

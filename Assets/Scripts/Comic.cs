@@ -84,7 +84,9 @@ public class Comic : MonoBehaviour {
         }
         num--;
         page = 0;
-        pages = comics[num].Length-1;
+        pages = comics[num].Length;
+        if (page == pages)
+            NextPage();
         paper[0].SetActive(true);
         paper[0].GetComponent<Image>().sprite = comics[num][0];
         moment = num;
@@ -94,7 +96,7 @@ public class Comic : MonoBehaviour {
     {
         paper[page % 2].SetActive(false);
         page++;
-        if (page > pages)
+        if (page >= pages)
         {
             foreach (var go in gos)
             {
