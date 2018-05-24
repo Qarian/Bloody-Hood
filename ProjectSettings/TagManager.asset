@@ -9,6 +9,7 @@ TagManager:
   - Bar
   - Projectile
   - BossPositions
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -18,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
+  - Background
+  - Hero
   - Enemy
-  - 
-  - 
-  - 
+  - AttackHero
   - 
   - 
   - 

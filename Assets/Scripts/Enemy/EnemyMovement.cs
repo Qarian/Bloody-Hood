@@ -25,5 +25,6 @@ public abstract class EnemyMovement : MonoBehaviour {
     {
         speed = FindObjectOfType<BackgroundMenager>().speed;
         enemy.moving = true;
+        gameObject.layer = 10;
     }
 }

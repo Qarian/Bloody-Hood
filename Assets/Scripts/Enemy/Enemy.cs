@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour {
     Sprite death;
     [SerializeField]
     Sprite blood;
+    [SerializeField]
+    bool dieOnHit = false;
+    [SerializeField]
+    Sprite deathHit;
 
     [Space]
     public float timeToSpawn;
@@ -30,6 +34,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     int addExp = 1;
+    [HideInInspector]
     public bool moving = true;
 
 	void Start ()
@@ -44,29 +49,54 @@ public class Enemy : MonoBehaviour {
         }
 	}
 
-    public void Hit(float dmg)
-    {
-        hitToDestroy -= dmg;
-        if (hitToDestroy <= 0)
-            Death();
-    }
-
     void Update()
     {
         if (!moving)
         {
             if (!audios.isPlaying)
-                Death2();
+            {
+                if (!dieOnHit)
+                    Death2();
+                else
+                    Destroy(gameObject);
+            } 
         }
+    }
+
+    public void Collide()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        moving = false;
+        audios.Play();
+        if (dieOnHit)
+        {
+            if (deathHit == null)
+                GetComponent<SpriteRenderer>().sprite = death;
+            else
+                GetComponent<SpriteRenderer>().sprite = deathHit;
+        }
+        else
+            Destroy(gameObject);
+        
+    }
+
+    public void Hit(float dmg)
+    {
+        hitToDestroy -= dmg;
+        if (hitToDestroy <= 0)
+        {
+            Death();
+            return;
+        }  
     }
 
     void Death()
     {
         audios.Play();
         moving = false;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(addExp);
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = death;
+        UIEffects.singleton.GenerateBloodEffect(Camera.main.WorldToScreenPoint(transform.position), addExp);
     }
 
     void Death2()
@@ -108,5 +138,4 @@ public class Enemy : MonoBehaviour {
             field.SetValue(copy, field.GetValue(original));
         }
     }
-
 }

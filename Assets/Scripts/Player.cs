@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
         {
             case "Enemy":
                 ChangeHp(-collision.GetComponent<Enemy>().damage);
-                Destroy(collision.gameObject);
+                collision.GetComponent<Enemy>().Collide();
                 break;
             case "Boss":
                 break;

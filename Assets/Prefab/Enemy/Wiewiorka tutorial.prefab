@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50535198337071126}
   - component: {fileID: 114308943985653610}
   - component: {fileID: 114216894142080530}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Wiewiorka tutorial
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -114,18 +114,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Wiewiorka tutorial
   deathSound: {fileID: 8300000, guid: 17d62599c502c874190aa897dc89d987, type: 3}
-  move: {fileID: 0}
   movement: {fileID: 0}
   changeSprite: 0
   sprites: []
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
+  dieOnHit: 0
+  deathHit: {fileID: 0}
   timeToSpawn: 0
   timeAfterSpawn: 1
-  destroyTime: 15
+  destroyTime: 20
   damage: 1
   hitToDestroy: 1
-  addExp: 1
+  addExp: 3
   moving: 1
 --- !u!212 &212923117587992468
 SpriteRenderer:

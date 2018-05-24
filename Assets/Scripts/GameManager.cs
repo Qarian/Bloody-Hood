@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour {
     public void BossBattleReady()
     {
         spawner.GetComponent<EnemySpawner>().StopSpawn();
+        DestroyEffects();
         comic.GetComponent<Comic>().ShowComic(2);
         background.BossBackgroundReady();
     }
@@ -101,5 +102,14 @@ public class GameManager : MonoBehaviour {
         GameObject go = Instantiate(endScreen, canvas.transform);
         go.GetComponent<EndScreenScript>().Begin(win);
         Time.timeScale = 0;
+    }
+
+    public void DestroyEffects()
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Effect");
+        for (int i = 0; i < gos.Length; i++)
+        {
+            gos[i].GetComponent<BloodEffect>().End();
+        }
     }
 }

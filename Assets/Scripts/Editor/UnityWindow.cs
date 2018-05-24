@@ -14,7 +14,7 @@ public class UnityWindow : EditorWindow {
     static string levelName = "Level";
     static string bossName = "Boss";
     #endregion
-    #region Podglad
+    #region Preview
     bool previewBool;
     bool show;
     static bool previewActive;
@@ -153,7 +153,7 @@ public class UnityWindow : EditorWindow {
         GameObject go = new GameObject();
         go.name = bossName;
         go.tag = "Boss";
-        go.layer = 8;
+        go.layer = 10;
         go.AddComponent<SpriteRenderer>();
         go.AddComponent<BoxCollider2D>().size = new Vector2(3f, 3.7f);
         go.AddComponent<Rigidbody2D>().gravityScale = 0f;
@@ -173,7 +173,7 @@ public class UnityWindow : EditorWindow {
         GameObject go = new GameObject();
         go.name = enemyName;
         go.tag = "Enemy";
-        go.layer = 8;
+        go.layer = 10;
         go.AddComponent<SpriteRenderer>();
         go.AddComponent<BoxCollider2D>().size = new Vector2(1.15f, 2.3f);
         go.AddComponent<Rigidbody2D>().gravityScale = 0f;
@@ -228,7 +228,10 @@ public class UnityWindow : EditorWindow {
             DestroyImmediate(previewGO);
 
         previewGO = new GameObject("Preview");
-        waves = new Wave[numberOfEnemies];
+        if (numberOfEnemies <= 0)
+            waves = new Wave[level.waveCount];
+        else
+            waves = new Wave[numberOfEnemies];
 
         height = firstRowHeight;
 

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50464839813479782}
   - component: {fileID: 114847625637845724}
   - component: {fileID: 114971526122470194}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Rock
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,19 +101,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Rock
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: cd8cecb275ea05a4ebbd8d4679a6c718, type: 3}
   movement: {fileID: 0}
-  changeSprite: 1
-  sprites:
-  - {fileID: 21300000, guid: f64f1019b1a5f874882f41bc5fdc5da9, type: 3}
-  - {fileID: 21300000, guid: 7364e6f3cfb42564e849c8d88e74d5dc, type: 3}
-  death: {fileID: 0}
+  changeSprite: 0
+  sprites: []
+  death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 0}
+  dieOnHit: 1
+  deathHit: {fileID: 0}
   timeToSpawn: 0
   timeAfterSpawn: 1.2
   destroyTime: 5
   damage: 0
-  hitToDestroy: 100000000
+  hitToDestroy: 9999
   addExp: 1
   moving: 1
 --- !u!114 &114971526122470194

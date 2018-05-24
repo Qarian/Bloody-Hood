@@ -72,7 +72,6 @@ public class BackgroundMenager : MonoBehaviour
         lastElement = (lastElement + 1) % 2;
         if (bossReady)
         {
-            Debug.Log(5);
             bossMode = true;
             Vector2 scaleBoss = new Vector2(screen.x / level.bossBackground.texture.width, screen.y / level.bossBackground.texture.height);
             background[lastElement].GetComponent<RectTransform>().sizeDelta = new Vector2(level.bossBackground.texture.width, level.bossBackground.texture.height);
