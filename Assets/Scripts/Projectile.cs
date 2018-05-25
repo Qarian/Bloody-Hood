@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    public bool reflective;
+    public bool reflective = false;
+    public bool destructable = false;
 
     [SerializeField]
     float damage = 1f;
@@ -33,6 +34,8 @@ public class Projectile : MonoBehaviour {
             speed = -speed;
             return;
         }
+        if (!destructable)
+            return;
         Des();
     }
 

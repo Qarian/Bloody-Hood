@@ -26,10 +26,13 @@ public class PlayerMovement1: MonoBehaviour {
 
 	void Start ()
     {
-        GetPoints();
-        transform.position = points[currentPoint].position;
-        player = gameObject.GetComponent<Player>();
-        distance = (points[currentPoint].position - points[currentPoint - 1].position).magnitude;
+        if(points == null)
+        {
+            GetPoints();
+            transform.position = points[currentPoint].position;
+            player = gameObject.GetComponent<Player>();
+            distance = (points[currentPoint].position - points[currentPoint - 1].position).magnitude;
+        }
     }
 
     void Update()
@@ -149,10 +152,16 @@ public class PlayerMovement1: MonoBehaviour {
         canSwipe = true;
     }
 
-    public void ChangeMovement()
+    public void ChangeMovementBoss()
     {
         GetComponent<PlayerMovementBoss>().enabled = true;
         GetComponent<PlayerMovementBoss>().Begin(this);
         enabled = false;
+    }
+
+    public void ChangeMovementNormal()
+    {
+        GetComponent<PlayerMovementBoss>().enabled = false;
+        enabled = true;
     }
 }

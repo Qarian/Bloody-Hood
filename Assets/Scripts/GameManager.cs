@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
     public LevelScript level;
 
     GameObject player;
-    GameObject spawner;
+    EnemySpawner spawner;
     GameObject boss;
     GameObject comic;
     AudioSource music;
@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour {
     GameObject endScreen;
     [SerializeField]
     GameObject canvas;
-    BossHp bossHp;
-    public Transform bossPositions;
+    [HideInInspector]
+    public BossHp bossHp;
+
+    GameObject end;
 
     # region Singleton
     public static GameManager singleton;
@@ -31,13 +33,12 @@ public class GameManager : MonoBehaviour {
     {
         Time.timeScale = 1;
         player = FindObjectOfType<Player>().gameObject;
-        spawner = FindObjectOfType<EnemySpawner>().gameObject;
+        spawner = EnemySpawner.singleton;
         comic = Comic.singleton.gameObject;
         background = BackgroundMenager.singleton;
 
         boss = level.boss;
         bossHp = FindObjectOfType<BossHp>();
-        boss.GetComponent<Boss>().bossHp = bossHp;
         bossHp.gameObject.SetActive(false);
 
         StartMusic();
@@ -51,8 +52,17 @@ public class GameManager : MonoBehaviour {
 
     void StartMusic()
     {
-        GameObject go = new GameObject("Muzyka");
-        music = go.AddComponent<AudioSource>();
+        GameObject go;
+        if (music == null)
+        {
+            go = new GameObject("Muzyka");
+            music = go.AddComponent<AudioSource>();
+        }
+        else
+        {
+            go = music.gameObject;
+        }
+        
         music.clip = level.music;
         music.Play();
 
@@ -90,19 +100,12 @@ public class GameManager : MonoBehaviour {
     {
         Instantiate(boss, boss.GetComponent<BossMovement>().startPoint.position, Quaternion.identity, null);
         if (player.GetComponent<PlayerMovement1>() != null)
-            player.GetComponent<PlayerMovement1>().ChangeMovement();
+            player.GetComponent<PlayerMovement1>().ChangeMovementBoss();
         else if (player.GetComponent<PlayerMovementTutorial>() != null)
             player.GetComponent<PlayerMovementTutorial>().ChangeMovement();
         return 0;
     }
     #endregion
-
-    public void EndGame(bool win)
-    {
-        GameObject go = Instantiate(endScreen, canvas.transform);
-        go.GetComponent<EndScreenScript>().Begin(win);
-        Time.timeScale = 0;
-    }
 
     public void DestroyEffects()
     {
@@ -111,5 +114,33 @@ public class GameManager : MonoBehaviour {
         {
             gos[i].GetComponent<BloodEffect>().End();
         }
+    }
+
+    public void EndGame(bool win)
+    {
+        end = Instantiate(endScreen, canvas.transform);
+        end.GetComponent<EndScreenScript>().Begin(win);
+        Time.timeScale = 0;
+    }
+
+    public void ContinueGame()
+    {
+        level = level.nextLevel;
+
+        background.enabled = true;
+        background.NewBackground(level);
+
+        Destroy(end);
+
+        player.GetComponent<PlayerMovement1>().ChangeMovementNormal();
+
+        Time.timeScale = 1;
+    }
+
+    public void NewLevel()
+    {
+        spawner.StartSpawning();
+
+        StartMusic();
     }
 }

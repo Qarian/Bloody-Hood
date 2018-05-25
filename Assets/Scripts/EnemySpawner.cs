@@ -34,8 +34,12 @@ public class EnemySpawner : MonoBehaviour {
     {
         GetPoints();
         SetupIEnumarators();
-        if(spawnOnStart)
-            StartCoroutine(Spawn());
+        if (spawnOnStart)
+            StartSpawning();
+    }
+
+    public void StartSpawning()
+    {
         #region Read Level
         LevelScript level = GameManager.singleton.level;
         enemies = level.enemies;
@@ -44,8 +48,9 @@ public class EnemySpawner : MonoBehaviour {
         spawnChoice = level.spawnChoice;
         levelEnemies = level.levelEnemies;
         #endregion
+        StartCoroutine(Spawn());
     }
-	
+
     void SetupIEnumarators()
     {
         spawn = new Func<float>[Enum.GetValues(typeof(SpawnChoice)).Length];

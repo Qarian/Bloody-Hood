@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "New/Level")]
 public class LevelScript : ScriptableObject {
 
+    public LevelScript nextLevel;
     public GameObject boss;
 
     [Space]
@@ -10,6 +11,7 @@ public class LevelScript : ScriptableObject {
     public Sprite normalBackground;
     [Tooltip("Grafika tla podczas walki z Bossem")]
     public Sprite bossBackground;
+    public Sprite lastBackground;
     [Tooltip("Predkosc poruszania sie tla podczas gry")]
     public float speed;
     [Tooltip("Predkosc poruszania sie tla przed Bossem")]

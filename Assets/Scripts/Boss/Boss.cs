@@ -9,13 +9,13 @@ public class Boss : MonoBehaviour {
     GameObject bullet;
     Transform[] bulletPoints;
 
-    [HideInInspector]
-    public BossHp bossHp;
+    BossHp bossHp;
 
     void Start()
     {
         GetBulletsPoints();
 
+        bossHp = GameManager.singleton.bossHp;
         bossHp.gameObject.SetActive(true);
         bossHp.Begin(hp);
     }
@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour {
         if (hp <= 0)
         {
             GameManager.singleton.EndGame(true);
-            Destroy(bossHp.gameObject);
+            bossHp.gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }

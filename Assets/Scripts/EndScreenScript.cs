@@ -36,4 +36,9 @@ public class EndScreenScript : MonoBehaviour {
         else
             SceneManager.LoadScene(name);
     }
+
+    public void Continue()
+    {
+        GameManager.singleton.ContinueGame();
+    }
 }
