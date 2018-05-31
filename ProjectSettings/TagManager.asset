@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - BossPositions
   - Effect
+  - Obstacle
   layers:
   - Default
   - TransparentFX

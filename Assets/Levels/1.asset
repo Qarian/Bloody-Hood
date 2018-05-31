@@ -29,7 +29,10 @@ MonoBehaviour:
   music2: {fileID: 8300000, guid: b51a28625bb343248890a62da51043b2, type: 3}
   endless: 0
   spawnChoice: 1
-  waveCount: 5
+  waveCount: 15
   levelEnemies: {fileID: 0}
   enemies:
   - {fileID: 1010854994116856, guid: 8916127aaa0852448a346cd6b4314303, type: 2}
+  - {fileID: 1010854994116856, guid: 06422c5ab2685124b9dee3059fc84a0b, type: 2}
+  - {fileID: 1470253822510364, guid: 44b956059710d654ca82a334098bcb82, type: 2}
+  - {fileID: 1470253822510364, guid: ed7136c234241e64f8ad376c6da9076b, type: 2}

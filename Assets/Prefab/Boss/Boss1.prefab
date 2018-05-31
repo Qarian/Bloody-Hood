@@ -233,7 +233,6 @@ MonoBehaviour:
   hp: 100
   bulletSpeed: 10
   bullet: {fileID: 1377197040371454, guid: 112766e9c283f774dbb2bdfeb2dee341, type: 2}
-  bossHp: {fileID: 0}
 --- !u!212 &212129815143475166
 SpriteRenderer:
   m_ObjectHideFlags: 1

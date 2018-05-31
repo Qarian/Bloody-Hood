@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1083457437210226}
+  m_RootGameObject: {fileID: 1470253822510364}
   m_IsPrefabParent: 1
---- !u!1 &1083457437210226
+--- !u!1 &1470253822510364
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4653455139261610}
-  - component: {fileID: 212955433652184948}
-  - component: {fileID: 61103943242985656}
-  - component: {fileID: 50464839813479782}
-  - component: {fileID: 114971526122470194}
-  - component: {fileID: 114919606662765118}
+  - component: {fileID: 4453362071963762}
+  - component: {fileID: 212865728869705910}
+  - component: {fileID: 61340240282137032}
+  - component: {fileID: 50289946906506946}
+  - component: {fileID: 114304700677358686}
+  - component: {fileID: 114116014106024146}
   m_Layer: 10
-  m_Name: Rock
-  m_TagString: Obstacle
+  m_Name: Bat1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4653455139261610
+--- !u!4 &4453362071963762
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
+  m_GameObject: {fileID: 1470253822510364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.533128, y: -4.009404, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50464839813479782
+--- !u!50 &50289946906506946
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
+  m_GameObject: {fileID: 1470253822510364}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -64,12 +64,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61103943242985656
+--- !u!61 &61340240282137032
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
+  m_GameObject: {fileID: 1470253822510364}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -80,56 +80,58 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 2.0833333}
-    newSize: {x: 1.39, y: 1.39}
+    oldSize: {x: 2, y: 1.15}
+    newSize: {x: 0.4, y: 0.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.15, y: 2.3}
+  m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114919606662765118
+--- !u!114 &114116014106024146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
+  m_GameObject: {fileID: 1470253822510364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f4ccc93546070418a72bdd69177fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: e7618ba6cc45a4144a1496bf16a4ad16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!114 &114304700677358686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470253822510364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a9e3df5e3603d439b5737266aa7d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 5
   damage: 1
   timeAfterSpawn: 1
   moving: 1
-  addExp: 1
-  title: Rock
-  deathSound: {fileID: 8300000, guid: cd8cecb275ea05a4ebbd8d4679a6c718, type: 3}
+  addExp: 3
+  SpawnInWave: 1
+  title: Bat1
+  deathSound: {fileID: 8300000, guid: 17d62599c502c874190aa897dc89d987, type: 3}
   movement: {fileID: 0}
   changeSprite: 0
   sprites: []
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
-  blood: {fileID: 0}
---- !u!114 &114971526122470194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7618ba6cc45a4144a1496bf16a4ad16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
---- !u!212 &212955433652184948
+  blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
+  hitToDestroy: 1
+--- !u!212 &212865728869705910
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083457437210226}
+  m_GameObject: {fileID: 1470253822510364}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -158,12 +160,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f64f1019b1a5f874882f41bc5fdc5da9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e74a39932b24e7841925d5c3b223774f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.39, y: 1.39}
+  m_Size: {x: 0.4, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

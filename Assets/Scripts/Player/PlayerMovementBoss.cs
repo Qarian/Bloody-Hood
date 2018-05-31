@@ -1,35 +1,37 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerMovementTutorial : MonoBehaviour {
+public class PlayerMovementBoss : MonoBehaviour {
 
-    int swapDistance = 100;
 
-    [HideInInspector]
-    public float distance = 4f;
-    [HideInInspector]
-    public Player player;
-    [HideInInspector]
-    public PlayerMovement movement;
+    public float attackMoveSpeed = 0.3f;
+    public float distanceToBoss = 8f;
+    bool isAttack = false;
 
     bool canSwipe = true;
     bool isDrag = false;
     Vector2 startPoint;
     Vector2 Swapdelta;
 
-    [HideInInspector]
-    public bool pause=true;
+    PlayerMovement movement;
+    Player player;
+    Transform[] attackPoints;
 
-	void Start ()
+    int swapDistance;
+
+    Vector2 attackPosition;
+
+    bool moving = true;
+    
+    public void Start()
     {
-        player = transform.parent.GetComponent<Player>();
         movement = transform.parent.GetComponent<PlayerMovement>();
         swapDistance = movement.swapDistance;
+        player = transform.parent.GetComponent<Player>();
     }
 
-    void Update()
-    {
-        if (!pause)
+    void Update () {
+        if (moving)
         {
             #region StandAlone
             if (Input.GetMouseButtonDown(0) && canSwipe)
@@ -39,8 +41,7 @@ public class PlayerMovementTutorial : MonoBehaviour {
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                if (isDrag)
-                    StartCoroutine(CooldownTime(player.Attack()));
+                if (isDrag) StartCoroutine(Tap());
                 isDrag = false;
             }
             #endregion
@@ -54,8 +55,7 @@ public class PlayerMovementTutorial : MonoBehaviour {
                 }
                 else if (Input.touches[0].phase == TouchPhase.Canceled || Input.touches[0].phase == TouchPhase.Ended)
                 {
-                    if (isDrag)
-                        StartCoroutine(CooldownTime(player.Attack()));
+                    if (isDrag) Tap();
                     isDrag = false;
                 }
             }
@@ -74,42 +74,36 @@ public class PlayerMovementTutorial : MonoBehaviour {
 
                 if (Swapdelta.x > swapDistance)
                 {
-                    if (canSwipe)
-                    {
-                        StartCoroutine(CooldownTime(movement.MoveRight()));
-                    }
+                    StartCoroutine(MoveTime(movement.MoveRight()));
+
                 }
                 else if (Swapdelta.x < -swapDistance)
                 {
-                    if (canSwipe)
-                    {
-                        StartCoroutine(CooldownTime(movement.MoveLeft()));
-                    }
+                    StartCoroutine(MoveTime(movement.MoveLeft()));
                 }
             }
 
-            #region Buttons
-            if (Input.GetKeyDown(KeyCode.Space))
-                StartCoroutine(CooldownTime(player.Attack()));
+            #region Button
+            if (Input.GetKeyDown("space") && !isAttack) StartCoroutine(Tap());
             if (Input.GetKeyDown("a"))
             {
                 if (canSwipe)
                 {
-                    StartCoroutine(CooldownTime(movement.MoveLeft()));
+                    StartCoroutine(MoveTime(movement.MoveLeft()));
                 }
             }
             if (Input.GetKeyDown("d"))
             {
                 if (canSwipe)
                 {
-                    StartCoroutine(CooldownTime(movement.MoveRight()));
+                    StartCoroutine(MoveTime(movement.MoveRight()));
                 }
             }
             #endregion
         }
     }
 
-    IEnumerator CooldownTime(float time)
+    IEnumerator MoveTime(float time)
     {
         isDrag = false;
         canSwipe = false;
@@ -117,9 +111,22 @@ public class PlayerMovementTutorial : MonoBehaviour {
         canSwipe = true;
     }
 
-    public void ChangeMovement()
+    IEnumerator Tap()
     {
-        GetComponent<PlayerMovementBoss>().enabled = true;
-        enabled = false;
+        canSwipe = false;
+        isAttack = true;
+        movement.PerformAttack();
+        yield return new WaitForSeconds(attackMoveSpeed);
+        yield return new WaitForSeconds(player.AttackWithoutCooldown());
+        movement.ReturnFromAttack();
+        yield return new WaitForSeconds(attackMoveSpeed);
+        movement.ContinueMoving();
+        canSwipe = true;
+        isAttack = false;
+    }
+
+    public void StopMoving()
+    {
+        moving = false;
     }
 }

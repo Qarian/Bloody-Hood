@@ -32,31 +32,33 @@ public class Boss : MonoBehaviour {
         bossHp.NewHp(hp);
         if (hp <= 0)
         {
-            GameManager.singleton.EndGame(true);
-            bossHp.gameObject.SetActive(false);
-            Destroy(gameObject);
+            DestroyBoss();
         }
     }
 
     void GetBulletsPoints()
     {
-        Transform positions;
-        if(FindObjectOfType<PlayerMovement1>()!= null)
-            positions = FindObjectOfType<PlayerMovement1>().playerPositions;
-        else
-            positions = FindObjectOfType<PlayerMovementTutorial>().playerPositions;
+        Transform[] positions;
+        positions = FindObjectOfType<PlayerMovement>().positions;
 
-        int pointCount = positions.childCount;
-        float[] bulletPosx = new float[pointCount];
-        for (int i = 0; i < pointCount; i++)
+        float[] bulletPosx = new float[3];
+        for (int i = 0; i < 3; i++)
         {
-            bulletPosx[i] = positions.GetChild(i).position.x;
+            bulletPosx[i] = positions[i].position.x;
         }
-        bulletPoints = new Transform[pointCount];
-        for (int i = 0; i < pointCount; i++)
+        bulletPoints = new Transform[3];
+        for (int i = 0; i < 3; i++)
         {
             bulletPoints[i] = transform;
             bulletPoints[i].position = new Vector2(bulletPosx[i], transform.position.y);
         }
     }
+
+    public void DestroyBoss()
+    {
+        GameManager.singleton.EndGame(true);
+        bossHp.gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+
 }

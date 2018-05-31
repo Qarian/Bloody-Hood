@@ -5,10 +5,10 @@ public abstract class EnemyMovement : MonoBehaviour {
 
     public float speed = 10;
 
-    Enemy enemy;
+    Element enemy;
 
 	void Start () {
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponent<Element>();
 	}
 
 	void Update () {

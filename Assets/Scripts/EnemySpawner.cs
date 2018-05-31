@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -86,16 +87,14 @@ public class EnemySpawner : MonoBehaviour {
     #region Spawn choice
     float SpawnNormal()
     {
-        int rand = UnityEngine.Random.Range(0, pointCount);
-        SpawnAtPosition(rand, enemies[0]);
+        SetWave(enemies[0]);
         return enemies[0].GetComponent<Enemy>().timeAfterSpawn;
     }
 
     float SpawnRandom()
     {
-        int randPos = UnityEngine.Random.Range(0, pointCount);
         int randE = UnityEngine.Random.Range(0, enemies.Length);
-        SpawnAtPosition(randPos, enemies[randE]);
+        SetWave(enemies[randE]);
         return enemies[randE].GetComponent<Enemy>().timeAfterSpawn;
     }
 
@@ -109,17 +108,17 @@ public class EnemySpawner : MonoBehaviour {
     #endregion
 
     #region Spawn Waves
-    public void SpawnWaves(GameObject go, int waves, float interval = -1)
+    public void SpawnWaves(GameObject go, int waves, float interval = 0)
     {
-        if(interval < 0)
+        if(interval <= 0)
         {
-            StartCoroutine(SpawnWave(go, go.GetComponent<Enemy>().timeAfterSpawn, waves));
+            StartCoroutine(SpawnWavesSingle(go, go.GetComponent<Element>().timeAfterSpawn, waves));
             return;
         }
-        StartCoroutine(SpawnWave(go, interval, waves));
+        StartCoroutine(SpawnWavesSingle(go, interval, waves));
     }
 
-    IEnumerator SpawnWave(GameObject go, float interval, int waves)
+    IEnumerator SpawnWavesSingle(GameObject go, float interval, int waves)
     {
         for (int i = 0; i < waves; i++)
         {
@@ -129,15 +128,50 @@ public class EnemySpawner : MonoBehaviour {
     }
     #endregion
 
+
+    void SetWave(GameObject enemy)
+    {
+        GameObject[] gos = new GameObject[3];
+        int leftPlaces = 3;
+        if (enemy.GetComponent<Enemy>() != null)
+        {
+            for (int i = 0; i < enemy.GetComponent<Enemy>().SpawnInWave; i++)
+            {
+                int rand = UnityEngine.Random.Range(0, leftPlaces);
+                int j = 0;
+                while (gos[j] != null || rand != 0)
+                {
+                    if (gos[j] == null)
+                        rand--;
+                    j++;
+                }
+                gos[j] = enemy;
+                leftPlaces--;
+            }
+        }
+
+        SpawnWave(gos);
+    }
+
+    void SpawnWave(GameObject[] gos)
+    {
+        for (int i = 0; i < gos.Length; i++)
+        {
+            if (gos[i] != null)
+                SpawnAtPosition(i, gos[i]);
+        }
+    }
+
+    void SpawnAtPosition(int x, GameObject prefab)
+    {
+        Instantiate(prefab, points[x].position, Quaternion.identity);
+    }
+
+
     public void StopSpawn()
     {
         Debug.Log("Coroutine stopped");
         StopAllCoroutines();
-    }
-
-    void SpawnAtPosition(int x, GameObject prefab, Vector2 offset=new Vector2())
-    {
-        Instantiate(prefab, points[x].position, Quaternion.identity);
     }
 
     void GetPoints()

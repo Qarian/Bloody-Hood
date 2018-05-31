@@ -21,7 +21,8 @@ public class MusicScript : MonoBehaviour {
     private void Start()
     {
         aus = GetComponent<AudioSource>();
-        aus.loop = false;
+        if (change)
+            aus.loop = false;
     }
 
     void Update()

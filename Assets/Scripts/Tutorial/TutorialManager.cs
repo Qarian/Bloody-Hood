@@ -75,7 +75,7 @@ public class TutorialManager : MonoBehaviour {
             Resume();
             StartCoroutine(WCommand(time2));
             part = 2;
-            pmt.Move(-1);
+            pmt.movement.MoveLeft();
         }
         if (num == 2 && part == 2)
         {
@@ -85,12 +85,12 @@ public class TutorialManager : MonoBehaviour {
             StartCoroutine(WCommand(time3 + timeForEnemyWave));
             StartCoroutine(WaitAction(time3, GenerateEnemyWave));
             part = 3;
-            pmt.Move(1);
+            pmt.movement.MoveRight();
         }
         if (num == 3 && part == 3)
         {
             Resume();
-            pmt.player.Tap();
+            pmt.player.Attack();
             pmt.pause = false;
             spawner.SpawnWaves(enemy, wavesEnemy);
             StartCoroutine(WaitAction(time4, EndTutorial));
@@ -127,7 +127,7 @@ public class TutorialManager : MonoBehaviour {
         if (part-1 < animations.Length)
             animations[part-1].SetActive(true);
     }
-
+    
     void Resume()
     {
         if (enemies != null)
@@ -151,13 +151,14 @@ public class TutorialManager : MonoBehaviour {
         Destroy(this);
     }
 
+
     void GenerateEnemyWave()
     {
-        Transform points = pmt.playerPositions;
+        Transform[] points = pmt.movement.positions;
         enemies = new Enemy[3];
         for (int i = 0; i < 3; i++)
         {
-            enemies[i] = Instantiate(enemyPrefab, new Vector2(points.GetChild(i).position.x, points.GetChild(i).position.y + distance), Quaternion.identity).GetComponent<Enemy>();
+            enemies[i] = Instantiate(enemyPrefab, new Vector2(points[i].position.x, points[i].position.y + distance), Quaternion.identity).GetComponent<Enemy>();
         }
     }
 

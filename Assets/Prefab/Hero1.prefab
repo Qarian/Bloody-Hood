@@ -22,9 +22,8 @@ GameObject:
   - component: {fileID: 212902572751243336}
   - component: {fileID: 61784619641371772}
   - component: {fileID: 114191595584568044}
-  - component: {fileID: 114340563463665666}
-  - component: {fileID: 114587841703247676}
   - component: {fileID: 82589003122724590}
+  - component: {fileID: 114021515476430970}
   m_Layer: 9
   m_Name: Hero1
   m_TagString: Player
@@ -45,6 +44,22 @@ GameObject:
   - component: {fileID: 114326844661170936}
   m_Layer: 11
   m_Name: Blade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1415725012849038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4951656969230676}
+  - component: {fileID: 114210502866847182}
+  m_Layer: 9
+  m_Name: Movement Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +89,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506988373419692}
+  - {fileID: 4951656969230676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4951656969230676
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415725012849038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4817980002608802}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &61000167598982522
 BoxCollider2D:
@@ -207,6 +236,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114021515476430970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215716782000104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caa6bbecaa1f2f4b80fb9243d4bb8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: -6.5
+  positions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  swapDistance: 35
+  swapTime: 0.2
+  attackTime: 0.26
+  attackHeight: 3
+  movementObject: {fileID: 1415725012849038}
 --- !u!114 &114191595584568044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,14 +268,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a23ff33583afa4db60fc6773b7d804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 0.15
-  cooldown: 0.1
-  hp: 3
+  attackSpeed: 0.2
+  cooldown: 0.005
+  hp: 5
   exp: 0
   expToLevel: 9
-  canAttack: 1
   damage: {fileID: 0}
   experience: {fileID: 0}
+--- !u!114 &114210502866847182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415725012849038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2252e2934de3910459b9335f18445ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 4
+  currentPoint: 0
 --- !u!114 &114326844661170936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,36 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
---- !u!114 &114340563463665666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215716782000104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2252e2934de3910459b9335f18445ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPositions: {fileID: 0}
-  swapTime: 0.15
-  swapDistance: 35
-  distance: 4
-  currentPoint: 0
---- !u!114 &114587841703247676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215716782000104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52775f32ecca833419792c433da7cfd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackBossWaitTime: 0.05
-  attackMoveSpeed: 0.3
-  distanceToBoss: 8
 --- !u!212 &212612202525070680
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -31,6 +31,9 @@ public class UnityWindow : EditorWindow {
     static string previewSaveName = "Preview Save";
     static Wave[] waves;
     #endregion
+    #region Delete PlayerPref
+    bool deleteFoldout;
+    #endregion
     #endregion
 
     [MenuItem("Editor/Window")]
@@ -131,7 +134,16 @@ public class UnityWindow : EditorWindow {
 
             EditorGUI.indentLevel--;
         }
+        EditorGUILayout.Space();
 
+        deleteFoldout = EditorGUILayout.Foldout(deleteFoldout, "Reset");
+        if (deleteFoldout)
+        {
+            if(Button(EditorGUI.indentLevel, "Delete all PlayerPrefs"))
+            {
+                PlayerPrefs.DeleteAll();
+            }
+        }
     }
     
     static bool Button(int indentLevel, string name)
@@ -178,6 +190,7 @@ public class UnityWindow : EditorWindow {
         go.AddComponent<BoxCollider2D>().size = new Vector2(1.15f, 2.3f);
         go.AddComponent<Rigidbody2D>().gravityScale = 0f;
         go.AddComponent<Enemy>().title = enemyName;
+        go.AddComponent<EM_Standard>();
 
 
         #region CzyNadpisac zakomentowane

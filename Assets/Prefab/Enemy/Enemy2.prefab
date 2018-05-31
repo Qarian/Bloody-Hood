@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114588528682025592}
   - component: {fileID: 114386691695171542}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a9e3df5e3603d439b5737266aa7d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyTime: 5
+  damage: 1
+  timeAfterSpawn: 1
+  moving: 1
+  addExp: 3
+  SpawnInWave: 2
   title: Wiewiorka
   deathSound: {fileID: 8300000, guid: 17d62599c502c874190aa897dc89d987, type: 3}
   movement: {fileID: 0}
@@ -121,15 +127,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b9ea8d5aef9e6c479bd891c761e1861, type: 3}
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
-  dieOnHit: 0
-  deathHit: {fileID: 0}
-  timeToSpawn: 0
-  timeAfterSpawn: 1
-  destroyTime: 5
-  damage: 1
   hitToDestroy: 1
-  addExp: 3
-  moving: 1
 --- !u!212 &212732204019393072
 SpriteRenderer:
   m_ObjectHideFlags: 1

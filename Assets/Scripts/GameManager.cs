@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour {
         boss = level.boss;
         bossHp = FindObjectOfType<BossHp>();
         bossHp.gameObject.SetActive(false);
-
         StartMusic();
     }
 
@@ -75,6 +74,7 @@ public class GameManager : MonoBehaviour {
         {
             music.loop = true;
         }
+        music.volume = PlayerPrefs.GetFloat("Music");
     }
 
     #region Boss
@@ -99,13 +99,40 @@ public class GameManager : MonoBehaviour {
     public int BossBattle()
     {
         Instantiate(boss, boss.GetComponent<BossMovement>().startPoint.position, Quaternion.identity, null);
-        if (player.GetComponent<PlayerMovement1>() != null)
-            player.GetComponent<PlayerMovement1>().ChangeMovementBoss();
-        else if (player.GetComponent<PlayerMovementTutorial>() != null)
-            player.GetComponent<PlayerMovementTutorial>().ChangeMovement();
+        player.GetComponent<PlayerMovement>().ChangeMovementBoss();
         return 0;
     }
     #endregion
+    
+
+    public void EndGame(bool win)
+    {
+        end = Instantiate(endScreen, canvas.transform);
+        end.GetComponent<EndScreenScript>().Begin(win);
+        DestroyProjectiles();
+        FindObjectOfType<PlayerMovementBoss>().StopMoving();
+    }
+
+    
+    public void ContinueGame()
+    {
+        level = level.nextLevel;
+
+        background.enabled = true;
+        background.NewBackground(level);
+
+        Destroy(end);
+
+        player.GetComponent<PlayerMovement>().ChangeMovementNormal();
+    }
+
+    public void NewLevel()
+    {
+        spawner.StartSpawning();
+
+        StartMusic();
+    }
+
 
     public void DestroyEffects()
     {
@@ -116,31 +143,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void EndGame(bool win)
+    void DestroyProjectiles()
     {
-        end = Instantiate(endScreen, canvas.transform);
-        end.GetComponent<EndScreenScript>().Begin(win);
-        Time.timeScale = 0;
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Projectile");
+        foreach (var go in gos)
+        {
+            Destroy(go);
+        }
     }
 
-    public void ContinueGame()
-    {
-        level = level.nextLevel;
-
-        background.enabled = true;
-        background.NewBackground(level);
-
-        Destroy(end);
-
-        player.GetComponent<PlayerMovement1>().ChangeMovementNormal();
-
-        Time.timeScale = 1;
-    }
-
-    public void NewLevel()
-    {
-        spawner.StartSpawning();
-
-        StartMusic();
-    }
 }

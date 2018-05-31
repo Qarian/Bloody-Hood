@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Element {
 
+    [Space]
     public string title = "Enemy";
     public AudioClip deathSound;
 
@@ -18,24 +19,9 @@ public class Enemy : MonoBehaviour {
     Sprite death;
     [SerializeField]
     Sprite blood;
-    [SerializeField]
-    bool dieOnHit = false;
-    [SerializeField]
-    Sprite deathHit;
 
     [Space]
-    public float timeToSpawn;
-    public float timeAfterSpawn = 1f;
-
-    [Space]
-    public float destroyTime=5f;
-    public int damage = 1;
     public float hitToDestroy = 1;
-
-    [SerializeField]
-    int addExp = 1;
-    [HideInInspector]
-    public bool moving = true;
 
 	void Start ()
     {
@@ -55,29 +41,17 @@ public class Enemy : MonoBehaviour {
         {
             if (!audios.isPlaying)
             {
-                if (!dieOnHit)
-                    Death2();
-                else
+                if (blood == null)
                     Destroy(gameObject);
-            } 
+                else
+                    Death2();
+            }
         }
     }
 
     public void Collide()
     {
-        GetComponent<BoxCollider2D>().enabled = false;
-        moving = false;
-        audios.Play();
-        if (dieOnHit)
-        {
-            if (deathHit == null)
-                GetComponent<SpriteRenderer>().sprite = death;
-            else
-                GetComponent<SpriteRenderer>().sprite = deathHit;
-        }
-        else
-            Destroy(gameObject);
-        
+        Destroy(gameObject);
     }
 
     public void Hit(float dmg)
@@ -93,6 +67,7 @@ public class Enemy : MonoBehaviour {
     void Death()
     {
         audios.Play();
+        audios.volume = PlayerPrefs.GetFloat("Sound");
         moving = false;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = death;
@@ -124,7 +99,6 @@ public class Enemy : MonoBehaviour {
         go.AddComponent<Rigidbody2D>().gravityScale = 0;
         go.AddComponent<Enemy>();
         CopyComponent(go.GetComponent<Enemy>(), component);
-
 
         return go;
     }
