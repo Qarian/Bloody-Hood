@@ -6,7 +6,7 @@ public class UIEffects : MonoBehaviour {
 
     #region Blood Effect
     public float bloodEffectInterval = 0.1f;
-    public float bloodEffectdistance = 20f;
+    public float bloodEffectDistance = 20f;
     public float bloodEffectAcceleration;
     public Vector2 bloodEffectSize;
     public Sprite bloodEffectSprite;
@@ -31,7 +31,7 @@ public class UIEffects : MonoBehaviour {
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 position = new Vector3(pos.x + Random.Range(-bloodEffectdistance, bloodEffectdistance), pos.y + Random.Range(-bloodEffectdistance, bloodEffectdistance));
+            Vector3 position = new Vector3(pos.x + Random.Range(-bloodEffectDistance, bloodEffectDistance), pos.y + Random.Range(-bloodEffectDistance, bloodEffectDistance));
             GameObject go = new GameObject("Blood");
             go.transform.parent = transform;
             go.transform.position = position;

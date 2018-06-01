@@ -44,8 +44,8 @@ PlayerSettings:
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 4b305d78182bdb84ba5151a1b9860dcf,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
-  defaultScreenWidth: 480
-  defaultScreenHeight: 800
+  defaultScreenWidth: 600
+  defaultScreenHeight: 1000
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
@@ -56,7 +56,7 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: 2
   tizenShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 1
+  displayResolutionDialog: 0
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
@@ -78,7 +78,7 @@ PlayerSettings:
   deferSystemGesturesMode: 0
   hideHomeButton: 0
   submitAnalytics: 1
-  usePlayerLog: 0
+  usePlayerLog: 1
   bakeCollisionMeshes: 1
   forceSingleInstance: 0
   resizableWindow: 1
@@ -129,7 +129,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 1
-  bundleVersion: 0.2.8
+  bundleVersion: 0.3.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0

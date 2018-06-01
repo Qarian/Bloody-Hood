@@ -25,7 +25,6 @@ public class Enemy : Element {
 
 	void Start ()
     {
-        Destroy(gameObject, destroyTime);
         MakeAudioSource();
         movement = GetComponent<EnemyMovement>();
         if (changeSprite)
@@ -64,8 +63,9 @@ public class Enemy : Element {
         }  
     }
 
-    void Death()
+    public void Death()
     {
+        alive = false;
         audios.Play();
         audios.volume = PlayerPrefs.GetFloat("Sound");
         moving = false;

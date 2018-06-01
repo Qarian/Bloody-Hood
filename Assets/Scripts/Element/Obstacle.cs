@@ -21,7 +21,6 @@ public class Obstacle : Element {
 
     void Start()
     {
-        Destroy(gameObject, destroyTime);
         MakeAudioSource();
         movement = GetComponent<EnemyMovement>();
         if (changeSprite)
@@ -55,6 +54,7 @@ public class Obstacle : Element {
 
     void Death()
     {
+        alive = false;
         audios.Play();
         audios.volume = PlayerPrefs.GetFloat("Sound");
         moving = false;

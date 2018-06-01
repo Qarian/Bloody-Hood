@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    [SerializeField]
     float height = -6.5f;
     [HideInInspector]
     public Transform[] positions = new Transform[3];
     int currentPoint = 1;
     float distance;
 
-    [Space]
     [Tooltip("in pixels")]
     public int swapDistance = 35;
     public float swapTime = 0.2f;
@@ -90,6 +88,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void GeneratePoints()
     {
+        height = transform.position.y;
+
         distance = Screen.width / (float)Screen.height * 5.1f;
         changingSpeed = distance / swapTime;
 
