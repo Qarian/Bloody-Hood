@@ -11,6 +11,9 @@ public class SoundButton : MonoBehaviour {
     void Start()
     {
         image = GetComponent<Image>();
+        if (audioSource == null)
+            audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+
         if (PlayerPrefs.GetFloat("Music") == 0)
         {
             image.sprite = off;

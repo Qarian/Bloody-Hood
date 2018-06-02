@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114970444221774042}
   - component: {fileID: 114168429130139478}
   m_Layer: 5
-  m_Name: EndScreen
+  m_Name: End Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

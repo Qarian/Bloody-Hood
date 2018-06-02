@@ -14,11 +14,17 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject endScreen;
     [SerializeField]
+    GameObject pauseScreen;
+    [SerializeField]
     GameObject canvas;
     [HideInInspector]
     public BossHp bossHp;
+    public GameObject maxHp;
 
-    GameObject end;
+    GameObject endGO;
+    GameObject pauseGO;
+
+    bool pause = false;
 
     # region Singleton
     public static GameManager singleton;
@@ -45,7 +51,7 @@ public class GameManager : MonoBehaviour {
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("Menu");
+        if (Input.GetKeyDown(KeyCode.Escape)) Pause();
         if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour {
         if (music == null)
         {
             go = new GameObject("Muzyka");
+            go.tag = "Audio";
             music = go.AddComponent<AudioSource>();
         }
         else
@@ -80,10 +87,11 @@ public class GameManager : MonoBehaviour {
     #region Boss
     public void BossBattleReady()
     {
-        spawner.GetComponent<EnemySpawner>().StopSpawn();
+        //spawner.GetComponent<EnemySpawner>().StopSpawn();
         DestroyEffects();
         comic.GetComponent<Comic>().ShowComic(2);
         background.BossBackgroundReady();
+        maxHp.SetActive(false);
     }
 
     public void BossPhase()
@@ -107,21 +115,28 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame(bool win)
     {
-        end = Instantiate(endScreen, canvas.transform);
-        end.GetComponent<EndScreenScript>().Begin(win);
+        pause = true;
+        endGO = Instantiate(endScreen, canvas.transform);
+        endGO.GetComponent<EndScreenScript>().Begin(win);
         DestroyProjectiles();
-        FindObjectOfType<PlayerMovementBoss>().StopMoving();
+        if (win)
+            FindObjectOfType<PlayerMovementBoss>().StopMoving();
+        else
+            Time.timeScale = 0;
     }
 
     
     public void ContinueGame()
     {
+        pause = false;
+        Time.timeScale = 1;
+
         level = level.nextLevel;
 
         background.enabled = true;
         background.NewBackground(level);
 
-        Destroy(end);
+        Destroy(endGO);
 
         player.GetComponent<PlayerMovement>().ChangeMovementNormal();
     }
@@ -150,6 +165,31 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(go);
         }
+    }
+
+
+    void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            Pause();
+        }
+    }
+
+    public void Pause()
+    {
+        if (pause)
+            return;
+        pause = true;
+        pauseGO = Instantiate(pauseScreen, canvas.transform);
+        Time.timeScale = 0;
+    }
+
+    public void Continue()
+    {
+        pause = false;
+        Destroy(pauseGO);
+        Time.timeScale = 1;
     }
 
 }

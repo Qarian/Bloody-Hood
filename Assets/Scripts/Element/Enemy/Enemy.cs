@@ -86,6 +86,7 @@ public class Enemy : Element {
         audios.playOnAwake = false;
         audios.loop = false;
         audios.clip = deathSound;
+        audios.volume = 0.7f;
     }
 
     public static GameObject Create(Vector2 position, Enemy component)

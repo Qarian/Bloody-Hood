@@ -5,6 +5,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer), typeof(AudioSource))]
 public class Player : MonoBehaviour {
 
+    [SerializeField]
+    float minAttack = 10;
+    [SerializeField]
+    float maxAttack = 20;
+    [SerializeField]
+    float addAttack = 2;
     public float attackSpeed = 0.2f;
     public float cooldown=0.1f;
     public float hp=5;
@@ -19,14 +25,23 @@ public class Player : MonoBehaviour {
 
     public Slider damage;
     public Slider experience;
+    public GameObject maxHp;
     
     void Start()
     {
-        blade = transform.GetChild(0).gameObject;
-        blade.SetActive(false);
+        SetBlade();
         maxhp = hp;
         sprite = GetComponent<SpriteRenderer>();
         audiosource = GetComponent<AudioSource>();
+    }
+
+    void SetBlade()
+    {
+        blade = transform.GetChild(0).gameObject;
+        blade.SetActive(false);
+        blade.GetComponent<Blade>().dmg = minAttack;
+        damage.minValue = minAttack;
+        damage.maxValue = maxAttack;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,11 +72,24 @@ public class Player : MonoBehaviour {
         exp += amount;
         if (exp >= expToLevel)
         {
+            AddAttack();
             exp -= expToLevel;
-            blade.GetComponent<Blade>().dmg += 2;
-            damage.value = blade.GetComponent<Blade>().dmg;
         }
         experience.value = exp;
+    }
+
+    void AddAttack()
+    {
+        if(blade.GetComponent<Blade>().dmg + addAttack >= maxAttack)
+        {
+            if (blade.GetComponent<Blade>().dmg == maxAttack)
+                return;
+            else
+                addAttack = maxAttack - blade.GetComponent<Blade>().dmg;
+            maxHp.SetActive(true);
+        }
+        blade.GetComponent<Blade>().dmg += 2;
+        damage.value = blade.GetComponent<Blade>().dmg;
     }
 
     public void DealDamage(float number)

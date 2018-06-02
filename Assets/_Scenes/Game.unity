@@ -377,6 +377,21 @@ Prefab:
       propertyPath: experience
       value: 
       objectReference: {fileID: 309817427}
+    - target: {fileID: 114191595584568044, guid: ecfa3bfc7d87c0142acdb4af1473588c,
+        type: 2}
+      propertyPath: maxHp
+      value: 
+      objectReference: {fileID: 1199765461}
+    - target: {fileID: 82589003122724590, guid: ecfa3bfc7d87c0142acdb4af1473588c,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c3736282bbd3b6946aaf4e426ad7e9a7, type: 3}
+    - target: {fileID: 82589003122724590, guid: ecfa3bfc7d87c0142acdb4af1473588c,
+        type: 2}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecfa3bfc7d87c0142acdb4af1473588c, type: 2}
   m_IsPrefabParent: 0
@@ -877,6 +892,80 @@ Transform:
   m_Father: {fileID: 193753891}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1199765461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1199765464}
+  - component: {fileID: 1199765463}
+  - component: {fileID: 1199765462}
+  m_Layer: 5
+  m_Name: Max attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1199765462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199765461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 4
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Maksymalne Obra\u017Cenia"
+--- !u!222 &1199765463
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199765461}
+--- !u!224 &1199765464
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199765461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2035033476}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.613186, y: 488.4}
+  m_SizeDelta: {x: 556.9, y: 185.6}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1208388197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,8 +1371,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 702d025687b3ce548a295dc9651ce172, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
+  pauseScreen: {fileID: 1617711091842036, guid: 0f079d83f661ff64fbe767e681c14a09,
+    type: 2}
   canvas: {fileID: 2035033472}
   bossHp: {fileID: 0}
+  maxHp: {fileID: 1199765461}
 --- !u!4 &1280873695
 Transform:
   m_ObjectHideFlags: 0
@@ -1659,10 +1751,10 @@ RectTransform:
   m_Father: {fileID: 2035033476}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -700, y: -1234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842790830
 MonoBehaviour:
@@ -1678,7 +1770,7 @@ MonoBehaviour:
   bloodEffectInterval: 0.1
   bloodEffectDistance: 20
   bloodEffectAcceleration: 150
-  bloodEffectSize: {x: 20, y: 20}
+  bloodEffectSize: {x: 30, y: 30}
   bloodEffectSprite: {fileID: 21300000, guid: 836b644cd45650547be1be267a1d084d, type: 3}
   bloodEffectTarget: {fileID: 529566369}
 --- !u!1 &1976099018
@@ -1839,6 +1931,7 @@ RectTransform:
   - {fileID: 562666635}
   - {fileID: 1842790829}
   - {fileID: 1208388198}
+  - {fileID: 1199765464}
   m_Father: {fileID: 193753891}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
