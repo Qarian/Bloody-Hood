@@ -42,5 +42,6 @@ public class SoundButton : MonoBehaviour {
             image.sprite = off;
             audioSource.volume = 0;
         }
+        PlayerPrefs.Save();
     }
 }

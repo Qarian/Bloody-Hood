@@ -17,7 +17,7 @@ public class BloodEffect : MonoBehaviour {
     void FixedUpdate()
     {
         rb.AddForce((target.position - transform.position) * acceleration * Time.fixedDeltaTime);
-        rb.velocity = rb.velocity * 0.98f;
+        rb.velocity = rb.velocity * 0.95f;
     }
 
     void Update()
@@ -28,6 +28,7 @@ public class BloodEffect : MonoBehaviour {
 
     public void End()
     {
+        target.GetComponent<AudioSource>().Play();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(1);
         Destroy(gameObject);
     }

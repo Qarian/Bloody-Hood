@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 114326875928955958}
-  winSound: {fileID: 8300000, guid: b2a1a20ccfe0fae4d9795a19b31c1854, type: 3}
-  lossSound: {fileID: 8300000, guid: a196be63027e4204bb93b61083fe2298, type: 3}
+  winSound: {fileID: 8300000, guid: 77251b0d4b669794dae34e5a4b13cdf2, type: 3}
+  lossSound: {fileID: 8300000, guid: 086c33f05c191b9478fbb6bd7fea7e9a, type: 3}
 --- !u!114 &114302405591415094
 MonoBehaviour:
   m_ObjectHideFlags: 1

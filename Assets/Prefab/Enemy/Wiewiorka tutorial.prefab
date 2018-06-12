@@ -112,22 +112,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a9e3df5e3603d439b5737266aa7d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  timeAfterSpawn: 1
+  moving: 1
+  addExp: 3
+  SpawnInWave: 1
+  alive: 0
   title: Wiewiorka tutorial
-  deathSound: {fileID: 8300000, guid: 17d62599c502c874190aa897dc89d987, type: 3}
+  deathSound: {fileID: 8300000, guid: 571507023764dfe44b6e5ee89fca8bd6, type: 3}
   movement: {fileID: 0}
   changeSprite: 0
   sprites: []
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
-  dieOnHit: 0
-  deathHit: {fileID: 0}
-  timeToSpawn: 0
-  timeAfterSpawn: 1
-  destroyTime: 20
-  damage: 1
   hitToDestroy: 1
-  addExp: 3
-  moving: 1
 --- !u!212 &212923117587992468
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,11 +5,18 @@ public class MenuScript : MonoBehaviour {
 
     void Awake()
     {
-        if (!PlayerPrefs.HasKey("Music"))
+        if (!PlayerPrefs.HasKey("Slot1"))
         {
-            PlayerPrefs.SetFloat("Music", 1f);
-            PlayerPrefs.SetFloat("Sound", 1f);
+            SetPlayerPrefs();
             SceneManager.LoadScene(1);
+        }
+        else
+        {
+            if(PlayerPrefs.GetInt("Slot1") != 1)
+            {
+                SetPlayerPrefs();
+                SceneManager.LoadScene(1);
+            }
         }
     }
 
@@ -31,5 +38,20 @@ public class MenuScript : MonoBehaviour {
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public static void SetPlayerPrefs()
+    {
+        #region Settings
+        PlayerPrefs.SetFloat("Music", 1f);
+        PlayerPrefs.SetFloat("Sound", 1f);
+        #endregion
+
+        #region Items
+        PlayerPrefs.SetInt("Item1", 10);
+
+        PlayerPrefs.SetInt("Slot1", 1);
+        #endregion
+        PlayerPrefs.Save();
     }
 }

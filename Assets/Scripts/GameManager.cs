@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
     GameObject canvas;
     [HideInInspector]
     public BossHp bossHp;
+    [HideInInspector]
     public GameObject maxHp;
 
     GameObject endGO;

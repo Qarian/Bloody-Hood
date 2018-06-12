@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4caa6bbecaa1f2f4b80fb9243d4bb8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: -6.5
   positions:
   - {fileID: 0}
   - {fileID: 0}
@@ -344,14 +343,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a23ff33583afa4db60fc6773b7d804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minAttack: 10
+  maxAttack: 20
+  addAttack: 2
   attackSpeed: 0.15
   cooldown: 0.1
   hp: 6
   exp: 0
   expToLevel: 9
-  canAttack: 1
   damage: {fileID: 1452402130}
   experience: {fileID: 1646242329}
+  maxHp: {fileID: 0}
 --- !u!61 &375732564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1381,6 +1383,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1157617748}
+  - component: {fileID: 1157617749}
   m_Layer: 5
   m_Name: TargetForBloodEffect
   m_TagString: Untagged
@@ -1406,6 +1409,86 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -180}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &1157617749
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157617747}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 26a0b4ac51dac5544aabb4a103a140fe, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1188702363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1582,7 @@ RectTransform:
   - {fileID: 1585130104}
   - {fileID: 2033845651}
   - {fileID: 1452402129}
+  - {fileID: 1646242330}
   - {fileID: 1384384494}
   - {fileID: 2047049353}
   m_Father: {fileID: 1420174094}
@@ -1595,7 +1679,7 @@ RectTransform:
   - {fileID: 651298420}
   - {fileID: 1892692002}
   m_Father: {fileID: 1355154098}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1727,7 +1811,6 @@ RectTransform:
   m_Children:
   - {fileID: 1771472899}
   - {fileID: 884548004}
-  - {fileID: 1646242330}
   m_Father: {fileID: 1355154098}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2027,12 +2110,12 @@ RectTransform:
   - {fileID: 456899436}
   - {fileID: 1718756759}
   - {fileID: 1157617748}
-  m_Father: {fileID: 1452402129}
-  m_RootOrder: 2
+  m_Father: {fileID: 1355154098}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 0.000015258789}
+  m_AnchoredPosition: {x: 350.00003, y: 225}
   m_SizeDelta: {x: 100, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1662364170
@@ -2427,8 +2510,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: 3c543128befd30f4b874347ecb864d73, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
+  pauseScreen: {fileID: 1617711091842036, guid: 0f079d83f661ff64fbe767e681c14a09,
+    type: 2}
   canvas: {fileID: 1355154097}
   bossHp: {fileID: 0}
+  maxHp: {fileID: 0}
 --- !u!114 &1901263231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2563,7 +2649,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355154098}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2582,7 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodEffectInterval: 0.1
-  bloodEffectdistance: 50
+  bloodEffectDistance: 20
   bloodEffectAcceleration: 150
   bloodEffectSize: {x: 20, y: 20}
   bloodEffectSprite: {fileID: 21300000, guid: 836b644cd45650547be1be267a1d084d, type: 3}

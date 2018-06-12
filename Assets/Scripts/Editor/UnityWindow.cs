@@ -31,8 +31,8 @@ public class UnityWindow : EditorWindow {
     static string previewSaveName = "Preview Save";
     static Wave[] waves;
     #endregion
-    #region Delete PlayerPref
-    bool deleteFoldout;
+    #region PlayerPref
+    bool playerPrefsFoldout;
     #endregion
     #endregion
 
@@ -136,13 +136,20 @@ public class UnityWindow : EditorWindow {
         }
         EditorGUILayout.Space();
 
-        deleteFoldout = EditorGUILayout.Foldout(deleteFoldout, "Reset");
-        if (deleteFoldout)
+        playerPrefsFoldout = EditorGUILayout.Foldout(playerPrefsFoldout, "PlayerPrefs");
+        if (playerPrefsFoldout)
         {
-            if(Button(EditorGUI.indentLevel, "Delete all PlayerPrefs"))
+            EditorGUI.indentLevel++;
+            if (Button(EditorGUI.indentLevel, "Delete all PlayerPrefs"))
             {
                 PlayerPrefs.DeleteAll();
             }
+
+            if (Button(EditorGUI.indentLevel, "Set start PlayerPrefs"))
+            {
+                MenuScript.SetPlayerPrefs();
+            }
+            EditorGUI.indentLevel--;
         }
     }
     
