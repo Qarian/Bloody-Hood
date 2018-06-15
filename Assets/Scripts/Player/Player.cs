@@ -9,8 +9,6 @@ public class Player : MonoBehaviour {
     float minAttack = 10;
     [SerializeField]
     float maxAttack = 20;
-    [SerializeField]
-    float addAttack = 2;
     public float attackSpeed = 0.2f;
     public float cooldown=0.1f;
     public float hp=5;
@@ -67,26 +65,15 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void AddExp(int amount)
+    public void AddAttack(int amount)
     {
-        exp += amount;
-        if (exp >= expToLevel)
+        if(blade.GetComponent<Blade>().dmg + amount >= maxAttack)
         {
-            AddAttack();
-            exp -= expToLevel;
-        }
-        experience.value = exp;
-    }
-
-    void AddAttack()
-    {
-        if(blade.GetComponent<Blade>().dmg + addAttack >= maxAttack)
-        {
+            maxHp.SetActive(true);
             if (blade.GetComponent<Blade>().dmg == maxAttack)
                 return;
             else
-                addAttack = maxAttack - blade.GetComponent<Blade>().dmg;
-            maxHp.SetActive(true);
+                amount = (int)(maxAttack - blade.GetComponent<Blade>().dmg);
         }
         blade.GetComponent<Blade>().dmg += 2;
         damage.value = blade.GetComponent<Blade>().dmg;

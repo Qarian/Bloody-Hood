@@ -26,10 +26,11 @@ public class BloodEffect : MonoBehaviour {
             End();
     }
 
-    public void End()
+    public void End(bool playSound = true)
     {
-        target.GetComponent<AudioSource>().Play();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddExp(1);
+        if (playSound)
+            target.GetComponent<AudioSource>().Play();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().AddAttack(1);
         Destroy(gameObject);
     }
 

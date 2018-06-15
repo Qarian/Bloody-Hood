@@ -165,9 +165,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c3736282bbd3b6946aaf4e426ad7e9a7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 47a99e92f54ccf6459e08e1eae500692, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.15
+  m_Volume: 1
   m_Pitch: 1.8
   Loop: 0
   Mute: 0
@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a23ff33583afa4db60fc6773b7d804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minAttack: 120
+  maxAttack: 200
   attackSpeed: 0.2
   cooldown: 0.005
   hp: 5
@@ -274,6 +276,7 @@ MonoBehaviour:
   expToLevel: 9
   damage: {fileID: 0}
   experience: {fileID: 0}
+  maxHp: {fileID: 0}
 --- !u!114 &114210502866847182
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -663,12 +663,12 @@ Prefab:
     - target: {fileID: 224704558160182208, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 144.9
+      value: 228.7
       objectReference: {fileID: 0}
     - target: {fileID: 224704558160182208, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 105.6
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 224292206027642462, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
         type: 2}
@@ -693,7 +693,7 @@ Prefab:
     - target: {fileID: 224704558160182208, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 93
+      value: 114.35
       objectReference: {fileID: 0}
     - target: {fileID: 114856262569077980, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
         type: 2}
@@ -704,6 +704,11 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_MaxSize
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114197138611492678, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bd3857ea6d59cf4c8d816d6c2f6dde9, type: 2}

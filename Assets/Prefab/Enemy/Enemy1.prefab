@@ -115,11 +115,11 @@ MonoBehaviour:
   damage: 1
   timeAfterSpawn: 1
   moving: 1
-  addExp: 3
+  addExp: 4
   SpawnInWave: 1
   alive: 0
   title: Wiewiorka
-  deathSound: {fileID: 8300000, guid: 571507023764dfe44b6e5ee89fca8bd6, type: 3}
+  deathSound: {fileID: 8300000, guid: 2f2965b1a8d3daf459ff69e50d8be658, type: 3}
   movement: {fileID: 0}
   changeSprite: 1
   sprites:

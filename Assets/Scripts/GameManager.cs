@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour {
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Effect");
         for (int i = 0; i < gos.Length; i++)
         {
-            gos[i].GetComponent<BloodEffect>().End();
+            gos[i].GetComponent<BloodEffect>().End(false);
         }
     }
 
