@@ -1,10 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
 
+    public Text version;
+
     void Awake()
     {
+        version.text = "Version " + Application.version;
+
         if (!PlayerPrefs.HasKey("Slot1"))
         {
             SetPlayerPrefs();

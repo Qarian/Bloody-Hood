@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public Transform[] positions = new Transform[3];
     int currentPoint = 1;
     float distance;
+    public bool moving = true;
 
     [Tooltip("in pixels")]
     public int swapDistance = 35;
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 	
 	void Update () {
+        if (!moving)
+            return;
         if (swaping)
             transform.position = Vector2.MoveTowards(transform.position, positions[currentPoint].position, changingSpeed * Time.deltaTime);
         else

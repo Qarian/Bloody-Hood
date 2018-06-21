@@ -57,7 +57,7 @@ public class Player : MonoBehaviour {
             case "Boss":
                 break;
             case  "Projectile":
-                DealDamage(-collision.GetComponent<Projectile>().Damage());
+                DealDamage(collision.GetComponent<Projectile>().Damage());
                 break;
             default:
                 Debug.Log("Collided with object of type: " + collision.tag);
@@ -109,6 +109,7 @@ public class Player : MonoBehaviour {
         sprite.color = percent;
     }
 
+
     public float Attack()
     {
         StartCoroutine(AttackIENumerator());
@@ -122,6 +123,15 @@ public class Player : MonoBehaviour {
     }
 
     IEnumerator AttackIENumerator()
+    {
+        blade.SetActive(true);
+        if (PlayerPrefs.GetFloat("Sound") == 1)
+            audiosource.Play();
+        yield return new WaitForSeconds(attackSpeed);
+        blade.SetActive(false);
+    }
+
+    public IEnumerator ComboAttack(float attackSpeed)
     {
         blade.SetActive(true);
         if (PlayerPrefs.GetFloat("Sound") == 1)
