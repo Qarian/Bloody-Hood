@@ -14,7 +14,7 @@ public class Items : MonoBehaviour {
     private void Start()
     {
         item = PlayerPrefs.GetInt("Slot" + slot.ToString());
-        if (item < 1)
+        if (item < 0)
         {
             gameObject.SetActive(false);
             return;
@@ -34,7 +34,7 @@ public class Items : MonoBehaviour {
     {
         if (amount > 0)
         {
-            potions[item - 1]();
+            potions[item]();
             amount--;
             amountText.text = amount.ToString();
             PlayerPrefs.SetInt("Item" + item.ToString(), amount);

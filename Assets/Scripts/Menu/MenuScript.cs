@@ -8,8 +8,6 @@ public class MenuScript : MonoBehaviour {
 
     void Awake()
     {
-        version.text = "Version " + Application.version;
-
         if (!PlayerPrefs.HasKey("Slot1"))
         {
             SetPlayerPrefs();
@@ -17,12 +15,14 @@ public class MenuScript : MonoBehaviour {
         }
         else
         {
-            if(PlayerPrefs.GetInt("Slot1") != 1)
+            if(PlayerPrefs.GetInt("Slot1") != 0)
             {
                 SetPlayerPrefs();
                 SceneManager.LoadScene(1);
             }
         }
+
+        version.text = "Version " + Application.version;
     }
 
     void Update()
@@ -53,10 +53,34 @@ public class MenuScript : MonoBehaviour {
         #endregion
 
         #region Items
-        PlayerPrefs.SetInt("Item1", 10);
+        for (int i = 1; i < 5; i++)
+        {
+            PlayerPrefs.SetInt("Item" + i, 0);
+        }
+        PlayerPrefs.SetInt("Item0", 10);
 
-        PlayerPrefs.SetInt("Slot1", 1);
+        PlayerPrefs.SetInt("Slot1", 0);
         #endregion
+        #region Weapons
+        for (int i = 1; i < 4; i++)
+        {
+            PlayerPrefs.SetInt("Weapon" + i, 0);
+        }
+        PlayerPrefs.SetInt("Weapon0", 1);
+
+        PlayerPrefs.SetInt("Hand", 0);
+        #endregion
+        #region Armors
+        for (int i = 1; i < 4; i++)
+        {
+            PlayerPrefs.SetInt("Armor" + i, 0);
+        }
+        PlayerPrefs.SetInt("Armor0", 1);
+
+        PlayerPrefs.SetInt("Body", 0);
+        #endregion
+
+        PlayerPrefs.SetInt("Money", 10000);
         PlayerPrefs.Save();
     }
 }

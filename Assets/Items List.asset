@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615a6b38b86dcee43bc8058f26d0dc22, type: 3}
+  m_Name: Items List
+  m_EditorClassIdentifier: 
+  items:
+  - icon: {fileID: 21300000, guid: 8acb5be15a89bf4489a5cb3de47daa47, type: 3}
+    name: Potionek
+    cost: 5
+    maxAmount: 20
+  - icon: {fileID: 21300000, guid: c35fac2aac5831a4589d7414e3e063b1, type: 3}
+    name: Dusza
+    cost: 10
+    maxAmount: 20
+  - icon: {fileID: 21300000, guid: 4611e866521e44c48a37eb7beb5eb483, type: 3}
+    name: Wololo
+    cost: 15
+    maxAmount: 20
+  - icon: {fileID: 21300000, guid: 8eb4ea12dfd15fd4d99898563e57c5c8, type: 3}
+    name: Drewno
+    cost: 20
+    maxAmount: 20
+  - icon: {fileID: 21300000, guid: 0ae2c0d382852144399dd5bf9c67b3b1, type: 3}
+    name: Potion 5
+    cost: 30
+    maxAmount: 20
+  weapons:
+  - icon: {fileID: 21300000, guid: 591950deb169bc0438ef72bbe0b86359, type: 3}
+    name: Bron
+    cost: 100
+    minAttack: 10
+    maxAttack: 20
+  - icon: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
+    name: Worek
+    cost: 200
+    minAttack: 15
+    maxAttack: 25
+  - icon: {fileID: 21300000, guid: f64f1019b1a5f874882f41bc5fdc5da9, type: 3}
+    name: Glaz
+    cost: 300
+    minAttack: 15
+    maxAttack: 35
+  - icon: {fileID: 21300000, guid: 14de9f9b316b6c845bbe6d54d06742f7, type: 3}
+    name: Zwierze
+    cost: 300
+    minAttack: 20
+    maxAttack: 25
+  armors:
+  - icon: {fileID: 21300000, guid: c35fac2aac5831a4589d7414e3e063b1, type: 3}
+    name: Nic
+    cost: 0
+    defence: 0
+  - icon: {fileID: 21300000, guid: e532eec7dcaa2df4c878178856ce4019, type: 3}
+    name: Ziemia
+    cost: 150
+    defence: 2
+  - icon: {fileID: 21300000, guid: 8b9ea8d5aef9e6c479bd891c761e1861, type: 3}
+    name: "Sk\xF3rzana zbroja"
+    cost: 250
+    defence: 4
+  - icon: {fileID: 21300000, guid: 4611e866521e44c48a37eb7beb5eb483, type: 3}
+    name: "\u017Bywa tarcza"
+    cost: 350
+    defence: 8
