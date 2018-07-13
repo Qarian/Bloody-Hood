@@ -19,6 +19,8 @@ public class Enemy : Element {
     Sprite death;
     [SerializeField]
     Sprite blood;
+    [SerializeField]
+    int moneyWorth = 1;
 
     [Space]
     public float hitToDestroy = 1;
@@ -72,6 +74,7 @@ public class Enemy : Element {
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = death;
         UIEffects.singleton.GenerateBloodEffect(Camera.main.WorldToScreenPoint(transform.position), addExp);
+        GameManager.singleton.money += moneyWorth;
     }
 
     void Death2()

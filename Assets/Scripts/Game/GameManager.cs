@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    [SerializeField]
+    ListOfLevels list;
+    [HideInInspector]
     public LevelScript level;
 
     GameObject player;
@@ -26,12 +29,16 @@ public class GameManager : MonoBehaviour {
     GameObject pauseGO;
 
     bool pause = false;
+    [HideInInspector]
+    public int money;
+    public bool endless;
 
     # region Singleton
     public static GameManager singleton;
 
     void Awake()
     {
+        level = list.list[PlayerPrefs.GetInt("Level")];
         singleton = this;
     }
     #endregion
@@ -43,6 +50,7 @@ public class GameManager : MonoBehaviour {
         spawner = EnemySpawner.singleton;
         comic = Comic.singleton.gameObject;
         background = BackgroundMenager.singleton;
+        money = 0;
 
         boss = level.boss;
         bossHp = FindObjectOfType<BossHp>();
@@ -90,7 +98,7 @@ public class GameManager : MonoBehaviour {
     {
         //spawner.GetComponent<EnemySpawner>().StopSpawn();
         DestroyEffects();
-        comic.GetComponent<Comic>().ShowComic(2);
+        comic.GetComponent<Comic>().ShowComic(1);
         background.BossBackgroundReady();
         maxHp.SetActive(false);
     }
@@ -116,12 +124,33 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame(bool win)
     {
+        if (endless)
+        {
+            DestroyProjectiles();
+            if (win)
+            {
+                FindObjectOfType<PlayerMovementBoss>().StopMoving();
+                ContinueGame();
+            }
+            else
+            {
+                pause = true;
+                endGO = Instantiate(endScreen, canvas.transform);
+                endGO.GetComponent<EndScreenScript>().Begin(win);
+                Time.timeScale = 0;
+            }
+            return;
+        }
+
         pause = true;
         endGO = Instantiate(endScreen, canvas.transform);
         endGO.GetComponent<EndScreenScript>().Begin(win);
         DestroyProjectiles();
         if (win)
+        {
             FindObjectOfType<PlayerMovementBoss>().StopMoving();
+            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        }
         else
             Time.timeScale = 0;
     }
@@ -131,21 +160,26 @@ public class GameManager : MonoBehaviour {
     {
         pause = false;
         Time.timeScale = 1;
-
-        level = level.nextLevel;
+        if (endless)
+        {
+            if(Endless.singleton.NextLevel())
+                level = level.nextLevel;
+        }
+        else
+        {
+            level = level.nextLevel;
+        }  
 
         background.enabled = true;
         background.NewBackground(level);
 
         Destroy(endGO);
-
-        player.GetComponent<PlayerMovement>().ChangeMovementNormal();
     }
 
     public void NewLevel()
     {
         spawner.StartSpawning();
-
+        player.GetComponent<PlayerMovement>().ChangeMovementNormal();
         StartMusic();
     }
 
@@ -193,4 +227,8 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void ChangeScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 }

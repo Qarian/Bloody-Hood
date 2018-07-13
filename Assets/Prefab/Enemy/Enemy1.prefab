@@ -115,7 +115,7 @@ MonoBehaviour:
   damage: 1
   timeAfterSpawn: 1
   moving: 1
-  addExp: 4
+  addExp: 1
   SpawnInWave: 1
   alive: 0
   title: Wiewiorka
@@ -127,6 +127,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b9ea8d5aef9e6c479bd891c761e1861, type: 3}
   death: {fileID: 21300000, guid: a68823d08b0f20846b19bc552059ee9b, type: 3}
   blood: {fileID: 21300000, guid: c8a88469f8e98ae4896ab1483b3b3fcd, type: 3}
+  moneyWorth: 1
   hitToDestroy: 1
 --- !u!212 &212732204019393072
 SpriteRenderer:

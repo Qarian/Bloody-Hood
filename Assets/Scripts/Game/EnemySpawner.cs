@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour {
 
     //From Level object
     GameObject[] enemies;
-    bool endless;
     int waveCount = 10;
     SpawnChoice spawnChoice;
     LevelEnemies levelEnemies;
@@ -42,11 +41,10 @@ public class EnemySpawner : MonoBehaviour {
     {
         #region Read Level
         LevelScript level = GameManager.singleton.level;
-        enemies = level.enemies;
-        endless = level.endless;
         waveCount = level.waveCount;
         spawnChoice = level.spawnChoice;
         levelEnemies = level.levelEnemies;
+        enemies = level.enemies;
         #endregion
         StartCoroutine(Spawn());
     }
@@ -63,21 +61,11 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator Spawn()
     {
         yield return new WaitForSeconds(1f);
-        if (!endless)
+        currentWaveCount = 0;
+        while (currentWaveCount < waveCount)
         {
-            currentWaveCount = 0;
-            while (currentWaveCount < waveCount)
-            {
-                currentWaveCount++;
-                yield return new WaitForSeconds(spawn[(int)spawnChoice]());
-            }
-        }
-        else
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(spawn[(int)spawnChoice]());
-            }
+            currentWaveCount++;
+            yield return new WaitForSeconds(spawn[(int)spawnChoice]());
         }
         yield return new WaitForSeconds(2f);
         GameManager.singleton.BossBattleReady();
@@ -163,7 +151,10 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnAtPosition(int x, GameObject prefab)
     {
-        Instantiate(prefab, points[x].position, Quaternion.identity);
+        if (GameManager.singleton.endless)
+            Endless.singleton.CalculateEnemy(Instantiate(prefab, points[x].position, Quaternion.identity));
+        else
+            Instantiate(prefab, points[x].position, Quaternion.identity);
     }
 
 

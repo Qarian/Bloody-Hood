@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
     GameObject blade;
 
     public Slider damage;
-    public Slider experience;
     public GameObject maxHp;
     
     void Start()
@@ -75,7 +74,7 @@ public class Player : MonoBehaviour {
             else
                 amount = (int)(maxAttack - blade.GetComponent<Blade>().dmg);
         }
-        blade.GetComponent<Blade>().dmg += 2;
+        blade.GetComponent<Blade>().dmg += amount;
         damage.value = blade.GetComponent<Blade>().dmg;
     }
 

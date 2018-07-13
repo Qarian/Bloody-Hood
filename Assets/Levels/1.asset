@@ -18,18 +18,12 @@ MonoBehaviour:
   lastBackground: {fileID: 21300000, guid: a0bcdca846369454fbc5a7d460c5085c, type: 3}
   speed: 10
   speed2: 15
-  comicStart:
-  - {fileID: 21300000, guid: 36b96106fa9b8bf45b7e3e265ef14475, type: 3}
-  comicBoss:
-  - {fileID: 21300000, guid: 36b96106fa9b8bf45b7e3e265ef14475, type: 3}
-  - {fileID: 21300000, guid: fdfce073c44309b418910988ee1914d7, type: 3}
-  comicEnd: []
+  comics: {fileID: 11400000, guid: 1e12be2fd30f8a240abdcf17d06826a2, type: 2}
   music: {fileID: 8300000, guid: 4069f56a6a1b4554392b4749992fb627, type: 3}
   changeMusic: 1
   music2: {fileID: 8300000, guid: 3d39888397127124583ffbf3c36fb58d, type: 3}
-  endless: 0
   spawnChoice: 1
-  waveCount: 20
+  waveCount: 1
   levelEnemies: {fileID: 0}
   enemies:
   - {fileID: 1010854994116856, guid: 8916127aaa0852448a346cd6b4314303, type: 2}

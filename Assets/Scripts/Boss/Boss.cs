@@ -3,6 +3,8 @@ using UnityEngine;
 public class Boss : MonoBehaviour {
 
     public float hp = 100;
+    public int moneyWorth = 10;
+    public float damage = 1;
 
     public float bulletSpeed = 10f;
     [SerializeField]
@@ -17,13 +19,16 @@ public class Boss : MonoBehaviour {
 
         bossHp = GameManager.singleton.bossHp;
         bossHp.gameObject.SetActive(true);
+        if (GameManager.singleton.endless)
+            Endless.singleton.CalculateBoss(this);
         bossHp.Begin(hp);
     }
 
     public void Attack(int col)
     {
-        GameObject go = Instantiate(bullet, bulletPoints[col].position, Quaternion.identity);
-        go.GetComponent<Projectile>().SetVelocity(new Vector2(0,-1), bulletSpeed);
+        Projectile com = Instantiate(bullet, bulletPoints[col].position, Quaternion.identity).GetComponent<Projectile>();
+        com.SetVelocity(new Vector2(0,-1), bulletSpeed);
+        com.damage = damage;
     }
 
     public void Hit(float dmg)
@@ -57,6 +62,7 @@ public class Boss : MonoBehaviour {
     public void DestroyBoss()
     {
         GameManager.singleton.EndGame(true);
+        GameManager.singleton.money += moneyWorth;
         bossHp.gameObject.SetActive(false);
         Destroy(gameObject);
     }

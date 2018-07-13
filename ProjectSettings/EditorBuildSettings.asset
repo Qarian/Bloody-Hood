@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Shop.unity
     guid: e5e6662263e6e9f4eb3ef05082655523
+  - enabled: 1
+    path: Assets/_Scenes/Endless.unity
+    guid: bd0c4d578bc456847b6ed7316c512ec6

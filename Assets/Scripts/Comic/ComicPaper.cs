@@ -6,13 +6,13 @@ public class ComicPaper : MonoBehaviour {
     {
         Comic c = GetComponentInParent<Comic>();
         c.NextPage();
-        //d�wi�k zmiany strony
-        //animacje
     }
 
+#if UNITY_STANDALONE
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Space))
             Clicked();
     }
+#endif
 }

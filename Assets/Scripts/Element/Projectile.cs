@@ -5,8 +5,8 @@ public class Projectile : MonoBehaviour {
     public bool reflective = false;
     public bool destructable = false;
 
-    [SerializeField]
-    float damage = 1f;
+    [HideInInspector]
+    public float damage = 1f;
 
     Vector2 dir = Vector2.zero;
     float speed;

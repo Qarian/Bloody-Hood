@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Element : MonoBehaviour {
 
-    public int damage = 1;
+    public float damage = 1;
 
     [Space]
     public float timeAfterSpawn = 1f;

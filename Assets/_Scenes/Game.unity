@@ -1172,6 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dcb7c1ce5430c42bc7659aba613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  list: {fileID: 11400000, guid: 90b4274f8c39148458caf8e470c0b3ff, type: 2}
   level: {fileID: 11400000, guid: 702d025687b3ce548a295dc9651ce172, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
   pauseScreen: {fileID: 1617711091842036, guid: 0f079d83f661ff64fbe767e681c14a09,
@@ -1179,6 +1180,8 @@ MonoBehaviour:
   canvas: {fileID: 2035033472}
   bossHp: {fileID: 0}
   maxHp: {fileID: 1199765461}
+  money: 0
+  endless: 0
 --- !u!4 &1280873695
 Transform:
   m_ObjectHideFlags: 0

@@ -20,9 +20,9 @@ public class PlayerMovementBoss : MonoBehaviour {
     float timer; 
     float nextAttackTime; // Time to tap again or combo ends
     float timeToNextAttack; // Time needed to tap again
-    public float comboTime = 3.0f; // Time for whole combo
-    public float comboAttackTime = 0.4f; // Time to next attack, depend on weapon, ToDo - make method that takes varaible from weapon
-    public float comboWaitTime = 1f;
+    public float comboTime = 2.5f; // Time for whole combo
+    public float comboAttackTime = 0.35f; // Time to next attack, depend on weapon, ToDo - make method that takes varaible from weapon
+    public float comboWaitTime = 0.8f;
 
     PlayerMovement movement;
     Player player;
