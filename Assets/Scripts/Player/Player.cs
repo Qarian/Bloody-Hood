@@ -21,15 +21,24 @@ public class Player : MonoBehaviour {
     SpriteRenderer sprite;
     GameObject blade;
 
-    public Slider damage;
+    public Slider healthBar;
     public GameObject maxHp;
     
     void Start()
     {
         SetBlade();
-        maxhp = hp;
+        SetHealth();
+        
         sprite = GetComponent<SpriteRenderer>();
         audiosource = GetComponent<AudioSource>();
+    }
+
+    void SetHealth()
+    {
+        maxhp = hp;
+        healthBar.minValue = 0;
+        healthBar.maxValue = maxhp;
+        healthBar.value = maxhp;
     }
 
     void SetBlade()
@@ -37,8 +46,6 @@ public class Player : MonoBehaviour {
         blade = transform.GetChild(0).gameObject;
         blade.SetActive(false);
         blade.GetComponent<Blade>().dmg = minAttack;
-        damage.minValue = minAttack;
-        damage.maxValue = maxAttack;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,17 +53,17 @@ public class Player : MonoBehaviour {
         switch (collision.tag)
         {
             case "Enemy":
-                DealDamage(collision.GetComponent<Enemy>().damage);
+                ReceivedDamage(collision.GetComponent<Enemy>().damage);
                 collision.GetComponent<Enemy>().Collide();
                 break;
             case "Obstacle":
-                DealDamage(collision.GetComponent<Obstacle>().damage);
+                ReceivedDamage(collision.GetComponent<Obstacle>().damage);
                 collision.GetComponent<Obstacle>().Collide();
                 break;
             case "Boss":
                 break;
             case  "Projectile":
-                DealDamage(collision.GetComponent<Projectile>().Damage());
+                ReceivedDamage(collision.GetComponent<Projectile>().Damage());
                 break;
             default:
                 Debug.Log("Collided with object of type: " + collision.tag);
@@ -66,46 +73,45 @@ public class Player : MonoBehaviour {
 
     public void AddAttack(int amount)
     {
-        if(blade.GetComponent<Blade>().dmg + amount >= maxAttack)
+        if (maxHp.activeSelf)
+            return;
+
+        float damage = blade.GetComponent<Blade>().dmg;
+        if (damage + amount >= maxAttack)
         {
             maxHp.SetActive(true);
-            if (blade.GetComponent<Blade>().dmg == maxAttack)
-                return;
-            else
-                amount = (int)(maxAttack - blade.GetComponent<Blade>().dmg);
+            amount = (int)(maxAttack - damage);
         }
         blade.GetComponent<Blade>().dmg += amount;
-        damage.value = blade.GetComponent<Blade>().dmg;
+
+        Color percent = sprite.color;
+        percent.g = (maxAttack - damage) / (maxAttack - minAttack);
+        percent.b = (maxAttack - damage) / (maxAttack - minAttack);
+        sprite.color = percent;
     }
 
-    public void DealDamage(float number)
+    public void ReceivedDamage(float number)
     {
         hp -= number;
-
         if (hp <= 0)
         {
             GameManager.singleton.EndGame(false);
             Destroy(gameObject);
         }
-
         UpdateLife();
     }
 
     public void AddHp(float number)
     {
         hp += number;
-
         if (hp > maxhp)
             hp = maxhp;
-
         UpdateLife();
     }
 
     void UpdateLife()
     {
-        Color percent = sprite.color;
-        percent.a = hp / maxhp;
-        sprite.color = percent;
+        healthBar.value = hp;
     }
 
 

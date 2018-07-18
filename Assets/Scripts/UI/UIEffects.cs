@@ -7,10 +7,12 @@ public class UIEffects : MonoBehaviour {
     #region Blood Effect
     public float bloodEffectInterval = 0.1f;
     public float bloodEffectDistance = 20f;
-    public float bloodEffectAcceleration;
+    public float bloodEffectAcceleration = 200f;
     public Vector2 bloodEffectSize;
     public Sprite bloodEffectSprite;
     public Transform bloodEffectTarget;
+    [Range(0f, 1f)]
+    public float bloodEffectFriction = 0.03f;
     #endregion
 
     #region Singleton
@@ -40,7 +42,9 @@ public class UIEffects : MonoBehaviour {
             BloodEffect be = go.AddComponent<BloodEffect>();
             be.target = bloodEffectTarget;
             be.acceleration = bloodEffectAcceleration;
+            be.friction = bloodEffectFriction;
             yield return new WaitForSeconds(bloodEffectInterval);
+            Debug.Log("Blood");
         }
     }
 

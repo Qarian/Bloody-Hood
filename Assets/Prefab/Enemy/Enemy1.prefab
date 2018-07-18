@@ -115,7 +115,7 @@ MonoBehaviour:
   damage: 1
   timeAfterSpawn: 1
   moving: 1
-  addExp: 1
+  addExp: 4
   SpawnInWave: 1
   alive: 0
   title: Wiewiorka

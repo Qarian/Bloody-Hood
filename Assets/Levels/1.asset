@@ -23,7 +23,7 @@ MonoBehaviour:
   changeMusic: 1
   music2: {fileID: 8300000, guid: 3d39888397127124583ffbf3c36fb58d, type: 3}
   spawnChoice: 1
-  waveCount: 1
+  waveCount: 20
   levelEnemies: {fileID: 0}
   enemies:
   - {fileID: 1010854994116856, guid: 8916127aaa0852448a346cd6b4314303, type: 2}

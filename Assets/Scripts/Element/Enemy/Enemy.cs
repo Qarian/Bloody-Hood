@@ -73,7 +73,8 @@ public class Enemy : Element {
         moving = false;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = death;
-        UIEffects.singleton.GenerateBloodEffect(Camera.main.WorldToScreenPoint(transform.position), addExp);
+        //UIEffects.singleton.GenerateBloodEffect(Camera.main.WorldToScreenPoint(transform.position), addExp);
+        UIEffects.singleton.GenerateBloodEffect(transform.position, addExp);
         GameManager.singleton.money += moneyWorth;
     }
 

@@ -40,8 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0b8b1547ed7a742ae2d24693737a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.5
+  time: 0.4
   startSize: 1.4
+  offset: {x: 0.1, y: 0}
   lastOnPage: 1
   show: 0
 --- !u!114 &114681897384596434
@@ -57,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.90344834, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -92,6 +93,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120.05, y: -250.85}
-  m_SizeDelta: {x: 239.9, y: 298.3}
+  m_AnchoredPosition: {x: 199.94, y: -404.98}
+  m_SizeDelta: {x: 399.88, y: 523.37}
   m_Pivot: {x: 0.5, y: 0.5}
