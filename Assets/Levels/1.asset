@@ -17,7 +17,7 @@ MonoBehaviour:
   bossBackground: {fileID: 21300000, guid: e532eec7dcaa2df4c878178856ce4019, type: 3}
   lastBackground: {fileID: 21300000, guid: a0bcdca846369454fbc5a7d460c5085c, type: 3}
   speed: 10
-  speed2: 15
+  speed2: 18
   comics: {fileID: 11400000, guid: 1e12be2fd30f8a240abdcf17d06826a2, type: 2}
   music: {fileID: 8300000, guid: 4069f56a6a1b4554392b4749992fb627, type: 3}
   changeMusic: 1

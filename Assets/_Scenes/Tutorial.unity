@@ -431,7 +431,7 @@ MonoBehaviour:
   hp: 6
   exp: 0
   expToLevel: 9
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1452402130}
   maxHp: {fileID: 1895872243}
 --- !u!61 &375732564
 BoxCollider2D:
@@ -2192,7 +2192,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 871712120}
   m_PlaneDistance: 9
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dcb7c1ce5430c42bc7659aba613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list: {fileID: 0}
+  list: {fileID: 11400000, guid: 90b4274f8c39148458caf8e470c0b3ff, type: 2}
   level: {fileID: 11400000, guid: 3c543128befd30f4b874347ecb864d73, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
   pauseScreen: {fileID: 1617711091842036, guid: 0f079d83f661ff64fbe767e681c14a09,

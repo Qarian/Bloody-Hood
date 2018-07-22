@@ -100,11 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f4ccc93546070418a72bdd69177fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 5
   damage: 1
   timeAfterSpawn: 1
   moving: 1
   addExp: 1
+  SpawnInWave: 1
+  alive: 0
   title: Rock
   deathSound: {fileID: 8300000, guid: cd8cecb275ea05a4ebbd8d4679a6c718, type: 3}
   movement: {fileID: 0}
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7618ba6cc45a4144a1496bf16a4ad16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 10
 --- !u!212 &212955433652184948
 SpriteRenderer:
   m_ObjectHideFlags: 1

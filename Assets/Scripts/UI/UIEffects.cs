@@ -44,7 +44,6 @@ public class UIEffects : MonoBehaviour {
             be.acceleration = bloodEffectAcceleration;
             be.friction = bloodEffectFriction;
             yield return new WaitForSeconds(bloodEffectInterval);
-            Debug.Log("Blood");
         }
     }
 

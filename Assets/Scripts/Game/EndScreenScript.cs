@@ -12,7 +12,7 @@ public class EndScreenScript : MonoBehaviour {
     public void Begin(bool win)
     {
         int money = GameManager.singleton.money;
-        moneyText.text = money.ToString();
+        moneyText.text = money.ToString() + " G";
         if (win)
         {
             text.text = "Wygrałeś";

@@ -28,6 +28,8 @@ public class PlayerMovement1: MonoBehaviour {
 
     void Update()
     {
+        if (GameManager.singleton.pause)
+            return;
         #region StandAlone
         if (Input.GetMouseButtonDown(0) && canSwipe)
         {

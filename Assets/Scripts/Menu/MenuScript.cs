@@ -81,7 +81,7 @@ public class MenuScript : MonoBehaviour {
         #endregion
 
         PlayerPrefs.SetInt("Level", 0);
-        PlayerPrefs.SetInt("Money", 10000);
+        PlayerPrefs.SetInt("Money", 1000);
         PlayerPrefs.Save();
     }
 }

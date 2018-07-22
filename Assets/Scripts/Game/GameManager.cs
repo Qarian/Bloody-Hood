@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour {
+
+    public float endScreenWaitTime = 2f;
 
     [SerializeField]
     ListOfLevels list;
@@ -11,7 +14,6 @@ public class GameManager : MonoBehaviour {
     GameObject player;
     EnemySpawner spawner;
     GameObject boss;
-    GameObject comic;
     AudioSource music;
     BackgroundMenager background;
     [SerializeField]
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour {
     GameObject endGO;
     GameObject pauseGO;
 
-    bool pause = false;
+    public bool pause = false;
     [HideInInspector]
     public int money;
     public bool endless;
@@ -48,14 +50,24 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         player = FindObjectOfType<Player>().gameObject;
         spawner = EnemySpawner.singleton;
-        comic = Comic.singleton.gameObject;
         background = BackgroundMenager.singleton;
-        money = 0;
+        background.gameObject.SetActive(false);
+        pause = true;
 
+        Comic.singleton.ShowComic(0);
+    }
+
+    public void StartGame()
+    {
+        pause = false;
+        
+        money = 0;
         boss = level.boss;
         bossHp = FindObjectOfType<BossHp>();
         bossHp.gameObject.SetActive(false);
+        background.gameObject.SetActive(true);
         StartMusic();
+        spawner.StartSpawning();
     }
 
     void Update ()
@@ -98,7 +110,7 @@ public class GameManager : MonoBehaviour {
     {
         //spawner.GetComponent<EnemySpawner>().StopSpawn();
         DestroyEffects();
-        comic.GetComponent<Comic>().ShowComic(1);
+        Comic.singleton.ShowComic(1);
         background.BossBackgroundReady();
         maxHp.SetActive(false);
     }
@@ -120,7 +132,7 @@ public class GameManager : MonoBehaviour {
         return 0;
     }
     #endregion
-    
+
 
     public void EndGame(bool win)
     {
@@ -143,15 +155,22 @@ public class GameManager : MonoBehaviour {
         }
 
         pause = true;
-        endGO = Instantiate(endScreen, canvas.transform);
-        endGO.GetComponent<EndScreenScript>().Begin(win);
         DestroyProjectiles();
         if (win)
         {
-            FindObjectOfType<PlayerMovementBoss>().StopMoving();
-            PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+             StartCoroutine(FindObjectOfType<PlayerMovementBoss>().EndAttack());
+            //PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
         }
-        else
+        StartCoroutine(ShowEndscript(win));
+    }
+    
+    IEnumerator ShowEndscript(bool win)
+    {
+        if (win)
+            yield return new WaitForSeconds(endScreenWaitTime);
+        endGO = Instantiate(endScreen, canvas.transform);
+        endGO.GetComponent<EndScreenScript>().Begin(win);
+        if(!win)
             Time.timeScale = 0;
     }
 

@@ -44,6 +44,8 @@ public class PlayerMovementBoss : MonoBehaviour {
     }
 
     void Update () {
+        if (GameManager.singleton.pause)
+            return;
         if (moving)
         {
             //#if UNITY_STANDALONE
@@ -188,7 +190,7 @@ public class PlayerMovementBoss : MonoBehaviour {
         }
     }
 
-    IEnumerator EndAttack()
+    public IEnumerator EndAttack()
     {
         movLevel = 0;
         movement.moving = true;

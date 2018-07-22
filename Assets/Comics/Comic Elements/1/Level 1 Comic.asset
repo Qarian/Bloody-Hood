@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7deb0313d56f14c9baf273fd2c9222, type: 3}
+  m_Name: Level 1 Comic
+  m_EditorClassIdentifier: 
+  start:
+  - {fileID: 1327834174081158, guid: 507f3a129d46f5f4dac1d5978a0a5abd, type: 2}
+  - {fileID: 1284073521385634, guid: ca66b99692aa5fe4f9c1e5e31abc9a5f, type: 2}
+  - {fileID: 1496040305421372, guid: 0e130330c3005494cb37d384ecc0bedc, type: 2}
+  boss:
+  - {fileID: 1090643267872954, guid: 4aad211a4b3a09c4aa8b93194197bca4, type: 2}
+  - {fileID: 1940370750082462, guid: b620561d66631374a8fcbf5d9303c7bc, type: 2}
+  - {fileID: 1465560552657868, guid: a6d9bc34855f503448093e04662d5dfa, type: 2}
+  - {fileID: 1401774691676210, guid: 6d31cff89679fec4da3e3311d95096f2, type: 2}
+  - {fileID: 1217209297122698, guid: 595a1e48d14874d46a43a96d8b164845, type: 2}
+  end: []
