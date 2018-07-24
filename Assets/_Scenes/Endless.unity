@@ -1315,6 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecdf4c7964b3264aa1630887c48d757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comicElementTime: 2.5
   background: {fileID: 1583356389}
   button: {fileID: 5250017}
 --- !u!114 &1217694612
@@ -1402,6 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dcb7c1ce5430c42bc7659aba613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endScreenWaitTime: 2
   list: {fileID: 11400000, guid: 90b4274f8c39148458caf8e470c0b3ff, type: 2}
   level: {fileID: 11400000, guid: 702d025687b3ce548a295dc9651ce172, type: 2}
   endScreen: {fileID: 1613422819110128, guid: 782e22b8329568640aad04a81f30aa97, type: 2}
@@ -1410,6 +1412,7 @@ MonoBehaviour:
   canvas: {fileID: 2035033472}
   bossHp: {fileID: 0}
   maxHp: {fileID: 1199765461}
+  pause: 0
   money: 0
   endless: 1
 --- !u!4 &1280873695
@@ -1654,7 +1657,6 @@ GameObject:
   - component: {fileID: 1583356390}
   - component: {fileID: 1583356392}
   - component: {fileID: 1583356391}
-  - component: {fileID: 1583356393}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1713,17 +1715,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583356389}
---- !u!114 &1583356393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1583356389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 871c240d88a1c21489a0f44717dd8c7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1666615127
 GameObject:
   m_ObjectHideFlags: 0

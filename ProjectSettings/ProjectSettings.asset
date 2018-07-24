@@ -78,7 +78,7 @@ PlayerSettings:
   deferSystemGesturesMode: 0
   hideHomeButton: 0
   submitAnalytics: 1
-  usePlayerLog: 0
+  usePlayerLog: 1
   bakeCollisionMeshes: 1
   forceSingleInstance: 0
   resizableWindow: 1
@@ -94,8 +94,8 @@ PlayerSettings:
   visibleInBackground: 1
   allowFullscreenSwitch: 0
   graphicsJobMode: 0
-  macFullscreenMode: 2
-  d3d11FullscreenMode: 1
+  macFullscreenMode: 1
+  d3d11FullscreenMode: 0
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -129,7 +129,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 1
-  bundleVersion: 0.3.7
+  bundleVersion: 0.3.7.4
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0

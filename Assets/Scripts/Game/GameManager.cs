@@ -40,7 +40,9 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        level = list.list[PlayerPrefs.GetInt("Level")];
+        TutorialManager tm = GetComponent<TutorialManager>();
+        if (tm == null)
+            level = list.list[PlayerPrefs.GetInt("Level")];
         singleton = this;
     }
     #endregion
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour {
         spawner = EnemySpawner.singleton;
         background = BackgroundMenager.singleton;
         background.gameObject.SetActive(false);
+        bossHp = FindObjectOfType<BossHp>();
+        bossHp.gameObject.SetActive(false);
         pause = true;
 
         Comic.singleton.ShowComic(0);
@@ -59,15 +63,21 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame()
     {
+        Debug.Log("Start");
         pause = false;
         
         money = 0;
         boss = level.boss;
-        bossHp = FindObjectOfType<BossHp>();
-        bossHp.gameObject.SetActive(false);
+        
         background.gameObject.SetActive(true);
         StartMusic();
-        spawner.StartSpawning();
+        // Tutorial
+        TutorialManager tm = GetComponent<TutorialManager>();
+        Endless e = GetComponent<Endless>();
+        if (tm != null)
+            tm.Begin();
+        else if (e == null)
+            spawner.StartSpawning();
     }
 
     void Update ()
@@ -113,11 +123,13 @@ public class GameManager : MonoBehaviour {
         Comic.singleton.ShowComic(1);
         background.BossBackgroundReady();
         maxHp.SetActive(false);
+        pause = true;
     }
 
     public void BossPhase()
     {
         //muzyczka
+        pause = false;
         if (player.GetComponent<PlayerMovement1>() != null)
             player.GetComponent<PlayerMovement1>().enabled = false;
         else if (player.GetComponent<PlayerMovementTutorial>() != null)

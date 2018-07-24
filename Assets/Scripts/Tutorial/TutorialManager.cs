@@ -45,13 +45,13 @@ public class TutorialManager : MonoBehaviour {
     int part = 1;
     float speed;
 
-    void Start () {
+    void Start()
+    {
         tutorialScreen = FindObjectOfType<TutorialScreen>().gameObject;
         tutorialScreen.SetActive(false);
         bm = FindObjectOfType<BackgroundMenager>();
         pmt = FindObjectOfType<PlayerMovementTutorial>();
         spawner = FindObjectOfType<EnemySpawner>();
-        StartCoroutine(WCommand(time1));
 
         button = tutorialScreen.transform.GetChild(1).gameObject;
         button.SetActive(false);
@@ -65,7 +65,11 @@ public class TutorialManager : MonoBehaviour {
         }
 
         enemyPrefab = GameManager.singleton.level.enemies[0];
+    }
 
+    public void Begin()
+    {
+        StartCoroutine(WCommand(time1));
     }
 
     public void Run(int num)

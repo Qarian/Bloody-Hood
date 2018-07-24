@@ -38,7 +38,7 @@ public class Comic : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && active)
             NextPage();
         if (active && !clear)
         {
@@ -64,9 +64,19 @@ public class Comic : MonoBehaviour {
         switch (num)
         {
             case 0:
+                if(gm.level.comics == null || gm.level.comics.start == null)
+                {
+                    ContinueToGame();
+                    return;
+                }
                 images = gm.level.comics.start;
                 break;
             case 1:
+                if (gm.level.comics == null || gm.level.comics.boss == null)
+                {
+                    ContinueToBoss();
+                    return;
+                }
                 images = gm.level.comics.boss;
                 break;
             case 2:
